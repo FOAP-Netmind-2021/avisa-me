@@ -7,7 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('avisa-me:server');
 var http = require('http');
-
+var db = require('../database/database');
 /**
  * Get port from environment and store in Express.
  */
@@ -24,10 +24,14 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
+db.connectdb()
+.then( () => {
+  server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+  console.log("Listening to port 3000");
+})
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
 
 /**
  * Normalize a port into a number, string, or false.
