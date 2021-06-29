@@ -9,10 +9,15 @@
     <p>Welcome to <%= title %></p>
     <div>
       <form action="/" method="POST">
-        <input type="text" name="note" id="note">
-        <input type="submit" name="" id="">
+
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title">
+
+        <label for="text">Text</label>
+        <input type="text" name="text" id="text">
+
+        <input type="submit" value="Añadir Nota">
       </form>
-      
     </div>
   </body>
 </html>
