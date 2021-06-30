@@ -1,13 +1,5 @@
 const workspaceModel = require("../models/workspaceModel");
 
-exports.renderHome = async (req, res) => {
-  
-  res.render("index", {
-    title: "Avisa.me",
-  });
-
-};
-
 exports.renderWorkspace = async (req, res) => {
 
   const { idWorkspace } = req.params;
@@ -34,3 +26,10 @@ exports.createWorkspace = async (req, res) => {
 
   res.redirect(`/${newWorkspace._id}`);
 };
+
+exports.addTask = async (req,res) =>{
+  const { title, text, id } = req.body;
+  console.log("El id del workspace:",id);
+  const workSpace = await workspaceModel.findById(id);
+  // Aquí habría que hacer el push de la tarea nueva a workSpace.tasks
+}
