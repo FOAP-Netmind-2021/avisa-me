@@ -1,3 +1,5 @@
+
+require('dotenv').config()  // Trata los archivos .env que este en /root como variables globales.
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');

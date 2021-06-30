@@ -10,7 +10,6 @@ const taskSchema = new Schema({
 
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
 const workspaceSchema = new Schema({
-    url : String,
     tasks : [taskSchema], 
 });
 
