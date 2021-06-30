@@ -14,10 +14,10 @@
       <form action="/" method="POST">
         <% } %> 
         <label for="title">Title</label>
-        <input type="text" name="title" id="title">
+        <input type="text" name="title" id="title" maxlength="140">
 
         <label for="text">Text</label>
-        <input type="text" name="text" id="text">
+        <input type="text" name="text" id="text" maxlength="5000">
 
         <input type="submit" value="Añadir Nota">
 
@@ -25,7 +25,7 @@
       <% if(workSpace){ %> 
       <div>
         <% workSpace.tasks.forEach(task => { %>
-        <div>
+        <div style="border:1px solid black">
          <p><%= task.title %></p> 
          <p><%= task.text  %> </p>
         </div> 

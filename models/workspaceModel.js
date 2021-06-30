@@ -4,8 +4,8 @@ const {Schema, model} = require('mongoose');
 
 // Cada Nota tiene su propia ID única. 
 const taskSchema = new Schema({
-    title : String,
-    text : String, 
+    title : {type: String, maxlength: 140},
+    text : {type: String, maxlength: 5000}, 
 });
 
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
