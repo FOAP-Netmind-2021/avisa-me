@@ -11,8 +11,15 @@ exports.renderHome = async (req, res) => {
 exports.renderWorkspace = async (req, res) => {
 
   const { idWorkspace } = req.params;
+
+
+  const workSpace = await workspaceModel.findById(idWorkspace);
+  console.log("workspace------------->",workSpace);
   
-  res.send(idWorkspace);
+  res.render('index',{
+    workSpace,
+  })
+  
 
 };
 

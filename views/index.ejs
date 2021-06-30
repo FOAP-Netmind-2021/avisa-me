@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+   
     <div>
       <form action="/" method="POST">
 
@@ -17,7 +16,15 @@
         <input type="text" name="text" id="text">
 
         <input type="submit" value="Añadir Nota">
+
       </form>
+      <div>
+        <% workSpace.tasks.forEach(task => { %>
+         <p><%= task.title %></p> 
+         <p><%= task.text  %> </p>
+          
+          <% }) %> 
+      </div>
     </div>
   </body>
 </html>
