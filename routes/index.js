@@ -11,9 +11,9 @@ router.get('/', workspaceControllers.renderWorkspace);
 
 router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
-router.post('/', body('text').isLength({ max: 5000 }), workspaceControllers.createWorkspace);
+router.post('/', body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.createWorkspace);
 
-router.post("/addTask", body('text').isLength({ max: 5000 }), workspaceControllers.addTask);
+router.post("/addTask", body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.addTask);
 
 
 module.exports = router;
