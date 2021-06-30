@@ -31,5 +31,10 @@ exports.addTask = async (req,res) =>{
   const { title, text, id } = req.body;
   console.log("El id del workspace:",id);
   const workSpace = await workspaceModel.findById(id);
-  // Aquí habría que hacer el push de la tarea nueva a workSpace.tasks
+  await workSpace.tasks.push({
+    title,
+    text
+  })
+  await workSpace.save();
+  res.redirect(`/${id}`)
 }
