@@ -1,11 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+   
+    <div>
+      <% if(workSpace){ %>
+        <form action="/addTask" method="POST">
+        <input type="hidden" name="id" value="<%= workSpace._id %>">
+        <% }else{ %>  
+      <form action="/" method="POST">
+        <% } %> 
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" maxlength="140">
+
+        <label for="text">Text</label>
+        <input type="text" name="text" id="text" maxlength="5000">
+
+        <input type="submit" value="Añadir Nota">
+
+      </form>
+      <% if(workSpace){ %> 
+      <div>
+        <% workSpace.tasks.forEach(task => { %>
+        <div style="border:1px solid black">
+         <p><%= task.title %></p> 
+         <p><%= task.text  %> </p>
+        </div> 
+          <% }) %> 
+      </div>
+      <% } %> 
+    </div>
   </body>
 </html>

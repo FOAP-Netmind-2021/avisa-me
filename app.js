@@ -1,3 +1,5 @@
+
+require('dotenv').config()  // Trata los archivos .env que este en /root como variables globales.
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -17,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.get('/favicon.ico', (req, res) => res.status(204).send());
 app.use('/', indexRouter);
 
 
