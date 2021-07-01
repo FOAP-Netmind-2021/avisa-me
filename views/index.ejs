@@ -25,13 +25,33 @@
       <% if(workSpace){ %> 
       <div>
         <% workSpace.tasks.forEach(task => { %>
-        <div style="border:1px solid black">
-         <p><%= task.title %></p> 
-         <p><%= task.text  %> </p>
-        </div> 
+        <div data-id="<%= task._id %> " onfocusout="onFocusUpdate(event)" id="taskContainer" style="border:1px solid black">
+         <p contenteditable="true"><%= task.title %></p> 
+         <p contenteditable="true"><%= task.text  %> </p>
+        </div>
           <% }) %> 
       </div>
       <% } %> 
     </div>
+    <script>
+      function onFocusUpdate(event){
+        let divFather = document.querySelector("#taskContainer");
+        let idNote = divFather.dataset.id;
+        let titleModified =  event.currentTarget.children[0].textContent;
+        let parafModified = event.currentTarget.children[1].textContent;
+        let data = {idNote, titleModified, parafModified};
+        let response = fetch("/tasks/updateTask", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers:{ //es necesario
+          'Content-Type': 'application/json'
+        }
+        }).then(()=>{
+          console.log("response:", response);
+          console.log("data:", data);
+        })
+      }
+
+    </script>
   </body>
 </html>
