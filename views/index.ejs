@@ -25,7 +25,7 @@
       <% if(workSpace){ %> 
       <div>
         <% workSpace.tasks.forEach(task => { %>
-        <div data-id="<%= task._id %> " onfocusout="onFocusUpdate(event)" id="taskContainer" style="border:1px solid black">
+        <div data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)" id="taskContainer" style="border:1px solid black">
          <p contenteditable="true"><%= task.title %></p> 
          <p contenteditable="true"><%= task.text  %> </p>
         </div>
@@ -40,6 +40,7 @@
         let titleModified =  event.currentTarget.children[0].textContent;
         let parafModified = event.currentTarget.children[1].textContent;
         let data = {idNote, titleModified, parafModified};
+        
         let response = fetch("/tasks/updateTask", {
         method: "POST",
         body: JSON.stringify(data),

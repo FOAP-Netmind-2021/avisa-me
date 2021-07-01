@@ -1,16 +1,32 @@
 const workspaceModel = require("../models/workspaceModel");
 
 exports.completedTask = async (req, res) => {
-    res.send('Task completed:' + req.params.idTask)
-}
+  res.send("Task completed:" + req.params.idTask);
+};
 
 exports.updateTask = async (req, res) => {
-    console.log("*********", req.body);
-    const {idNote, titleModified, parafModified} = req.body;
-    // find de la nota a la db con idNote
-    console.log("*************", idNote);
-    if(idNote){
-    const taskUpdated = await workspaceModel.findById(idNote);
-    console.log(taskUpdated);
-    }   
-}
+  const { idNote, titleModified, parafModified } = req.body;
+
+  if (idNote) {
+    const workspace = await workspaceModel.find({ "tasks._id": idNote });
+
+    const tasks = workspace[0].tasks; 
+
+    const task = tasks.find(task => {
+        return task._id == idNote;
+    })
+
+    task.title = titleModified;
+    task.text = parafModified;
+
+    await workspace[0].save();
+
+    res.send({
+        success : true ,
+        taskId : task._id
+    })
+
+    console.log(workspace);
+    
+  }
+};
