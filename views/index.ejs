@@ -24,14 +24,35 @@
       </form>
       <% if(workSpace){ %> 
       <div>
-        <% workSpace.tasks.forEach(task => { %>
-        <div style="border:1px solid black">
-         <p><%= task.title %></p> 
-         <p><%= task.text  %> </p>
-        </div> 
-          <% }) %> 
+        <% workSpace.tasks.forEach(task =>{ %>
+          <% if (!task.finishedDate){%> 
+          <div style="border:1px solid black">
+          <p><%= task.title %></p> 
+          <p><%= task.text  %> </p>
+            <a href="/tasks/<%= task._id %>/completed">
+              <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
+            </a>
+          </div> 
+          <% }}) %> 
       </div>
       <% } %> 
     </div>
+
+    <% if(workSpace){ %> 
+      <div>
+        <% workSpace.tasks.forEach(task =>{ %>
+          <% if (task.finishedDate){%> 
+          <div style="background-color: grey; border:1px solid black">
+          <p><%= task.title %></p> 
+          <p><%= task.text  %> </p>
+            <a href="/tasks/<%= task._id %>/completed">
+              <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
+            </a>
+          </div> 
+          <% }}) %> 
+      </div>
+      <% } %> 
+    </div>
+    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
   </body>
 </html>
