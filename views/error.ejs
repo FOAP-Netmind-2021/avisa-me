@@ -1,4 +1,19 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
-//
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/_head")  %> 
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <%- include("./partials/header")  %>
+    </header>
+
+    <h1><%= message %></h1>
+    <h2><%= error.status %></h2>
+    <pre><%= error.stack %></pre>
+
+</body>
+</html>
+
+
