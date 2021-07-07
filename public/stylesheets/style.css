@@ -1,8 +1,70 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
 }
+
+/* input-nota */
+._cardEnable{
+
+min-width: 200px;
+height: 82px;
+left: 67px;
+top: 133px;
+padding: 0.5em;
+
+background: #FFFEFE;
+border: 1px solid #ACA9AE;
+box-sizing: border-box;
+border-radius: 5px;
+}
+
+
+._card__title{
+/* Titulo */
+
+height: 16px;
+left: 15px;
+top: 15.38px;
+
+font-family: Roboto;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 16px;
+
+color: rgba(0, 0, 0, 0.5);
+}
+
+._card__title p{
+  max-width: 80%;
+}
+
+._cardDisabled{
+
+  min-width: 200px;
+  height: 82px;
+  left: 67px;
+  top: 133px;
+  padding: 0.5em;
+  
+  background: #E0DDDD;
+  border: 1px solid #ACA9AE;
+  box-sizing: border-box;
+  border-radius: 5px;
+  
+  }
+
+
+  ._cardInput{
+  color: grey;
+  }
+
+  ._cardInput input{
+    border: 0;
+    font-weight: bold;
+    height: 2em;
+  }
+
