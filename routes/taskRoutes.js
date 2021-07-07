@@ -6,6 +6,8 @@ var router = express.Router();
 router.get('/:idTask/completed', taskControllers.completedTask);
 
 // Modificar una tarea
+
 router.post('/updateTask', taskControllers.updateTask);
+
 
 module.exports = router;
