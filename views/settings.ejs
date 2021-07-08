@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%- include("./partials/_head")  %> 
+  </head>
+  <body>
+    <header>
+      <%- include("./partials/header")  %>
+    </header>
+    <div class="container">
+        <div class="form-check form-switch">
+            <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
+            <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>
+        </div>
+    </div>
+    <script>
+        let cboxHideCompletedTasks = document.querySelector("#hideCompletedTasksId");
+
+            cboxHideCompletedTasks.addEventListener("change", (event)=>{
+                /* console.log(event); */
+                console.log(cboxHideCompletedTasks.checked)
+        })
+    </script>
+</body>
+</html>
