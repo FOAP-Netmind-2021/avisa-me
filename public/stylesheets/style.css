@@ -1,10 +1,39 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+html, body, html * {
+    color :rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 }
 
-a {
-  color: #00B7FF;
+.color-primary {   
+  background: #1A829C;
 }
+
+.color-secundary{
+  background-color: #91CCDB;
+}
+
+.color-terciary {
+  background-color:  #ADAAB0;
+}
+
+.color-quartiary {
+  background-color:  #EDEEED;
+}
+/* Gray 4 */
+
+/* Gray 4 */
+
+
+h1 {
+  color :rgba(0, 0, 0, 0.5);
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 64px;
+}
+
 
 /* input-nota */
 ._cardEnable{
@@ -14,10 +43,9 @@ height: 82px;
 left: 67px;
 top: 133px;
 padding: 0.5em;
-
-background: #FFFEFE;
-border: 1px solid #ACA9AE;
+border: 1px solid #929090;
 box-sizing: border-box;
+box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
 }
 
