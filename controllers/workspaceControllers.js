@@ -1,24 +1,39 @@
 const workspaceModel = require("../models/workspaceModel");
+const taskModel = require("../models/taskModel");
 const {validationResult} = require('express-validator');
+
+
+
+exports.renderHome = (req, res) => {
+  res.render("index");
+}
+
+
 
 exports.renderWorkspace = async (req, res) => {
 
   const { idWorkspace } = req.params;
 
-  try{
+  const isWorkSpace = await workspaceModel.findById(idWorkspace)
 
-    const workSpace = await workspaceModel.findById(idWorkspace);
-    console.log("workspace------------->",workSpace);
+  console.log("********", isWorkSpace);
+  if(isWorkSpace) {
   
-    res.render('index',{
-      workSpace,
-    })
+      const allTasks = await workspaceModel.getAllTasks(idWorkspace);
+      console.log("********", allTasks);
+    
+      return res.render('workspace',{
+        allTasks,
+        idWorkspace
+      })
 
-  }
-  catch(err){
-    return res.status(404).send(`El worskpace ${idWorkspace} no existe o ha sido eliminado. <a href="/">Crea uno nuevo</a>`)
+  
+/*     catch(err){
+      return res.status(404).send(`El worskpace ${idWorkspace} no existe o ha sido eliminado. <a href="/">Crea uno nuevo</a>`)
+    } */
   }
 
+  res.redirect("/");
 };
 
 exports.createWorkspace = async (req, res) => {
@@ -29,15 +44,23 @@ exports.createWorkspace = async (req, res) => {
       return res.status(400).json({ errors: errors.array() });
     }
 
+  const workspace = new workspaceModel();
+
+  await workspace.save();
+
   const { title, text } = req.body;
 
-  const workspace = new workspaceModel({
-    tasks: { title : title , text : text },
-  });
+  // Tasks
 
-  const newWorkspace = await workspace.save();
+  const newTask = new taskModel({
+    title,
+    text,
+    workspace: workspace._id
+  })
 
-  res.redirect(`/${newWorkspace._id}`);
+  await newTask.save();
+
+  res.redirect(`/${workspace._id}`);
 };
 
 exports.addTask = async (req,res) =>{
@@ -49,13 +72,17 @@ exports.addTask = async (req,res) =>{
     }
 
 
-  const { title, text, id } = req.body;
-  console.log("El id del workspace:",id);
-  const workSpace = await workspaceModel.findById(id);
-  await workSpace.tasks.push({
+  const { title, text, idWorkspace } = req.body;
+
+  //console.log("El id del workspace:",id);
+
+  const newTask = new taskModel({
     title,
-    text
+    text,
+    workspace: idWorkspace
   })
-  await workSpace.save();
-  res.redirect(`/${id}`)
+
+  await newTask.save();
+
+  res.redirect(`/${idWorkspace}`)
 }

@@ -7,11 +7,11 @@ var workspaceControllers = require('../controllers/workspaceControllers');
 const { body} = require('express-validator');
 
 /* GET home page. */
-router.get('/', workspaceControllers.renderWorkspace);
-
-router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
+router.get('/', workspaceControllers.renderHome);
 
 router.post('/', body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.createWorkspace);
+
+router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
 router.post("/addTask", body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.addTask);
 
