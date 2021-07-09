@@ -2,38 +2,34 @@ const workspaceModel = require("../models/workspaceModel");
 const taskModel = require("../models/taskModel");
 const {validationResult} = require('express-validator');
 
-
-
 exports.renderHome = (req, res) => {
   res.render("index");
 }
-
 
 
 exports.renderWorkspace = async (req, res) => {
 
   const { idWorkspace } = req.params;
 
-  const isWorkSpace = await workspaceModel.findById(idWorkspace)
+  try{
 
-  console.log("********", isWorkSpace);
-  if(isWorkSpace) {
-  
-      const allTasks = await workspaceModel.getAllTasks(idWorkspace);
-      console.log("********", allTasks);
+    const isWorkSpace = await workspaceModel.findById(idWorkspace)
+
+    if(isWorkSpace) {
     
+      const allTasks = await workspaceModel.getAllTasks(idWorkspace);
+      const sortedTasks = allTasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)})
+
       return res.render('workspace',{
-        allTasks,
+        allTasks : sortedTasks,
         idWorkspace
       })
 
-  
-/*     catch(err){
-      return res.status(404).send(`El worskpace ${idWorkspace} no existe o ha sido eliminado. <a href="/">Crea uno nuevo</a>`)
-    } */
   }
-
-  res.redirect("/");
+  }
+  catch(err){
+    return res.status(404).send(`El worskpace ${idWorkspace} no existe o ha sido eliminado. <a href="/">Crea uno nuevo</a>`)
+  }
 };
 
 exports.createWorkspace = async (req, res) => {
