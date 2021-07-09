@@ -2,9 +2,8 @@ const workspaceModel = require("../models/workspaceModel");
 const {validationResult} = require('express-validator');
 
 exports.renderWorkspace = async (req, res) => {
-
   const { idWorkspace } = req.params;
-
+  
   try{
 
     const workSpace = await workspaceModel.findById(idWorkspace);
