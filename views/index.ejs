@@ -3,6 +3,7 @@
   <head>
     <title></title>
     <%- include("./partials/_head")  %> 
+    <script src="/js/script.js"></script>
   </head>
   <body>
     <header>
@@ -26,7 +27,7 @@
           <% } %> 
           <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
           <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-          <input type="submit" value="!">
+          <input type="submit" id="createTask" value="!">
   
         </form>
       </div>
