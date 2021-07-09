@@ -1,4 +1,7 @@
 
+/* Luego de darle a ese ícono de la izquierda, le das a los tres puntos que vas a ver arriba, vas a changes, luego stage all changes (enter) y luego vuelves a los tres puntos y vas a commit (enter) escribes el mensaje (enter) y luego al ícono de abajo (el segundo) que actualiza */
+
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 html, body, html * {
@@ -85,7 +88,6 @@ color: rgba(0, 0, 0, 0.5);
   
   }
 
-
   ._cardInput{
   color: grey;
   }
@@ -96,3 +98,151 @@ color: rgba(0, 0, 0, 0.5);
     height: 2em;
   }
 
+  .textMenu {
+    color :#ADAAB0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;   
+
+  }
+  .hamburguerBotton{
+    background-color: #ACA9AE
+  }
+
+
+
+  /* MENU RESPONSIVE HAMBURGUESA */
+
+  /* * {
+    margin: 0;
+    box-sizing: border-box;
+  }
+  
+   body {
+    color :rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+  } 
+  
+  .header {
+    background-color:  #1A829C;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  
+    max-width: 992px;
+    margin: 0 auto;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .logo {
+    font-size: 30px;
+    font-weight: bold;
+    padding: 0 40px;
+    line-height: 80px;
+  }
+  
+  .nav-menu {
+    display: flex;
+    margin-right: 40px;
+    list-style: none;
+  }
+  
+  .nav-menu-item {
+    font-size: 18px;
+    margin: 0 10px;
+    line-height: 80px;
+    text-transform: uppercase;
+    width: max-content;
+  }
+  
+  .nav-menu-link {
+    padding: 8px 12px;
+    border-radius: 3px;
+  }
+  
+  .nav-menu-link:hover,
+  .nav-menu-link_active {
+    background-color: #034574;
+    transition: 0.5s;
+  }
+  
+  /* TOGGLE */
+  .nav-toggle {
+    color: white;
+    background: none;
+    border: none;
+    font-size: 30px;
+    padding: 0 20px;
+    line-height: 60px;
+    cursor: pointer;
+  
+    display: none;
+  }
+  
+  /* MOBILE */
+ /* @media (max-width: 768px) {
+    body {
+      padding-top: 70px;
+    }
+  
+    .header {
+      height: 60px;
+    }
+  
+    .logo {
+      font-size: 25px;
+      padding: 0 20px;
+      line-height: 60px;
+    }
+  
+    .nav-menu {
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      background-color:  #EDEEED;
+      position: fixed;
+      top: 60px;
+      width: 20%;
+      padding: 20px 0;
+  
+      height: calc(100% - 60px);
+      overflow-y: auto;
+  
+      right: 100%;
+      transition: right 0.3s;
+    }
+  
+    .nav-menu-item {
+      line-height: 70px;
+    }
+  
+    .nav-menu-link:hover,
+    .nav-menu-link_active {
+      background: none;
+      color: #83c5f7;
+    }
+  
+    .nav-toggle {
+      display: block;
+    }
+  
+    .nav-menu_visible {
+      left: 0;
+    }
+  
+    .nav-toggle:focus:not(:focus-visible) {
+      outline: none;
+    }
+  }
+   */
