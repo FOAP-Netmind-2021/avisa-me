@@ -15,9 +15,5 @@ router.post('/', body('text').isLength({ max: 5000 }), body('title').isLength({ 
 
 router.post("/addTask", body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.addTask);
 
-router.get("/settings/:idWorkspace", workspaceControllers.renderSettings);
-
-router.post("/settings/:idWorkspace", workspaceControllers.updateSettings);
-
 module.exports = router;
 

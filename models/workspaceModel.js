@@ -12,6 +12,7 @@ const taskSchema = new Schema({
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
 const workspaceSchema = new Schema({
     tasks : [taskSchema],
+    hideCompletedTask: Boolean
 });
 
 /* Asociamos la Colección con el Schema */
