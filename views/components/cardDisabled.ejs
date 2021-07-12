@@ -1,0 +1,12 @@
+<% allTasks.forEach(task =>{ %>
+    <% if(task.finishedDate) { %> 
+        <div class="col-12 col-sm-4 col-lg-1 _cardDisabled" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
+            <div class="_card__title text-break">
+                <p id="task-title-<%=task._id%>"><%= task.title %></p>
+            </div>
+            <div class="text-break">
+                <p id="task-text-<%=task._id%>"><%= task.text %> </p>
+            </div>
+        </div> 
+    <% } %> 
+<% }) %> 
