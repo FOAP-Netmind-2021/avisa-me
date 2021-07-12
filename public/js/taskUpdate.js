@@ -4,6 +4,11 @@ function onFocusUpdate(event){
   let textModified = event.currentTarget.querySelector(`#task-text-${idTask}`).textContent;
   let data = {idTask, titleModified, textModified};
   
+  if(!titleModified && !textModified){
+    console.log("Camoos text y title modified---------->",titleModified, textModified);
+    //alert("Has de rellenar uno de los dos campos")
+    return;
+  }
   let response = fetch("/tasks/updateTask", {
   method: "POST",
   body: JSON.stringify(data),

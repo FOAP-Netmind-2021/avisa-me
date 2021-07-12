@@ -9,7 +9,6 @@
 <head>
   <title></title>
   <%- include("./partials/_head") %>
-    <script src="/js/script.js"></script>
 </head>
 
     <!-- Inicio contenedor -->
@@ -29,9 +28,11 @@
 
               <div class="_cardEnable _cardInput" >
                 <form action="/" method="POST">
-                  <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                  <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-                  <input type="submit" value="!">
+                  <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
+                  maxlength="140"><br>
+                  <input type="text" name="text" oninput="validarInput()" placeholder="Añade una nota..." id="text"
+                  maxlength="5000">
+                  <input id="createTask" style="visibility: hidden" type="submit" value="!"> <!-- deshabiltar boton -->
                 </form>
               </div>
 
@@ -54,40 +55,7 @@
       <!-- Fin única fila | Todo el cuerpo -->
   </div>
   <!-- Fin contenedor -->
-
-
-                  <!-- Nueva nota / Formulario -->
-                  <div class="col-sm p-3 min-vh-100  mb-2 d-flex justify-content-center">
-                    <div class="_cardEnable _cardInput" >
-                      <form action="/" method="POST">
-                        <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
-                        maxlength="140"><br>
-                      <input type="text" name="text" oninput="validarInput()" placeholder="Añade una nota..." id="text"
-                        maxlength="5000">
-                      <input id="createTask" style="visibility: hidden" type="submit" value="!"> <!-- deshabiltar boton -->
-                      </form>
-                    </div>
-                  </div>
-
-
-
-
-
-
-    <div class="container p-5">
-
-        <!-- Nueva nota / Formulario -->
-      <div class="container p-0 mb-2 d-flex justify-content-center">
-        <div class="_cardEnable _cardInput" >
-          <form action="/" method="POST">
-            <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-            <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-            <input type="submit" value="!">
-          </form>
-        </div>
-      </div>
-
-    </div>
+              
     <%- include("./partials/_scripts")  %> <!-- Scripts globales app -->
     
   </body>
