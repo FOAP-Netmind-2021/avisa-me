@@ -6,7 +6,6 @@ const taskSchema = new Schema({
     title : {type: String, maxlength: 140},
     text : {type: String, maxlength: 5000},
     createdAt : { type: Date, default: Date.now()},
-    finished: {type: Boolean, default: false},
     finishedDate: {type: Date},
     workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' }
 });

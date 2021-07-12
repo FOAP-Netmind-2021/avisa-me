@@ -3,8 +3,7 @@ const taskModel = require("../models/taskModel");
 exports.completedTask = async (req, res) => {
 
   const {idTask} = req.params;
-  const task = await taskModel.findById(idTask)
-  task.finished = true;
+  const task = await taskModel.findById(idTask);
   task.finishedDate = new Date();
   await task.save();
 
