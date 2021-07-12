@@ -9,11 +9,20 @@ exports.renderWorkspace = async (req, res) => {
 
     const workSpace = await workspaceModel.findById(idWorkspace);
     console.log("workspace------------->",workSpace);
-  
+    let hideCompletedTask = false;
+    if(workSpace){
+    hideCompletedTask = workSpace.settings.hideCompletedTask;
+      if(hideCompletedTask){
+         workSpace.tasks = workSpace.tasks.filter(task => task.finishedDate == undefined); 
+         console.log("console de workspace.task", workSpace.tasks);
+      }
+    }
+    console.log("condole de hideTask", hideCompletedTask); 
     res.render('index',{
       workSpace,
+      hideCompletedTask
     })
-
+  
   }
   catch(err){
     return res.status(404).send(`El worskpace ${idWorkspace} no existe o ha sido eliminado. <a href="/">Crea uno nuevo</a>`)
@@ -32,9 +41,8 @@ exports.createWorkspace = async (req, res) => {
   const { title, text } = req.body;
 
   const workspace = new workspaceModel({
-    tasks: { title : title , text : text },
+    tasks: { title : title , text : text},
   });
-
   const newWorkspace = await workspace.save();
 
   res.redirect(`/${newWorkspace._id}`);

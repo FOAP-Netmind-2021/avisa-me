@@ -10,6 +10,7 @@ task.finishedDate = new Date();
 await workSpaceRetrieved[0].save();
 console.log(task);
 res.redirect(`/${workSpaceRetrieved[0]._id}`);
+
 }
 
 exports.updateTask = async (req, res) => {
@@ -17,7 +18,7 @@ exports.updateTask = async (req, res) => {
 
   if (idNote) {
     const workspace = await workspaceModel.find({ "tasks._id": idNote });
-
+    
     const tasks = workspace[0].tasks; 
 
     const task = tasks.find(task => {
@@ -37,4 +38,5 @@ exports.updateTask = async (req, res) => {
     console.log(workspace);
     
   }
+
 };

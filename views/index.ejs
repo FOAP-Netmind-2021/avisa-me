@@ -56,6 +56,7 @@
       </div>
 
       <!-- Tareas finalizadas -->
+      <% if(!hideCompletedTask){ %> 
       <div class="container p-0 mt-2">
         <div class="d-flex flex-wrap gap-2 justify-content-center">
           <% if(workSpace){ %> 
@@ -71,10 +72,10 @@
                 </div> 
                 <% }}) %> 
             <% } %> 
+
         </div>
       </div>
-
-
+      <% } %> 
 
 
 

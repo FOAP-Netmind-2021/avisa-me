@@ -4,7 +4,8 @@ let hideCompletedTask = false; //cuando tengamos la db configurada le pasaremos 
 let data = {hideCompletedTask:false} //Creamos esta variable global para todas las posibles futuras settings, pero ya se verá, porque podrían ser independientes
 cboxHideCompletedTasks.addEventListener("change", (event)=>{
   hideCompletedTask = cboxHideCompletedTasks.checked;
-  data = {hideCompletedTask}; 
+  idWorkspace = document.querySelector("#hiddenId").value;
+  data = {hideCompletedTask, idWorkspace}; 
   console.log(data);
   fetch("/settings/updateSettings", {
      method: 'POST', // or 'PUT'
