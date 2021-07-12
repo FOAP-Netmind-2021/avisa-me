@@ -3,15 +3,15 @@
 const { Schema, model } = require('mongoose');
 
 // Cada Nota tiene su propia ID única. 
-/* const taskSchema = new Schema({
+const taskSchema = new Schema({
     title : {type: String, maxlength: 140},
     text : {type: String, maxlength: 5000},
     finishedDate: {type: Date},
-}); */
+});
 
 //---------------INICIO pruebas Validar---------------------------------------------
 // Cada Nota tiene su propia ID única. 
-const taskSchema = new Schema({
+/* const taskSchema = new Schema({
     title: {
         type: String,
         maxlength: 140,
@@ -37,7 +37,7 @@ const taskSchema = new Schema({
         }
     },
     finishedDate: { type: Date },
-});
+}); */
 
 
 //---------------FIN pruebas Validar-----------------------------------------------

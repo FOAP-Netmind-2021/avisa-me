@@ -3,7 +3,7 @@ function onFocusUpdate(event) {
     let titleModified = event.currentTarget.querySelector(`#task-title-${idNote}`).textContent;
     let parafModified = event.currentTarget.querySelector(`#task-text-${idNote}`).textContent;
     let data = { idNote, titleModified, parafModified };
-
+    
     let response = fetch("/tasks/updateTask", {
       method: "POST",
       body: JSON.stringify(data),
