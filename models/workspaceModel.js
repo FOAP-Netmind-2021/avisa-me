@@ -1,13 +1,7 @@
-
 /* Requerimos de mongoose solo Shema y el model */
-const { Schema, model } = require('mongoose');
+const {Schema, model} = require('mongoose');
+const taskModel = require('./taskModel');
 
-// Cada Nota tiene su propia ID única. 
-const taskSchema = new Schema({
-    title : {type: String, maxlength: 140},
-    text : {type: String, maxlength: 5000},
-    finishedDate: {type: Date},
-});
 
 //---------------INICIO pruebas Validar---------------------------------------------
 // Cada Nota tiene su propia ID única. 
@@ -42,12 +36,15 @@ const taskSchema = new Schema({
 
 //---------------FIN pruebas Validar-----------------------------------------------
 
-
-
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
 const workspaceSchema = new Schema({
-    tasks: [taskSchema],
 });
+
+
+workspaceSchema.statics.getAllTasks = async function (id){
+    return await taskModel.find({workspace: id });
+}
+
 
 /* Asociamos la Colección con el Schema */
 module.exports = model("Workspace", workspaceSchema);

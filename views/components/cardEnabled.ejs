@@ -1,0 +1,15 @@
+<% allTasks.forEach(task => { %>
+    <% if(!task.finishedDate) { %> 
+        <div class="col-12 col-sm-4 col-lg-1 _cardEnable" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
+            <div class="_card__title text-break">
+                <p contenteditable="true" id="task-title-<%=task._id%>"><%= task.title %></p>
+            </div>
+            <div class="text-break">
+                <p contenteditable="true" id="task-text-<%=task._id%>"><%= task.text %> </p>
+            </div>
+            <a href="/tasks/<%= task._id %>/completed">
+                <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
+            </a>
+        </div> 
+    <% } %> 
+<% }) %> 
