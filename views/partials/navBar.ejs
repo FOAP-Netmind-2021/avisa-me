@@ -1,104 +1,83 @@
-<!-- <nav class="navbar navbar-expand-lg  color-primary ">
-   en esta clase ponemos el logo nuestro 
-  
-  <div class="container-fluid-right">
-    <a class="navbar-brand justify-content-right" href="#">
-      <img src="images/logo_avisame.png" width="30%" class="justify-content-between" alt="Logo Avisa.me">  
-    </a>
-  </div>
+<!-- <!-MENU NAVBAR -->
 
-   ponemos el botón hamburguesa del menú 
-  <div class="container-fluid navbar-dark ">
-    <button class="navbar-toggler hamburguerBotton" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  </div>
-  
-   aquí ponemos los enlaces del menú  -->
-  <!-- <div class="collapse navbar-collapse navbar-left textMenu" id="navbarTogglerDemo01">
-    <div class="navbar-nav pull-xs-left textMenu ">
-      <a class="nav-link textMenu" href="#">Home(current)</a>
-      <a class="nav-link textMenu" href="#">Features</a>
-      <a class="nav-link textMenu" href="#">Pricing</a>
-      <a class="nav-link textMenu" href="# ">Disabled</a>
+<!-- MENU RESPONSIVE -->
+<div class="d-flex flex-sm-column flex-row flex-nowrap color-primary align-items-center sticky-top ">
+  <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right"
+    data-bs-original-title="Icon-only">
+    <i class="bi bi-filter-square-fill"></i>
+  </a>
+  <ul
+    class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
+    <li class="nav-item">
+      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Home">
+        <i class="bi bi-alarm fs-2"></i>
+      </a>
+    </li>
+
+    <li>
+      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Orders">
+        <i class="bi-table fs-2"></i>
+      </a>
+    </li>
+
+    <li>
+      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Customers">
+        <i class="bi-people fs-2"></i>
+      </a>
+    </li>
+    <div class="dropdown">
+      <a href="#"
+        class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
+        id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="bi-person-circle h2"></i>
+      </a>
+      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
+        <li><a class="dropdown-item" href="#">New project...</a></li>
+        <li><a class="dropdown-item" href="#">Settings</a></li>
+        <li><a class="dropdown-item" href="#">Profile</a></li>
+      </ul>
     </div>
+    <li>
+      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Customers">
+        <img src="images/logo_avisame.png" width="100" class="justify-content-between" alt="Logo Avisa.me">
+      </a>
+    </li>
+  </ul>
+
+</div>
+
+<!-- MENU LATERAL DESPLEGABLE -->
+<div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1"
+  id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Settings</h5>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
-</nav> -->
-
-
-
-  <!-- <!-MENU NAVBAR --> 
-
-  <!-- MENU RESPONSIVE -->
-  <div class="d-flex flex-sm-column flex-row flex-nowrap color-primary align-items-center sticky-top ">
-    <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right" data-bs-original-title="Icon-only">
-      <i class="bi bi-filter-square-fill"></i>
-    </a>
-    <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
-        <li class="nav-item">
-            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-              <i class="bi bi-alarm fs-2"></i>
-            </a>
-        </li>
-        
-        <li>
-            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-                <i class="bi-table fs-2"></i>
-            </a>
-        </li>
-       
-        <li>
-            <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-                <i class="bi-people fs-2"></i>
-            </a>
-        </li>
-        <div class="dropdown">
-          <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="bi-person-circle h2"></i>
-          </a>
-          <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-              <li><a class="dropdown-item" href="#">New project...</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-          </ul>
-        </div>
-        <li>
-          <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-            <img src="images/logo_avisame.png" width="30%" class="justify-content-between" alt="Logo Avisa.me">  
-          </a>
+  <div class="offcanvas-body">
+    <ul>
+      <li class="li">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+          data-bs-original-title="Orders">
+          <i class="bi bi-book"></i>
+        </a>
+      </li>
+      <li class="li">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+          data-bs-original-title="Orders">
+          <i class="bi bi-bell"></i>
+        </a>
+      </li>
+      <li class="li">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+          data-bs-original-title="Orders">
+          <i class="bi bi-trash"></i>
+        </a>
       </li>
     </ul>
-    
   </div>
-  
-  
-  
-  <!-- MENU LATERAL DESPLEGABLE -->
-  <div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-      <div class="offcanvas-header">
-        <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Settings</h5>      
-        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-        <ul >
-          <li class="li">
-            <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-              data-bs-original-title="Orders">
-              <i class="bi bi-book"></i>
-            </a>
-          </li>
-          <li class="li">
-            <a href="#" class="nav-link py-3 px-2 dropdown-item"  title="" data-bs-toggle="tooltip" data-bs-placement="right"
-              data-bs-original-title="Orders">
-              <i class="bi bi-bell"></i>
-            </a>
-          </li>
-          <li class="li">
-            <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-              data-bs-original-title="Orders">
-              <i class="bi bi-trash"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+</div>
