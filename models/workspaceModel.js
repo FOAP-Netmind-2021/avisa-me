@@ -9,14 +9,20 @@ const taskSchema = new Schema({
     finishedDate: {type: Date},
 });
 
+// Cada Workspace tiene un objeto Settings
+const settingSchema = new Schema({
+    hideCompletedTask : {
+        type: Boolean,
+        default: false 
+      },
+})
+
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
 const workspaceSchema = new Schema({
     tasks : [taskSchema],
     settings: {
-        hideCompletedTask : {
-            type: Boolean,
-            default: false 
-          }
+        type: settingSchema,
+        default: {}
     }
 });
 

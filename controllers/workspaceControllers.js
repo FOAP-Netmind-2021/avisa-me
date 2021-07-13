@@ -20,7 +20,6 @@ exports.renderWorkspace = async (req, res) => {
     console.log("condole de hideTask", hideCompletedTask); 
     res.render('index',{
       workSpace,
-      hideCompletedTask
     })
   
   }
