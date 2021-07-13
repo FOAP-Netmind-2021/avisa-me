@@ -20,7 +20,7 @@
       <div class="_cardEnable _cardInput" >
         <% if(workSpace){ %>
           <form action="/addTask" method="POST">
-          <input type="hidden" name="id" value="<%= workSpace._id %>">
+          <input type="hidden" name="id" id="idWorkspace" value="<%= workSpace._id %>">
           <% }else{ %>  
         <form action="/" method="POST">
           <% } %> 
@@ -42,7 +42,7 @@
                   <div class="_card__title text-break">
                     <p contenteditable="true" id="task-title-<%=task._id%>"><%= task.title %></p>
                   </div>
-                  <div class="text-break">
+                  <div class="_card__text text-break">
                     <p contenteditable="true" id="task-text-<%=task._id%>"><%= task.text  %> </p>
                   </div>
                 
@@ -62,7 +62,7 @@
           <% if(workSpace){ %> 
               <% workSpace.tasks.forEach(task =>{ %>
                 <% if (task.finishedDate){%> 
-                <div class="_cardDisabled" >
+                <div class="_cardDisabled" data-id="<%=task._id%>">
                   <div class="_card__title text-break">
                     <p><%= task.title %></p>
                   </div>

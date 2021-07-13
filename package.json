@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -16,5 +17,13 @@
     "mongoose": "^5.13.0",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.8"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "puppeteer": "^10.1.0"
+  },
+  "jest": {
+    "verbose": true,
+    "testTimeout": 60000
   }
 }
