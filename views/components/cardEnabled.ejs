@@ -1,49 +1,29 @@
-<% allTasks.forEach(task => { %>
-    <% if(!task.finishedDate) { %> 
-        <div class="col-12 col-sm-4 col-lg-1 _cardEnable" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
-            <div class="_card__title text-break">
-                <p contenteditable="true" id="task-title-<%=task._id%>"><%= task.title %></p>
-            </div>
-            <div class="text-break">
-                <p contenteditable="true" id="task-text-<%=task._id%>"><%= task.text %> </p>
-            </div>
-            <a href="/tasks/<%= task._id %>/completed">
-                <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
-            </a>
-        </div> 
-    <% } %> 
-<% }) %> 
-
-
-
-
-       <!-- Tareas activas -->
-       <div class="col-md-4 mx-auto">
-        <div class="card">
-          <% if(workSpace){ %>
-            <% workSpace.tasks.forEach(task=>{ %>
-              <% if (!task.finishedDate){%>
-                <div class="card-body">
-                  <div data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
-                    <div class="form-group">
-                      <input type="text" class="form-control" name="title" contenteditable="true"
+<!-- Tareas activas -->
+<div class="col-md-4 mx-auto">
+  <div class="card">
+    <div class="card-body">
+      <% allTasks.forEach(task => { %>
+        <% if(!task.finishedDate) { %> 
+            <div class="col-12 col-sm-4 col-lg-1 _cardEnable" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
+                <div class="_card__title text-break">
+                  <div class="form-group">
+                    <input type="text" class="form-control" name="title" contenteditable="true"
                         id="task-title-<%=task._id%>" placeholder="Título">
                       <%= task.title %>
-                        </input>
-                    </div>
-
-                    <div class="form-group">
-                      <textarea name="text" class="form-control" contenteditable="true" id="task-text-<%=task._id%>"
-                        placeholder="Añadir una nota"><%= task.text  %>
-                    </textarea>
-                    </div>
-
-                    <a href="/tasks/<%= task._id %>/completed">
-                      <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
-                    </a>
+                    </input>
                   </div>
-                  <% }}) %>
-                    <% } %>
                 </div>
-        </div>
-      </div>
+                <div class="form-group text-break">
+                  <textarea name="text" class="form-control" contenteditable="true" id="task-text-<%=task._id%>"
+                    placeholder="Añadir una nota"><%= task.text  %>
+                  </textarea>
+                </div>
+                <a href="/tasks/<%= task._id %>/completed">
+                    <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
+                </a>
+            </div> 
+        <% } %>
+      <% }) %> 
+    </div>
+  </div>
+</div>
