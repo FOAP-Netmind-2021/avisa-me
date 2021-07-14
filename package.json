@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/www",
-    "test": "jest "
+    "test": "jest"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -20,10 +20,12 @@
   },
   "devDependencies": {
     "jest": "^27.0.6",
-    "puppeteer": "^10.1.0"
+    "puppeteer": "^10.1.0",
+    "supertest": "^6.1.3"
   },
   "jest": {
     "verbose": true,
-    "testTimeout": 60000
+    "testTimeout": 600000,
+    "testEnvironment": "node"
   }
 }
