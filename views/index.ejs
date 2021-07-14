@@ -3,10 +3,13 @@
   <head>
     <title></title>
     <%- include("./partials/_head")  %> 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
   </head>
   <body>
 
+<head>
+  <title></title>
+  <%- include("./partials/_head") %>
+</head>
 
     <!-- Inicio contenedor -->
     <div class="container-fluid">
@@ -25,9 +28,11 @@
 
               <div class="_cardEnable _cardInput" >
                 <form action="/" method="POST">
-                  <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                  <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-                  <input type="submit" value="!">
+                  <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
+                  maxlength="140"><br>
+                  <input type="text" name="text" oninput="validarInput()" placeholder="Añade una nota..." id="text"
+                  maxlength="5000">
+                  <input id="createTask" style="visibility: hidden" type="submit" value="!"> <!-- deshabiltar boton -->
                 </form>
               </div>
 
@@ -44,57 +49,14 @@
           </div>
 
 
-        
-
-
-
+      
           
       </div>
       <!-- Fin única fila | Todo el cuerpo -->
   </div>
   <!-- Fin contenedor -->
-
-
-
-
-
-
-
-
-                  <!-- Nueva nota / Formulario -->
-                  <div class="col-sm p-3 min-vh-100  mb-2 d-flex justify-content-center">
-                    <div class="_cardEnable _cardInput" >
-                      <form action="/" method="POST">
-                        <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                        <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-                        <input type="submit" value="!">
-                      </form>
-                    </div>
-                  </div>
-
-
-
-
-
-
-    <div class="container p-5">
-
-        <!-- Nueva nota / Formulario -->
-      <div class="container p-0 mb-2 d-flex justify-content-center">
-        <div class="_cardEnable _cardInput" >
-          <form action="/" method="POST">
-            <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-            <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-            <input type="submit" value="!">
-          </form>
-        </div>
-      </div>
-
-    </div>
-   
-    
-    <script src="https://code.iconify.design/1/1.0.6/iconify.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+              
+    <%- include("./partials/_scripts")  %> <!-- Scripts globales app -->
     
   </body>
 </html>
