@@ -1,42 +1,25 @@
-const workspaceModel = require("../models/workspaceModel");
+const taskModel = require("../models/taskModel");
 
 exports.completedTask = async (req, res) => {
-    // res.send('Task completed:' + req.params.idTask);
-const {idTask} = req.params;
-const workSpaceRetrieved = await workspaceModel.find({"tasks._id": idTask  });
-const tasks =  workSpaceRetrieved[0].tasks;
-const task = tasks.find(task=>task._id==idTask)
-task.finishedDate = new Date();
-await workSpaceRetrieved[0].save();
-console.log(task);
-res.redirect(`/${workSpaceRetrieved[0]._id}`);
 
+  const {idTask} = req.params;
+  const task = await taskModel.findById(idTask);
+  task.finishedDate = new Date();
+  await task.save();
+
+  res.redirect(`/${task.workspace}`);
 }
 
 exports.updateTask = async (req, res) => {
-  const { idNote, titleModified, parafModified } = req.body;
+  const { idTask, titleModified, textModified } = req.body;
 
-  if (idNote) {
-    const workspace = await workspaceModel.find({ "tasks._id": idNote });
-    
-    const tasks = workspace[0].tasks; 
+  const task = await taskModel.findById(idTask)
+  task.title = titleModified;
+  task.text = textModified;
+  await task.save();
 
-    const task = tasks.find(task => {
-        return task._id == idNote;
-    })
-
-    task.title = titleModified;
-    task.text = parafModified;
-
-    await workspace[0].save();
-
-    res.send({
-        success : true ,
-        taskId : task._id
-    })
-
-    console.log(workspace);
-    
-  }
+  res.send({
+    success : true,
+  })
 
 };

@@ -1,19 +1,17 @@
-var express = require('express');
+const express = require('express');
+const router = express.Router();
+const workspaceControllers = require('../controllers/workspaceControllers');
 
-var router = express.Router();
-
-var workspaceControllers = require('../controllers/workspaceControllers');
-
-const { body} = require('express-validator');
+const taskValidator = require("../utils/taskValidator");
 
 /* GET home page. */
-router.get('/', workspaceControllers.renderWorkspace);
+router.get('/', workspaceControllers.renderHome);
+
+router.post('/', taskValidator.createTask , taskValidator.emptyTask, workspaceControllers.createWorkspace);
 
 router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
-router.post('/', body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.createWorkspace);
+router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
-router.post("/addTask", body('text').isLength({ max: 5000 }), body('title').isLength({ max: 140 }), workspaceControllers.addTask);
 
 module.exports = router;
-
