@@ -1,29 +1,53 @@
-<!-- Tareas activas -->
-<!-- <div class="col-md-4 mx-auto">
-  <div class="card"> -->
-    <!-- <div class="card-body"> -->
-      <% allTasks.forEach(task => { %>
-        <% if(!task.finishedDate) { %> 
-            <div class="d-flex flex-row  gap-2 col-12 col-sm-4 col-lg-1 _cardEnable" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
-                <div class="_card__title text-break">
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="title" contenteditable="true"
-                        id="task-title-<%=task._id%>" placeholder="Título">
-                      <%= task.title %>
-                    </input>
-                  </div>
-                </div>
-                <div class="form-group text-break">
-                  <textarea name="text" class="form-control" contenteditable="true" id="task-text-<%=task._id%>"
-                    placeholder="Añadir una nota"><%= task.text  %>
-                  </textarea>
-                </div>
-                <a href="/tasks/<%= task._id %>/completed">
-                    <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
+<!-- Card Enabled -->
+<% allTasks.forEach(task => { %>
+  
+  <% if(!task.finishedDate) { %> 
+
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2 ">
+      
+      <!-- Card -->
+      <div id="task-title-<%=task._id%>" class="card _cardEnable _cardInput " 
+        data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
+                
+        <!-- Title -->
+       <div class="d-flex flex-row justify-content-between text-break" contenteditable="true">
+          <div id="task-title-<%=task._id%>" class="d-flex card-title text-break justify-content-between" placeholder="Título">
+            <p><%= task.title %></p>
+          </div>
+          <div contenteditable="false">
+            <a href="#" class="d-flex" >
+              <i class="bi bi-x-square"></i>
+            </a>
+          </div>
+       </div>
+        
+         <!-- Text  -->
+        <div id="task-text-<%=task._id%>" class="text-break" > <!-- form-control _card__title -->
+         
+          <p id="task-text-<%=task._id%>" contenteditable="true" class="card-text" placeholder="Añadir una nota">
+            <%= task.text %>
+          </p>
+          
+          <!-- Icon -->
+          <div>
+            <div class="d-flex justify-content-between">
+              <a href="/tasks/<%= task._id %>/completed" class="d-flex p-2" >
+                <i class="bi bi-check-lg"></i>
+              </a>
+              <a href="#" class="d-flex p-2" >
+                <i class="bi-bell"></i>
+              </a>
+              
+                <a href="#" class="d-flex p-2">
+                  <i class="bi bi-upload"></i>
                 </a>
-            </div> 
-        <% } %>
-      <% }) %> 
+              
+            </div>
+            
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
+     
+  <% } %>
+<% }) %> 

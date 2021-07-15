@@ -1,14 +1,11 @@
 <!-- <!-MENU NAVBAR -->
-
-<!-- MENU RESPONSIVE -->
-<div class="d-flex flex-sm-column flex-row flex-nowrap color-primary align-items-center sticky-top ">
-  <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="offcanvas"
+<div class="d-flex flex-row flex-nowrap flex-sm-column align-items-center sticky-top ">
+  <a href="/" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="offcanvas"
     data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right"
     data-bs-original-title="Icon-only">
-    <i class="bi bi-filter-square-fill"></i>
+    <i class="bi bi-filter-square-fill fs-2"></i>
   </a>
-  <ul
-    class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
+  <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
     <li class="nav-item">
       <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
         data-bs-original-title="Home">
@@ -29,6 +26,7 @@
         <i class="bi-people fs-2"></i>
       </a>
     </li>
+
     <div class="dropdown">
       <a href="#"
         class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
@@ -36,16 +34,19 @@
         <i class="bi-person-circle h2"></i>
       </a>
       <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-        <li><a class="dropdown-item" href="#">New project...</a></li>
-        <li><a class="dropdown-item" href="#">Settings</a></li>
-        <li><a class="dropdown-item" href="#">Profile</a></li>
+        <li><a class="dropdown-item" href="#">Nuevo Proyecto</a></li>
+        <li><a class="dropdown-item" href="#">Configuración</li>
+        <li><a class="dropdown-item" href="#">Perfíl</a></li>
       </ul>
     </div>
+    
     <li>
+     <div>
       <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-        data-bs-original-title="Customers">
-        <img src="images/logo_avisame.png" width="100" class="justify-content-between" alt="Logo Avisa.me">
+      data-bs-original-title="Customers">
+        <img src="images/logo_avisame.png" width="100" class="logo img justify-content-between " alt="Logo Avisa.me">
       </a>
+     </div>
     </li>
   </ul>
 
@@ -55,27 +56,44 @@
 <div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1"
   id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Settings</h5>
-    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+      <!-- <button type="button" class="btn-close justify-content-center text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
   </div>
   <div class="offcanvas-body">
-    <ul>
+    <ul class="navbar-nav">
       <li class="li">
         <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-          data-bs-original-title="Orders">
-          <i class="bi bi-book"></i>
+        data-bs-original-title="Orders">
+          <div class="d-flex justify-content-center">
+            <i class="bi-book fs-3"></i>
+          </div>
         </a>
       </li>
+           
       <li class="li">
         <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-          data-bs-original-title="Orders">
-          <i class="bi bi-bell"></i>
+        data-bs-original-title="Orders">
+          <div class="d-flex justify-content-center">
+            <i class="bi-bell fs-3"></i>
+          </div>
         </a>
       </li>
+      
+      <li class="li">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Orders">
+          <div class="d-flex justify-content-center">
+            <i class="bi-sliders fs-3"></i>
+          </div>
+        </a>
+      </li>
+      
       <li class="li">
         <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
           data-bs-original-title="Orders">
-          <i class="bi bi-trash"></i>
+          <div class="d-flex justify-content-center">
+            <i class="bi-trash fs-3 "></i>
+          </div>
         </a>
       </li>
     </ul>

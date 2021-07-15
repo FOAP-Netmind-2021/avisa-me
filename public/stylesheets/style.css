@@ -1,13 +1,12 @@
 
 /* Luego de darle a ese ícono de la izquierda, le das a los tres puntos que vas a ver arriba, vas a changes, luego stage all changes (enter) y luego vuelves a los tres puntos y vas a commit (enter) escribes el mensaje (enter) y luego al ícono de abajo (el segundo) que actualiza */
 
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 html, body, html * {
     color :rgba(0, 0, 0, 0.5);
     font-family: 'Roboto', sans-serif;
-    font-size: 14px;
+    font-size: 1em;
 }
 
 .color-primary {   
@@ -20,15 +19,13 @@ html, body, html * {
 
 .color-terciary {
   background-color:  #ADAAB0;
+  border: 1px solid #ADAAB0;
 }
 
 .color-quartiary {
   background-color:  #EDEEED;
+  border: 1px solid #EDEEED;
 }
-/* Gray 4 */
-
-/* Gray 4 */
-
 
 h1 {
   color :rgba(0, 0, 0, 0.5);
@@ -37,48 +34,37 @@ h1 {
   font-size: 64px;
 }
 
+.li {
+  list-style: none;
+  text-decoration: none;
+}
+
+.logo {
+  min-width: 50%;
+}
+
+
+/******************************** CARDS */
 
 /* input-nota */
 ._cardEnable{
-
-min-width: 200px;
-height: 82px;
-left: 67px;
-top: 133px;
+/* min-width: 200px;
+height: 82px; */
+/* left: 67px;
+top: 133px; */
 padding: 0.5em;
+
 border: 1px solid #929090;
 box-sizing: border-box;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 5px;
 }
 
-
-._card__title{
-/* Titulo */
-
-height: 16px;
-left: 15px;
-top: 15.38px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
-
-color: rgba(0, 0, 0, 0.5);
-}
-
-._card__title p{
-  max-width: 80%;
-}
-
 ._cardDisabled{
-
-  min-width: 200px;
-  height: 82px;
-  left: 67px;
-  top: 133px;
+ /*  min-width: 200px; */
+ /*  height: 82px; */
+ /*  left: 67px; */
+  /* top: 133px; */
   padding: 0.5em;
   
   background: #E0DDDD;
@@ -88,29 +74,48 @@ color: rgba(0, 0, 0, 0.5);
   
   }
 
-  ._cardInput{
-  color: grey;
-  }
+/******************************** CARD TITLE */
 
-  ._cardInput input{
-    border: 0;
-    font-weight: bold;
-    height: 2em;
+._card__title{
+/* Titulo */
+/* height: 16px; */
+/* left: 15px; */
+/* top: 15.38px; */
+font-family: Roboto;
+/* font-style: normal; */
+/* font-weight: normal; */
+font-size: 1em;
+line-height: 1em;
+color: rgba(0, 0, 0, 0.5);
 }
 
-  .textMenu {
-    color :#ADAAB0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;   
+._card__title p{
+  /* max-width: 100%; */
+  min-height: 1em;
+}
 
-  }
-  .hamburguerBotton{
-    background-color: #ACA9AE
-  }
+._cardInput{
+color: grey;
+}
+
+._cardInput input{
+  border: 0;
+  font-weight: bold;
+  height: 2em;
+}
+
+.textMenu {
+  color :#ADAAB0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 18px;   
+}
 
 
+/******************************** MENU HAMBURGUESA */
 
-  /* MENU RESPONSIVE HAMBURGUESA */
+.hamburguerBotton{
+  background-color: #ACA9AE
+}
 
   /* * {
     margin: 0;
@@ -177,72 +182,74 @@ color: rgba(0, 0, 0, 0.5);
     transition: 0.5s;
   }
   
-  /* TOGGLE */
-  .nav-toggle {
-    color: white;
-    background: none;
-    border: none;
-    font-size: 30px;
-    padding: 0 20px;
-    line-height: 60px;
-    cursor: pointer;
+/* TOGGLE */
+
+.nav-toggle {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 30px;
+  padding: 0 20px;
+  line-height: 60px;
+  cursor: pointer;
+
+  display: none;
+}
   
-    display: none;
-  }
-  
-  /* MOBILE */
- /* @media (max-width: 768px) {
-    body {
-      padding-top: 70px;
-    }
-  
-    .header {
-      height: 60px;
-    }
-  
-    .logo {
-      font-size: 25px;
-      padding: 0 20px;
-      line-height: 60px;
-    }
-  
-    .nav-menu {
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-      background-color:  #EDEEED;
-      position: fixed;
-      top: 60px;
-      width: 20%;
-      padding: 20px 0;
-  
-      height: calc(100% - 60px);
-      overflow-y: auto;
-  
-      right: 100%;
-      transition: right 0.3s;
-    }
-  
-    .nav-menu-item {
-      line-height: 70px;
-    }
-  
-    .nav-menu-link:hover,
-    .nav-menu-link_active {
-      background: none;
-      color: #83c5f7;
-    }
-  
-    .nav-toggle {
-      display: block;
-    }
-  
-    .nav-menu_visible {
-      left: 0;
-    }
-  
-    .nav-toggle:focus:not(:focus-visible) {
-      outline: none;
-    }
-  }
-   */
+/******************************** MEDIA QUERIES */
+
+/* @media (max-width: 768px) {
+body {
+  padding-top: 70px;
+}
+
+.header {
+  height: 60px;
+}
+
+.logo {
+  font-size: 25px;
+  padding: 0 20px;
+  line-height: 60px;
+}
+
+.nav-menu {
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  background-color:  #EDEEED;
+  position: fixed;
+  top: 60px;
+  width: 20%;
+  padding: 20px 0;
+
+  height: calc(100% - 60px);
+  overflow-y: auto;
+
+  right: 100%;
+  transition: right 0.3s;
+}
+
+.nav-menu-item {
+  line-height: 70px;
+}
+
+.nav-menu-link:hover,
+.nav-menu-link_active {
+  background: none;
+  color: #83c5f7;
+}
+
+.nav-toggle {
+  display: block;
+}
+
+.nav-menu_visible {
+  left: 0;
+}
+
+.nav-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+}
+*/
