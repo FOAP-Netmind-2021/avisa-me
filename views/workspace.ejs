@@ -22,11 +22,11 @@
             <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
             <div class="d-flex justify-content-center ">
 
-              <div class="_cardEnable _cardInput" >
+              <div class="_cardMain _cardInput" >
                 <form action="/addTask" method="POST">
                     <input type="hidden" name="idWorkspace" value="<%= idWorkspace %>">
                     <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                    <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
+                    <input type="text" name="text" placeholder="Añade una nota" id="text" maxlength="5000">
                     <button type="submit" class="btn"><span class="iconify" data-icon="carbon:send-alt" data-inline="false"></span>
                     </button>
                 </form>

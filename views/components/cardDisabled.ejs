@@ -3,10 +3,10 @@
 
   <% if(task.finishedDate) { %>           
 
-    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2 color-terciary">
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2 ">
       
       <!-- Card -->
-      <div id="task-title-<%=task._id%>" class="card _cardEnable _cardInput color-terciary">
+      <div id="task-title-<%=task._id%>" class="card _cardDisabled _cardInput color-terciary">
         
         <!-- Title -->
         <div class="d-flex flex-row justify-content-between text-break" placeholder="Título">
@@ -21,7 +21,7 @@
         </div>
         
         <!-- Task Text  -->
-        <div id="task-text-<%=task._id%>" class="card-body" > <!-- _card__title form-control text-break _card__title -->
+        <div id="task-text-<%=task._id%>" class="card__title text-break" > 
           
           <div class="card-text">
             <%= task.text %>
@@ -35,6 +35,7 @@
         </div>
 
       </div>
+
     </div>
     
   <% } %> 

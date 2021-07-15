@@ -6,11 +6,11 @@
     <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2 ">
       
       <!-- Card -->
-      <div id="task-title-<%=task._id%>" class="card _cardEnable _cardInput " 
+      <div id="task-title-<%=task._id%>" class="card _cardEnable _cardInput" 
         data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
                 
         <!-- Title -->
-       <div class="d-flex flex-row justify-content-between text-break" contenteditable="true">
+       <div class=" d-flex flex-row justify-content-between text-break" contenteditable="true">
           <div id="task-title-<%=task._id%>" class="d-flex card-title text-break justify-content-between" placeholder="Título">
             <p><%= task.title %></p>
           </div>
