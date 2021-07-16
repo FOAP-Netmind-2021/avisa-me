@@ -7,8 +7,7 @@
   </head>
   <body>
 
-
-
+    <%- include("./components/messages")  %> 
         <!-- Inicio contenedor -->
     <div class="container-fluid">
       <!-- Única fila | Todo el cuerpo -->
@@ -62,7 +61,9 @@
 
 
 
-    
+  <script>
+  localStorage.setItem('miGato', 'Juan');
+  </script>
   <%- include("./partials/_scripts")  %> <!-- Scripts globales app -->
   <script type="text/javascript" src="/js/taskUpdate.js"></script>
   </body>

@@ -7,7 +7,11 @@ const settingSchema = new Schema({
     hideCompletedTask : {
         type: Boolean,
         default: false 
-      },
+    },
+    private: {
+        type: Boolean,
+        default: false
+    }
 })
 
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
@@ -26,6 +30,3 @@ workspaceSchema.statics.getAllTasks = async function (id){
 
 /* Asociamos la Colección con el Schema */
 module.exports = model("Workspace", workspaceSchema);
-
-
-

@@ -8,6 +8,7 @@ exports.connectdb = async () => {
     await connect(uri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
+      useCreateIndex:true
     });
     console.log("MongoDB se ha conectado a la base de datos correctamente.");
   } catch (error) {
