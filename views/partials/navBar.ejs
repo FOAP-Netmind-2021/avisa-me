@@ -1,52 +1,56 @@
 <!-- <!-MENU NAVBAR -->
-<div class="d-flex flex-row flex-nowrap flex-sm-column align-items-center sticky-top ">
-  <a href="/" class="d-block p-3 link-dark text-decoration-none" data-bs-toggle="offcanvas"
-    data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right"
-    data-bs-original-title="Icon-only">
-    <i class="bi bi-filter-square-fill fs-2"></i>
-  </a>
-  <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
+<div class="d-flex flex-row flex-nowrap sticky-top">
+  
+  <ul class="nav nav-pills justify-content-between w-100"> <!--  align-items-center w-100 nav-pills flex-sm-column flex-row flex-nowrap-->
+    
     <li class="nav-item">
-      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+      <a href="/" class="d-block nav-link link-dark text-decoration-none" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right"
+      data-bs-original-title="Icon-only">
+      <i class="bi bi-filter-square-fill fs-2"></i>
+      </a>
+    </li>
+    
+   <!--  <li class="nav-item">
+      <a href="#" class="nav-link " data-bs-toggle="tooltip" data-bs-placement="right"
         data-bs-original-title="Home">
         <i class="bi bi-alarm fs-2"></i>
       </a>
-    </li>
+    </li> -->
 
-    <li>
-      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right"
         data-bs-original-title="Orders">
         <i class="bi-table fs-2"></i>
       </a>
-    </li>
+    </li> -->
 
-    <li>
-      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+   <!--  <li class="nav-item">
+      <a href="#" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right"
         data-bs-original-title="Customers">
         <i class="bi-people fs-2"></i>
       </a>
+    </li> -->
+
+    <li class="nav-item">
+        <!-- Dropdown Toogle -->
+        <a href="#" class="dropdown-toggle nav-link link-dark text-decoration-none"
+          id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi-person-circle h2"></i>
+        </a>
+        <!-- Dropdown Menu -->
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="Seleccione 1 Nuevo Proyecto 2 Configuración 3 Perfil">
+          <li><a class="dropdown-item" href="#">Nuevo Proyecto</a></li>
+          <li><a class="dropdown-item" href="#">Configuración</li>
+          <li><a class="dropdown-item" href="#">Perfíl</a></li>
+        </ul>
     </li>
 
-    <div class="dropdown">
-      <a href="#"
-        class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-        id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-        <i class="bi-person-circle h2"></i>
+    <li class="nav-item">
+      <a href="#" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Avisa.me">
+        <img src="images/logo_avisame.png" width="90" class="img-fluid" alt="Logo Avisa.me">
       </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-        <li><a class="dropdown-item" href="#">Nuevo Proyecto</a></li>
-        <li><a class="dropdown-item" href="#">Configuración</li>
-        <li><a class="dropdown-item" href="#">Perfíl</a></li>
-      </ul>
-    </div>
-    
-    <li>
-     <div>
-      <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-      data-bs-original-title="Customers">
-        <img src="images/logo_avisame.png" width="100" class="logo img justify-content-between " alt="Logo Avisa.me">
-      </a>
-     </div>
     </li>
   </ul>
 
@@ -80,22 +84,21 @@
       </li>
       
       <li class="li">
-        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-        data-bs-original-title="Settings">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"       data-bs-original-title="Settings">
           <div class="d-flex justify-content-center">
             <i class="bi-sliders fs-3"></i>
           </div>
         </a>
       </li>
       
-      <li class="li">
+      <!-- <li class="li">
         <a href="#" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
           data-bs-original-title="Trash">
           <div class="d-flex justify-content-center">
             <i class="bi-trash fs-3 "></i>
           </div>
         </a>
-      </li>
+      </li> -->
     </ul>
   </div>
 </div>

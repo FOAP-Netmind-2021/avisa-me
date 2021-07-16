@@ -3,50 +3,47 @@
   
   <% if(!task.finishedDate) { %> 
 
-    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2 ">
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2">
       
-      <!-- Card -->
-      <div id="task-title-<%=task._id%>" class="card _cardEnable _cardInput" 
+      <!-- Task -->
+      <div id="task-title-<%=task._id%>" class="d-flex flex-column card _cardInput _cardMain _cardInput" 
         data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
-                
-        <!-- Title -->
-       <div class=" d-flex flex-row justify-content-between text-break" contenteditable="true">
-          <div id="task-title-<%=task._id%>" class="d-flex card-title text-break justify-content-between" placeholder="Título">
-            <p><%= task.title %></p>
+       
+        <div class="textMenu d-flex flex-row justify-content-between text-break" >
+
+          <!-- Task title -->
+          <div id="task-title-<%=task._id%>" class="d-flex card-title _cardInput text-break task--title">
+            <p contenteditable="true"><%= task.title %></p>
           </div>
-          <div contenteditable="false">
-            <a href="#" class="d-flex" >
-              <i class="bi bi-x-square"></i>
+
+          <!-- Delete Action -->
+          <div>
+            <a href="#" class="d-flex" contenteditable="false" >
+              <!-- <i class="bi bi-x-square"></i> -->
             </a>
           </div>
-       </div>
+
+        </div>
         
-         <!-- Text  -->
-        <div id="task-text-<%=task._id%>" class="text-break" > <!-- form-control _card__title -->
+         <!-- Task text  -->
+        <div id="task-text-<%=task._id%>" class="text-break"> <!-- form-control _card__title -->
          
           <p id="task-text-<%=task._id%>" contenteditable="true" class="card-text" placeholder="Añadir una nota">
             <%= task.text %>
           </p>
           
-          <!-- Icon -->
+          <!-- Action Icons -->
           <div>
             <div class="d-flex justify-content-between">
-              <a href="/tasks/<%= task._id %>/completed" class="d-flex p-2" >
-                <i class="bi bi-check-lg"></i>
-              </a>
-              <a href="#" class="d-flex p-2" >
-                <i class="bi-bell"></i>
-              </a>
-              
-                <a href="#" class="d-flex p-2">
-                  <i class="bi bi-upload"></i>
-                </a>
-              
+              <a href="/tasks/<%= task._id %>/completed" class="d-flex p-2" ><i class="bi bi-check-lg"></i></a>
+              <!-- <a href="#" class="d-flex p-2" ><i class="bi-bell"></i></a> -->
+              <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
             </div>
-            
           </div>
         </div>
+        
       </div>
+
     </div>
      
   <% } %>

@@ -3,19 +3,20 @@
 
   <% if(task.finishedDate) { %>           
 
-    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2 ">
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2">
       
-      <!-- Card -->
+       <!-- Task -->
       <div id="task-title-<%=task._id%>" class="card _cardDisabled _cardInput color-terciary">
         
-        <!-- Title -->
-        <div class="d-flex flex-row justify-content-between text-break" placeholder="Título">
+        <div class="textMenu d-flex flex-row justify-content-between text-break">
+          <!-- Task title -->
           <div class="d-flex card-title text-break justify-content-between">
             <p><%= task.title %></p>
           </div>
+          <!-- Delete Action -->
           <div contenteditable="false">
             <a href="#" class="d-flex" >
-              <i class="bi bi-x-square"></i>
+              <!-- <i class="bi bi-x-square"></i> -->
             </a>
           </div>
         </div>

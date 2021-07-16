@@ -10,35 +10,41 @@
 
   <!-- Inicio contenedor -->
   <div class="container-fluid">
+
     <!-- Única fila | Todo el cuerpo -->
     <div class="row">
+
       <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
-      <div class="col-sm-1 color-primary sticky-top">
+      <div class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
         <%- include("./partials/navBar") %>
       </div>
-
-        <div class="col-sm-11 p-4 min-vh-100">
-        <!-- <div class="col-md-4 mx-auto"> -->
-          <div class="d-flex justify-content-center">
-          <!-- <div class="_card"> -->
-              <div class="_cardEnable _cardInput">
+        <!-- Crear Workspace. Centrado -->
+        <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+          <div class="d-flex justify-content-center"><!-- col-md-4 mx-auto -->
+              <div class="_cardMain _cardInput text-break">
                 <form action="/" method="POST">
                   <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                  <input type="text" name="text" placeholder="Añade una nota..." id="text" maxlength="5000">
-                  <button type="submit" class="btn"><span class="iconify" data-icon="carbon:send-alt" data-inline="false"></span>
+                  <textarea name="text" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
+                  <button type="submit" class="btn">
+                    <i class="bi bi-pencil-square"></i>
                   </button>
                 </form>
-              </div>             
+              </div> 
           </div>
-
+          
+          <!-- Segunda fila del cuerpo. -->
           <div class="d-flex flex-row flex-wrap pt-4 gap-2">
           </div>
 
         </div>
       </div>
     </div>
+    <!-- Fin única fila | Todo el cuerpo -->
   </div>
-  <!-- Scripts globales app -->
+  <!-- Fin contenedor -->
+
+  <!-- Scripts globales -->
   <%- include("./partials/_scripts") %>
 </body>
+
 </html>
