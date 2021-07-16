@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%- include("./partials/_head")  %> 
+  </head>
+  <body>
+    <header>
+      
+    </header>
+    <div class="container">
+        <div class="form-check form-switch">
+            <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
+            <% if(settings.hideCompletedTask){ %> 
+            <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
+            <% }else{ %> 
+              <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
+              <% } %>
+            <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>  
+        </div>
+    </div>
+    <script src="/js/settings.js"></script>
+</body>
+</html>

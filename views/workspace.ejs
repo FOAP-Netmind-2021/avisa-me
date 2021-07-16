@@ -27,12 +27,11 @@
 
               <div class="_cardMain _cardInput text-break" >
                 <form action="/addTask" method="POST">
-                    <input type="hidden" name="idWorkspace" value="<%= idWorkspace %>">
-                    <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                    <textarea name="text" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
-                    <button type="submit" class="btn">
+                    <input type="hidden" name="idWorkspace" id="idWorkspace" value="<%= idWorkspace %>">
+                    <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title" maxlength="140"><br>
+                    <textarea name="text" oninput="validarInput()" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
+                    <button type="submit" id="createTask" style="visibility: hidden" class="btn">
                       <i class="bi bi-pencil-square"></i>
-                      <!-- <span class="iconify" data-icon="carbon:send-alt" data-inline="false"></span> -->
                     </button>
                 </form>
               </div>

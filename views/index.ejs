@@ -18,26 +18,29 @@
       <div class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
         <%- include("./partials/navBar") %>
       </div>
-        <!-- Crear Workspace. Centrado -->
-        <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
-          <div class="d-flex justify-content-center"><!-- col-md-4 mx-auto -->
-              <div class="_cardMain _cardInput text-break">
-                <form action="/" method="POST">
-                  <input type="text" name="title" placeholder="Título" id="title" maxlength="140"><br>
-                  <textarea name="text" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
-                  <button type="submit" class="btn">
-                    <i class="bi bi-pencil-square"></i>
-                  </button>
-                </form>
-              </div> 
+      <!-- Crear Workspace. Centrado -->
+      <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+        <div class="d-flex justify-content-center">
+          <!-- col-md-4 mx-auto -->
+          <div class="_cardMain _cardInput text-break">
+            <form action="/" method="POST">
+              <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
+                maxlength="140"><br>
+              <textarea name="text" oninput="validarInput()" placeholder="Añade una nota" id="text"
+                maxlength="5000"></textarea>
+              <button type="submit" id="createTask" style="visibility: hidden" class="btn">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </form>
           </div>
-          
-          <!-- Segunda fila del cuerpo. -->
-          <div class="d-flex flex-row flex-wrap pt-4 gap-2">
-          </div>
-
         </div>
+
+        <!-- Segunda fila del cuerpo. -->
+        <div class="d-flex flex-row flex-wrap pt-4 gap-2">
+        </div>
+
       </div>
+
     </div>
     <!-- Fin única fila | Todo el cuerpo -->
   </div>

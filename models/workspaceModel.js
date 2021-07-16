@@ -2,10 +2,20 @@
 const {Schema, model} = require('mongoose');
 const taskModel = require('./taskModel');
 
+// Cada Workspace tiene un objeto Settings
+const settingSchema = new Schema({
+    hideCompletedTask : {
+        type: Boolean,
+        default: false 
+      },
+})
 
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
 const workspaceSchema = new Schema({
-
+    settings: {
+        type: settingSchema,
+        default: {}
+    }
 });
 
 

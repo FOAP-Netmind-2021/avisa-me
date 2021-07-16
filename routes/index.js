@@ -7,10 +7,10 @@ const taskValidator = require("../utils/taskValidator");
 /* GET home page. */
 router.get('/', workspaceControllers.renderHome);
 
-router.post('/', taskValidator.createTask , workspaceControllers.createWorkspace);
+router.post('/', taskValidator.createTask , taskValidator.emptyTask, workspaceControllers.createWorkspace);
 
 router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
-router.post('/addTask',taskValidator.createTask, workspaceControllers.addTask);
+router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
 module.exports = router;

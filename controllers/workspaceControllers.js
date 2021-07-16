@@ -12,13 +12,16 @@ exports.renderWorkspace = async (req, res) => {
   
   try{
 
-    const isWorkSpace = await workspaceModel.findById(idWorkspace)
-
-    if(isWorkSpace) {
-    
+    const workSpace = await workspaceModel.findById(idWorkspace)
+    let hideCompletedTask = false;
+    if(workSpace) {
+      
       const allTasks = await workspaceModel.getAllTasks(idWorkspace);
-      const sortedTasks = allTasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)})
-
+      let sortedTasks = allTasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)})
+      hideCompletedTask = workSpace.settings.hideCompletedTask;
+      if(hideCompletedTask){
+        sortedTasks = sortedTasks.filter(task => task.finishedDate == undefined); 
+     }
       return res.render('workspace',{
         allTasks : sortedTasks,
         idWorkspace
