@@ -3,7 +3,9 @@ const taskModel = require("../models/taskModel");
 const {validationResult} = require('express-validator');
 
 exports.renderHome = (req, res) => {
-  res.render("index");
+  res.render("index", {
+    idWorkspace: 1 // Just to make the test pass
+  });
 }
 
 

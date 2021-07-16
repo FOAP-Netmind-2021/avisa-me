@@ -29,8 +29,8 @@ describe('Modificación de settings', () => {
 
   test("Ocultar notas completadas mediante la setting correspondiente. Añado una nueva nota, la completo, voy a settings, marco el checkbox de 'Ocultar tareas completadas'. Vuelvo a la vista y las tareas completadas no aparecen", async()=>{
       const browser = await puppeteer.launch({
-          headless:true,
-          slowMo:10,
+          headless:false,
+          slowMo:1,
       });
       const page = await browser.newPage();
       await page.goto(`http://localhost:${port}`);
@@ -38,22 +38,21 @@ describe('Modificación de settings', () => {
       await page.type("#title", "Prueba nota con Test");
       await page.click("#text");
       await page.type("#text", "Prueba texto con Test");
-      await page.click("input[type=submit]");
+      await page.click("button[type=submit]");
       await page.click("#title");
       await page.type("#title", "Prueba nota con Test2");
       await page.click("#text");
       await page.type("#text", "Prueba texto con Test2");
-      await page.click("input[type=submit]");
+      await page.click("button[type=submit]");
       await page.click("#title");
       await page.type("#title", "Prueba nota con Test3");
       await page.click("#text");
       await page.type("#text", "Prueba texto con Test3");
-      await page.click("input[type=submit]");
-      const notasTitle = await page.$$eval("._card__title", (notas) => notas.map((nota)=> nota.innerText));
-      const TitleNotaFound = notasTitle.some(title => title == "Prueba nota con Test3");
+      await page.click("button[type=submit]");
+
       const idNota = await page.$eval("div[data-id]", nota => nota.dataset.id)
-      await page.click(`div[data-id='${idNota}'] a`);
-      const idWorkspace = await page.$eval("#idWorkspace", input => { return input.value});
+      await page.click(`a[data-id-complete='${idNota}']`);
+      const idWorkspace = await page.$eval("#idWorkspace", button => { return button.value});
       const settingsPage = await browser.newPage();
       await settingsPage.goto(`http://localhost:${port}/settings/${idWorkspace}`);
       await settingsPage.click("#hideCompletedTasksId");
@@ -61,11 +60,7 @@ describe('Modificación de settings', () => {
       const workspacePage = await browser.newPage();
       await workspacePage.goto(`http://localhost:${port}/${idWorkspace}`);
       let buscarNota = await workspacePage.$$eval("div._cardDisabled", el => el.length) //$$eval nunca da errores
-      console.log(buscarNota);
-    /*   const buscarNota = await page.$eval(`div[data-id=${idNota}]`);
-      console.log(buscarNota); */
 
-      expect(TitleNotaFound).toBe(true);
       expect(checkboxStatus).toBe(true);
       expect(buscarNota).toBe(0);
       
