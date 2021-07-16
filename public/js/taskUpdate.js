@@ -9,6 +9,11 @@ function onFocusUpdate(event){
     //alert("Has de rellenar uno de los dos campos")
     return;
   }
+  let reminderDate = event.currentTarget.querySelector(`#reminder-date-${idTask}`).value;
+  let reminderHour = event.currentTarget.querySelector(`#reminder-hour-${idTask}`).value;
+      console.log("fecha:",reminderDate)
+      console.log("hora:", reminderHour);
+
   let response = fetch("/tasks/updateTask", {
   method: "POST",
   body: JSON.stringify(data),
