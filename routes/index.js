@@ -13,5 +13,4 @@ router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
 router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
-
 module.exports = router;

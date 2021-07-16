@@ -1,57 +1,108 @@
-<!-- MENU RESPONSIVE -->
-<div class="d-flex flex-sm-column flex-row flex-nowrap bg-light align-items-center sticky-top">
-  <a href="/" class="d-block p-3 link-dark text-decoration-none" title="" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right" data-bs-original-title="Icon-only">
-      <i class="bi-bootstrap fs-1"></i>
-  </a>
-  <ul class="nav nav-pills nav-flush flex-sm-column flex-row flex-nowrap mb-auto mx-auto text-center justify-content-between w-100 px-3 align-items-center">
-      <li class="nav-item">
-          <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-            <i class="bi bi-alarm fs-2"></i>
-          </a>
-      </li>
-      <li>
-          <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
-              <i class="bi-speedometer2 fs-2"></i>
-          </a>
-      </li>
-      <li>
-          <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
-              <i class="bi-table fs-2"></i>
-          </a>
-      </li>
-      <li>
-          <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
-              <i class="bi-heart fs-2"></i>
-          </a>
-      </li>
-      <li>
-          <a href="#" class="nav-link py-3 px-2" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Customers">
-              <i class="bi-people fs-2"></i>
-          </a>
-      </li>
-  </ul>
-  <div class="dropdown">
-      <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-          <i class="bi-person-circle h2"></i>
+<!-- <!-MENU NAVBAR -->
+<div class="d-flex flex-row flex-nowrap sticky-top">
+  
+  <ul class="nav nav-pills justify-content-between w-100"> <!--  flex-sm-column flex-row flex-nowrap-->
+    
+    <li class="nav-item">
+      <a href="/" class="d-block nav-link link-dark text-decoration-none" data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions" data-bs-placement="right"
+      data-bs-original-title="Icon-only">
+      <i class="bi bi-filter-square-fill fs-2"></i>
       </a>
-      <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-          <li><a class="dropdown-item" href="#">New project...</a></li>
-          <li><a class="dropdown-item" href="#">Settings</a></li>
-          <li><a class="dropdown-item" href="#">Profile</a></li>
-      </ul>
-  </div>
+    </li>
+    
+   <!--  <li class="nav-item">
+      <a href="#" class="nav-link " data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Home">
+        <i class="bi bi-alarm fs-2"></i>
+      </a>
+    </li> -->
+
+    <!-- <li class="nav-item">
+      <a href="#" class="nav-link " title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Orders">
+        <i class="bi-table fs-2"></i>
+      </a>
+    </li> -->
+
+   <!--  <li class="nav-item">
+      <a href="#" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Customers">
+        <i class="bi-people fs-2"></i>
+      </a>
+    </li> -->
+
+    <li class="nav-item">
+        <!-- Dropdown Toogle -->
+        <a href="#" class="dropdown-toggle nav-link link-dark text-decoration-none"
+          id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi-person-circle h2"></i>
+        </a>
+        <!-- Dropdown Menu -->
+        <ul class="dropdown-menu text-small shadow" aria-labelledby="Seleccione 1 Nuevo Proyecto 2 Configuración 3 Perfil">
+          <li><a class="dropdown-item" href="#">Nuevo Proyecto</a></li>
+          <!-- <li><a class="dropdown-item" href="#">Configuración</li> -->
+          <li><a class="dropdown-item" href="#">Perfíl</a></li>
+        </ul>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Avisa.me">
+        <img src="images/logo_avisame.png" width="90" class="img-fluid" alt="Logo Avisa.me">
+      </a>
+    </li>
+  </ul>
+
 </div>
 
-
-
-
 <!-- MENU LATERAL DESPLEGABLE -->
-<div class="offcanvas offcanvas-start" style="width: 50%;" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Settings</h5>
-      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <p>Here Avisame Settings</p>
-    </div>
+<div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1"
+  id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+      <!-- <button type="button" class="btn-close justify-content-center text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button> -->
   </div>
+  <div class="offcanvas-body">
+    <ul class="navbar-nav">
+
+      <!-- Librito -->
+      <li class="li">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Notes">
+          <div class="d-flex justify-content-center">
+            <i class="bi-book fs-3"></i>
+          </div>
+        </a>
+      </li>
+      
+      <!-- Campanita  -->
+      <li class="li">
+        <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+        data-bs-original-title="Reminder">
+          <div class="d-flex justify-content-center">
+            <i class="bi-bell fs-3"></i>
+          </div>
+        </a>
+      </li>
+      
+      <!-- Configuración -->
+      <li class="li">
+        <a href="/settings/<%= idWorkspace %>" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"       data-bs-original-title="Settings">
+          <div class="d-flex justify-content-center">
+            <i class="bi-sliders fs-3"></i>
+          </div>
+        </a>
+      </li>
+      
+      <!-- <li class="li">
+        <a href="#" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+          data-bs-original-title="Trash">
+          <div class="d-flex justify-content-center">
+            <i class="bi-trash fs-3 "></i>
+          </div>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+</div>

@@ -1,69 +1,159 @@
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
-a {
-  color: #00B7FF;
-}
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-/* input-nota */
-._cardEnable{
+/* ------ WORKSPACE ------- */
 
-min-width: 200px;
-height: 82px;
-left: 67px;
-top: 133px;
-padding: 0.5em;
-
-background: #FFFEFE;
-border: 1px solid #ACA9AE;
-box-sizing: border-box;
-border-radius: 5px;
-}
-
-
-._card__title{
-/* Titulo */
-
-height: 16px;
-left: 15px;
-top: 15.38px;
-
-font-family: Roboto;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 16px;
-
-color: rgba(0, 0, 0, 0.5);
-}
-
-._card__title p{
-  max-width: 80%;
-}
-
-._cardDisabled{
-
-  min-width: 200px;
-  height: 82px;
-  left: 67px;
-  top: 133px;
-  padding: 0.5em;
-  
-  background: #E0DDDD;
-  border: 1px solid #ACA9AE;
-  box-sizing: border-box;
-  border-radius: 5px;
-  
+  html, body, html * {
+      color :rgba(0, 0, 0, 0.5);
+      font-family: 'Roboto', sans-serif;
+      font-size: 1em;
   }
 
-
-  ._cardInput{
-  color: grey;
+  .color-primary {   
+    background: #1A829C;
   }
 
-  ._cardInput input{
-    border: 0;
+  .color-secondary{
+    background-color: #91CCDB;
+  }
+
+  .color-terciary {
+    background-color:  #ADAAB0;
+    border: 1px solid #ADAAB0;
+  }
+
+  .color-quartiary {
+    background-color:  #EDEEED;
+    border: 1px solid #EDEEED;
+  }
+
+  h1 {
+    color :rgba(0, 0, 0, 0.5);
+    font-family: 'Roboto', sans-serif;
     font-weight: bold;
-    height: 2em;
+    font-size: 64px;
   }
+
+  li {
+    list-style: none;
+    text-decoration: none;
+  }
+
+  input, textarea {
+    border: none;
+    outline: none;
+    resize: none;
+  }
+  
+  p {
+    min-width: 100%;
+  }
+  
+/* ------ MAIN CARD ------------- */
+
+  ._cardMain {
+    color: grey;
+    padding: 0.5em;
+    border: 1px solid #929090;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  .textMenu {
+    color :#ADAAB0;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;   
+  }
+
+  .task--title {
+    min-height: 1em;
+    min-width: 90%;
+  }
+
+  /* ._cardInput input {
+  border: 0;
+  font-weight: bold;
+  height: 2em;
+  } */
+
+/* ------ CARD ENABLED --------- */
+
+  ._cardEnabled {
+    min-height: 16vh;
+    box-sizing: border-box;
+    /* outline: none; */
+    padding: 0.5em;
+    /* border: 1px solid #929090; */
+    border: 1px solid #EDEEED;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+  ._card__title {
+    min-width: 100%;
+    font-family: Roboto;
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+/* ------ CARD DISABLED ----------- */
+
+  ._cardDisabled {
+    /* min-width: 200px; */
+    min-height: 16vh;
+    box-sizing: border-box;
+    padding: 0.5em;
+    background-color:  #EDEEED;
+    border: 1px solid #ACA9AE;
+    /* box-sizing: border-box; */
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+
+/* ---------  ☰  ---------- */
+
+.hamburguerBotton {
+  /* background-color: #ACA9AE */
+}
+  
+/* ----- NAV ------ */
+
+.nav-toggle {
+  color: white;
+  background: none;
+  border: none;
+  font-size: 30px;
+  padding: 0 20px;
+  line-height: 60px;
+  cursor: pointer;
+  display: none;
+}
+
+.nav-link:hover {
+  background-color: #91CCDB;
+}
+
+.nav-menu {
+  display: flex;
+  margin-right: 40px;
+  list-style: none;
+}
+
+.nav-menu-item {
+  font-size: 18px;
+  margin: 0 10px;
+  line-height: 80px;
+  text-transform: uppercase;
+  width: max-content;
+}
+
+.nav-menu-link {
+  padding: 8px 12px;
+  border-radius: 3px;
+}
+
+.nav-menu-link:hover,
+.nav-menu-link_active {
+  background-color: #034574;
+  transition: 0.5s;
+}

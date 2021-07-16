@@ -8,9 +8,8 @@ exports.renderHome = (req, res) => {
 
 
 exports.renderWorkspace = async (req, res) => {
-
   const { idWorkspace } = req.params;
-
+  
   try{
 
     const workSpace = await workspaceModel.findById(idWorkspace)

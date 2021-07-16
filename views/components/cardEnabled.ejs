@@ -1,15 +1,50 @@
+<!-- Card Enabled -->
 <% allTasks.forEach(task => { %>
-    <% if(!task.finishedDate) { %> 
-        <div class="col-12 col-sm-4 col-lg-1 _cardEnable" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
-            <div class="_card__title text-break">
-                <p contenteditable="true" id="task-title-<%=task._id%>"><%= task.title %></p>
-            </div>
-            <div class="text-break">
-                <p contenteditable="true" id="task-text-<%=task._id%>"><%= task.text %></p>
-            </div>
-            <a href="/tasks/<%= task._id %>/completed">
-                <span class="iconify" data-inline="false" data-icon="bi:check-lg"></span>
+  
+  <% if(!task.finishedDate) { %> 
+
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2">
+      
+      <!-- Task -->
+      <div id="task-title-<%=task._id%>" class="d-flex flex-column card _cardMain _cardInput" 
+        data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
+       
+        <div class="textMenu d-flex flex-row justify-content-between text-break" >
+
+          <!-- Task title -->
+          <div id="task-title-<%=task._id%>" class="d-flex card-title _cardInput text-break task--title">
+            <p contenteditable="true"><%= task.title %></p>
+          </div>
+
+          <!-- Delete Action -->
+          <div>
+            <a href="#" class="d-flex" contenteditable="false" >
+              <!-- <i class="bi bi-x-square"></i> -->
             </a>
-        </div> 
-    <% } %> 
+          </div>
+
+        </div>
+        
+         <!-- Task text  -->
+        <div id="task-text-<%=task._id%>" class="text-break"> <!-- form-control _card__title -->
+         
+          <p id="task-text-<%=task._id%>" contenteditable="true" class="card-text" placeholder="Añadir una nota">
+            <%= task.text %>
+          </p>
+          
+          <!-- Action Icons -->
+          <div>
+            <div class="d-flex justify-content-between">
+              <a href="/tasks/<%= task._id %>/completed" class="d-flex p-2" ><i class="bi bi-check-lg"></i></a>
+              <!-- <a href="#" class="d-flex p-2" ><i class="bi-bell"></i></a> -->
+              <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+    </div>
+     
+  <% } %>
 <% }) %> 

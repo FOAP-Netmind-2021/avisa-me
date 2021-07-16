@@ -1,62 +1,53 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <%- include("./partials/_head")  %> 
-  </head>
-  <body>
 
 <head>
-  <title></title>
+  <title>Avisa.me</title>
   <%- include("./partials/_head") %>
 </head>
 
-    <!-- Inicio contenedor -->
-    <div class="container-fluid">
-      <!-- Única fila | Todo el cuerpo -->
-      <div class="row">
-          <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
-          <div class="col-sm-1 bg-light sticky-top">
-            <%- include("./partials/navBar")  %>
-          </div>
+<body>
 
-          <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
-          <div class="col-sm-11 p-4 min-vh-100">
+  <!-- Inicio contenedor -->
+  <div class="container-fluid">
 
-            <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
-            <div class="d-flex justify-content-center">
+    <!-- Única fila | Todo el cuerpo -->
+    <div class="row">
 
-              <div class="_cardEnable _cardInput" >
-                <form action="/" method="POST">
-                  <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
-                  maxlength="140"><br>
-                  <input type="text" name="text" oninput="validarInput()" placeholder="Añade una nota..." id="text"
-                  maxlength="5000">
-                  <input id="createTask" style="visibility: hidden" type="submit" value="!"> <!-- deshabiltar boton -->
-                </form>
-              </div>
-
-            </div>
-            
-            <!-- Segunda fila del cuerpo. Todas las nostas. Izquierda a derecha -->
-            <div class="d-flex flex-row flex-wrap pt-4 gap-2">
-
-             
-
-
-            </div>
-          
-          </div>
-
-
-      
-          
+      <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
+      <div class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
+        <%- include("./partials/navBar") %>
       </div>
-      <!-- Fin única fila | Todo el cuerpo -->
+      <!-- Crear Workspace. Centrado -->
+      <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+        <div class="d-flex justify-content-center">
+          <!-- col-md-4 mx-auto -->
+          <div class="_cardMain _cardInput text-break">
+            <form action="/" method="POST">
+              <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
+                maxlength="140"><br>
+              <textarea name="text" oninput="validarInput()" placeholder="Añade una nota" id="text"
+                maxlength="5000"></textarea>
+              <button type="submit" id="createTask" style="visibility: hidden" class="btn">
+                <i class="bi bi-pencil-square"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Segunda fila del cuerpo. -->
+        <div class="d-flex flex-row flex-wrap pt-4 gap-2">
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Fin única fila | Todo el cuerpo -->
   </div>
   <!-- Fin contenedor -->
-              
-    <%- include("./partials/_scripts")  %> <!-- Scripts globales app -->
-    
-  </body>
+
+  <!-- Scripts globales -->
+  <%- include("./partials/_scripts") %>
+</body>
+
 </html>
