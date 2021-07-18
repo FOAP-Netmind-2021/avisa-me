@@ -5,7 +5,7 @@ auth.isAuthenticated = (req, res, next) => {
         return next();
     }
     req.flash("error_msg", "No autorizado.");
-    res.redirect("/user/login")
+    res.redirect("/user/login");
 }
 
 
@@ -14,7 +14,7 @@ auth.isAdminAuthenticated = (req, res, next) => {
         return next();
     }
     req.flash("error_msg", "No autorizado.");
-    res.redirect("/user/login")
+    res.redirect("/user/login");
 }
 
 module.exports = auth;

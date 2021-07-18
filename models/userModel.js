@@ -2,7 +2,7 @@
 const {Schema, model} = require('mongoose');
 const bcrypt = require("bcryptjs");
 
-// Cada Nota tiene su propia ID única. 
+
 const userSchema = new Schema(
     {
         email: {
@@ -17,6 +17,12 @@ const userSchema = new Schema(
             type: String,
             default: "User"
         },
+        subscription: {
+            type: Schema.Types.ObjectId,
+            ref: 'Subscription'
+        },
+        resetPasswordToken: String,
+        resetPasswordExpires: Date
     }, 
     {
         timestamps: true,
@@ -31,9 +37,13 @@ userSchema.methods.encryptPassword = async (password) => {
 }
 
 userSchema.methods.comparePassword = async function(password) {
-    console.log(password);
     return await bcrypt.compare(password, this.password); // Compara la contraseña que nos envía el user y compara. Boleano.
 }
+
+
+
+
+
 
 /* Asociamos la Colección con el Schema */
 module.exports = model("User", userSchema);

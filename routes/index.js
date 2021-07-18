@@ -13,5 +13,7 @@ router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
 router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
+router.get('/test/test', (req, res) =>{ res.render("test")});
+
 
 module.exports = router;

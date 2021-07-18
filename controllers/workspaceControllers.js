@@ -1,6 +1,7 @@
 const workspaceModel = require("../models/workspaceModel");
 const taskModel = require("../models/taskModel");
 const {validationResult} = require('express-validator');
+const subscriptionModel = require("../models/subscriptionModel");
 
 
 exports.renderHome = (req, res) => {
@@ -48,19 +49,44 @@ exports.renderWorkspace = async (req, res) => {
 
 exports.createWorkspace = async (req, res) => {
 
+
   //Validación de errores de express-validator
   const errors = validationResult(req);
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
 
+    
+  // Creamos un workspace
   const workspace = new workspaceModel();
 
+  // Si existe un usuario logueado. Añadir el workspace a su suscripción
+  const {user} = req;
+
+  if(user){
+    // Buscamos la suscripción del usuario
+    const userSubscription = await subscriptionModel.findById(user.subscription);
+    // Usamos el metodo de la clase Subscription para añadir un workspace. Se almacena porque retorna Booleano
+    const addWorkspace = userSubscription.addWorkspace(workspace._id);
+    // Si devuelve falso, es porque el límite se ha excedido
+    if(!addWorkspace) { 
+      req.flash("error_msg", `Límite excedido en la versión gratuita! Hágase Premium para disfrutar de todo sin límites!`) 
+      return res.redirect("/user/profile");
+    }
+
+    userSubscription.save(); // Guardamos los cambios en la suscripción
+    await workspace.save(); // Guardamos el workspace
+
+    return res.redirect("/user/profile");
+  }
+
+  // Si no hay usuario logueado, seguirá creando un worskpace sin ser asignado a ningún usuario
   await workspace.save();
 
+
+  // Si se crea un workspace desde la primera nota. INDEX
   const { title, text } = req.body;
 
-  // Tasks
   const newTask = new taskModel({
     title,
     text,
@@ -68,7 +94,6 @@ exports.createWorkspace = async (req, res) => {
   })
 
   await newTask.save();
-
 
   // Enviamos una cookie para dar la opción de quedartelo con un registro en la app
   res.cookie('currentWorkspace', workspace._id);

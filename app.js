@@ -10,6 +10,7 @@ const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
 
+
 // Importing routes
 const indexRouter = require('./routes/index');
 const taskRouter = require('./routes/taskRoutes');

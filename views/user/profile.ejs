@@ -7,8 +7,26 @@
     <title>Document</title>
 </head>
 <body>
-   
+    <%- include("../components/messages")  %> 
     <H1>HOOOOOOOOLA</H1>
     <button class="btn btn-primary btn-block" onclick="location.href='/user/logout'" type="button">Cerrar sesión</button>
+
+
+    <form action="/user/addworkspace/" method="POST">
+        <input type="text" value="60f256d101814d4eb4eb5049" name="idWorkspace">
+        <input type="submit" value="Añadir">
+    </form>
+
+
+    <button class="btn btn-primary btn-block" onclick="location.href='/user/logout'" type="button">Crear workspace</button>
+    <% if(workspaces) {  %> 
+        <h1>Lista de workspaces: </h1>
+        <% workspaces.forEach(workspace => { %> 
+                <p><%= workspace.name %></p>
+                <p><%= workspace._id %></p>
+        <% }) %> 
+    <% } %> 
+
+
 </body>
 </html>

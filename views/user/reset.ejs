@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <%- include("../partials/_head")  %> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  </head>
+  <body>
+    <%- include("../components/messages")  %> 
+  <div class="cointainer p-5">
+
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <div class="card">
+          <div class="card-header">
+            Introduzca la nueva contraseña   
+          </div>
+          <div class="card-body">  
+            <form action="/user/recovery/reset/<%= token %>" method="POST">
+
+                <div class="form-group mt-1">
+                  <input type="password" class="form-control" name="password" placeholder="Password" required>
+                </div>
+                <div class="form-group mt-1">
+                  <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
+
+              <button class="btn btn-primary btn-block my-2">
+                Resetear password
+              </button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+  <%- include("../partials/_scripts")  %> <!-- Scripts globales app -->
+  </body>
+</html>

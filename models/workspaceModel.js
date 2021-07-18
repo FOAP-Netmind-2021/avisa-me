@@ -16,6 +16,7 @@ const settingSchema = new Schema({
 
 // Cada Espacio de Trabajo tiene una ID única y tiene incrustadas sus Notas asociadas.
 const workspaceSchema = new Schema({
+    name: {type: String, default: "Free workspace"},
     settings: {
         type: settingSchema,
         default: {}
@@ -25,6 +26,10 @@ const workspaceSchema = new Schema({
 
 workspaceSchema.statics.getAllTasks = async function (id){
     return await taskModel.find({workspace: id });
+}
+
+workspaceSchema.methods.changeName = function (name){
+    this.name = name;
 }
 
 
