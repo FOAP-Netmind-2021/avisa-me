@@ -38,13 +38,102 @@
               <a data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex p-2" ><i class="bi bi-check-lg"></i></a>
               <!-- <a href="#" class="d-flex p-2" ><i class="bi-bell"></i></a> -->
               <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
+              <div class="dropdown" >       
+                <button class="iconify"   data-icon="noto:artist-palette" data-inline="false"></button>
+                <div class="dropdown-content" data-id-colores="<%=task._id%>" onclick="myFunction(event)"  > 
+                  <div>
+                    <button  class="skin"  type="button"  style="background-color:#fadda4; border-radius: 50px; height: 25px; width: 25px; border: 0.5px rgba(160, 72, 72, 0.300) solid;" ></button>
+                    <button  class="yellow" type="button"  style="background-color:#fcf7a4; border-radius: 50px; height: 25px; width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="green" type="button"  style="background-color:#d7fda1; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="orange" type="button"  style="background-color: #facc81; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                  </div>
+                  <div>
+                    <button  class="dark green" type="button"  style="background-color:#a5f59e; border-radius:50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="ferozi" type="button"  style="background-color: #99f5d6; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="blue" type="button"  style="background-color: #9edbf5 ; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dark purple"  type="button" style="background-color: #949ef7 ; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
+                </div>
+                <div>
+                  <button  class="dark blue" type="button"  style="background-color:#bf9dfa; border-radius:50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
+                  <button  class="pink" type="button"  style="background-color: #faacf3; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
+                  <button  class="red" type="button"  style="background-color: #8f657457; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
+              </div>
+                </div>
+              </div>
+
             </div>
           </div>
-        </div>
-        
-      </div>
-
-    </div>
-     
+</div>       
   <% } %>
 <% }) %> 
+
+<script>
+
+  function myFunction(event) {
+    let taskID = event.currentTarget.dataset['idColores'];
+    console.log(event.currentTarget.dataset);
+    let SelectedbackgroundColor = event.target.style.backgroundColor;
+    let tarea = document.querySelector(`#task-title-${taskID}`);
+    tarea.style.backgroundColor = SelectedbackgroundColor; 
+    console.log("este es el id de la tarea", taskID);
+    console.log("este es el background color del color clickado ", SelectedbackgroundColor);
+  }
+
+</script>
+
+
+
+<style>
+
+  /* Dropdown Button */
+.dropbtn {
+background-color: #04AA6D;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
+
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+position: absolute;
+margin-left: 30px;
+margin-top: 0.4rem;
+display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+display: none;
+position: relative;
+background-color: rgb(212, 197, 182);
+height: auto;
+width: 8rem;
+margin-left: 10px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+border-radius: 8px;
+border: 0.5px rgba(0, 0, 0, 0.320) solid;
+padding-left: 4px;
+padding-top: 3px;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: rgb(0, 0, 0);}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block; }
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+
