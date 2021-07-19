@@ -1,3 +1,11 @@
+
+let allTasks = document.querySelectorAll(".reminderTagText");
+allTasks.forEach( task => {
+  console.log(task.innerText);
+  const prueba = dayjs(task.innerText)
+  task.innerText = prueba; //HAY QUE IMPLEMENTAR EL CALENDAR
+})
+
 function onFocusUpdate(event){
   let idTask = event.currentTarget.dataset.id;
   let titleModified =  event.currentTarget.querySelector(`#task-title-${idTask}`).textContent;
@@ -11,15 +19,6 @@ function onFocusUpdate(event){
     //alert("Has de rellenar uno de los dos campos")
     return;
   }
-
-      console.log("fecha:",reminderDate)
-      console.log("hora:", reminderHour);
-
-  // let reminderTag = document.querySelector(`#reminderTag-${idTask}`);
-  // let reminderTagText = document.querySelector(`#reminderTagText-${idTask}`);
-  // if (reminderDate && reminderHour) {
-  //   reminderTag.removeAttribute('hidden');
-  // }
           
   let response = fetch("/tasks/updateTask", {
   method: "POST",
