@@ -33,6 +33,14 @@
                     <button type="submit" id="createTask" style="visibility: hidden" class="btn">
                       <i class="bi bi-pencil-square"></i>
                     </button>
+              <div class="_cardEnable _cardInput" >
+                <form action="/addTask" method="POST">
+                  <input type="hidden" name="idWorkspace" id="idWorkspace" value="<%= idWorkspace %>">
+                  <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title"
+                  maxlength="140"><br>
+                  <input type="text" name="text" oninput="validarInput()" placeholder="Añade una nota..." id="text"
+                  maxlength="5000">
+                  <input id="createTask" style="visibility: hidden" type="submit" value="!"> <!-- deshabiltar boton -->              
                 </form>
               </div>
             </div>

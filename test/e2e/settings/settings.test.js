@@ -19,8 +19,6 @@ describe('Modificación de settings', () => {
           // Podiamos haber requerido todo el app que nos proporciona el express-generator (const server = require("../bin/www")) 
           // Pero de esta forma nos aseguramos de una conexion limpia a otra base de datos para testear
       })
-
-
       afterAll( async ()=> {
           /* Runs after all tests */
           await server.close();
