@@ -17,7 +17,8 @@ const taskSchema = new Schema({
         }},
     createdAt : { type: Date, default: Date.now()},
     finishedDate: {type: Date},
-    workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' }
+    workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' },
+    reminderDate: { type: Date}
 });
 
 /* Asociamos la Colección con el Schema */
