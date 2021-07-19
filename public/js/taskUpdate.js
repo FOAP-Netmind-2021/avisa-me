@@ -7,7 +7,7 @@ function onFocusUpdate(event){
   let data = {idTask, titleModified, textModified, reminderDate, reminderHour};
   
   if(!titleModified && !textModified){
-    console.log("Campos text y title modified---------->",titleModified, textModified);
+    console.log("Camoos text y title modified---------->",titleModified, textModified);
     //alert("Has de rellenar uno de los dos campos")
     return;
   }
@@ -20,7 +20,13 @@ function onFocusUpdate(event){
   // if (reminderDate && reminderHour) {
   //   reminderTag.removeAttribute('hidden');
   // }
-        
+          
+  let response = fetch("/tasks/updateTask", {
+  method: "POST",
+  body: JSON.stringify(data),
+  headers:{ //es necesario
+    'Content-Type': 'application/json'
+  }
   }).then(()=>{
     console.log("response:", response);
     console.log("data:", data);
