@@ -31,7 +31,13 @@
           <p id="task-text-<%=task._id%>" contenteditable="true" class="card-text" placeholder="Añadir una nota">
             <%= task.text %>
           </p>
-          
+
+          <div id="reminderTag-<%=task._id%>" hidden>
+            <span class="reminderTagText-<%=task._id%>">
+              14 Jul, 18:00.
+            </span>
+          </div>
+
           <!-- Action Icons -->
           <div>
             <div class="d-flex justify-content-between dropdown">

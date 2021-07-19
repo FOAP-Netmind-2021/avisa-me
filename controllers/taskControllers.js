@@ -11,7 +11,7 @@ exports.completedTask = async (req, res) => {
 }
 
 exports.updateTask = async (req, res) => {
-  const { idTask, titleModified, textModified } = req.body;
+  const { idTask, titleModified, textModified, reminderDate, reminderHour } = req.body;
 
   const task = await taskModel.findById(idTask)
   task.title = titleModified;
