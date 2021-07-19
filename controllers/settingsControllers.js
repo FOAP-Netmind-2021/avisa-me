@@ -46,13 +46,29 @@ exports.updateSettings = async (req,res) =>{
     const exportType = req.query.exportTasks;  //Recuperamos del req mediante query, tipo de FORMATO SOLICITADO.
     const allTasks = await workspaceModel.getAllTasks(idWorkspace); //Recuperamos todas las TAREAS de este workSpace en formA de ARRAY DE OBJETOS (BSONS, son los objetos que utiliza MongoDb)
 
+    //const allTasks = await workspaceModel.find({title:1},{text:1},{createdAt:1},{workspace:idWorkspace});
+    console.log("todas las tareas;(workSpace):---------->", allTasks);
+
+    //Debemos exportar sólo los campos: id, title, text, finishedDate
+    /* let selectedTasks="[";
+    allTasks.forEach(task => {
+      selectedTasks += `{
+        id_Tarea: ${task._id},
+        Título: '${task.title}',
+        Texto: '${task.text}',
+        Fecha_publicación: ${task.createdAt}
+        },`
+      });
+    selectedTasks +="]"; 
+    console.log("selectedTasks--------->",selectedTasks); */
+
     //Si exportType es 'json', los datos pueden ser cualquier JSON parseable. Si exportType es 'csv' o 'xls', los datos solo pueden ser una matriz de JSON parseable. Si exportType es 'txt', 'css', 'html', los datos deben ser un tipo de cadena.
     let data; //Declaramos 'data' para condicionarla SEGUN FORMATO DESEADO...
     if (exportType == 'csv' || 'xls' ){
       data = allTasks;
 
     }else if(exportType == 'json'){
-      data  = JSON.stringify(allTasks);
+      data = JSON.stringify(allTasks);
 
     }else{
       data = JSON.stringify(allTasks);   

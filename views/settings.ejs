@@ -1,44 +1,54 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <%- include("./partials/_head")  %> 
-  </head>
-  <body>
-    <header>
-      
-    </header>
-    <div class="container">
-        <div class="form-check form-switch">
-            <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
-            <% if(settings.hideCompletedTask){ %> 
-            <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
-            <% }else{ %> 
-              <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
-              <% } %>
-            <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>  
-        </div>
-         <!--  Código html/ejs para exportar notas -->
-         <div>
-          <!--  <button onclick="downloadText('txt')">download plain text file</button><br>
-           <button onclick="show('html')">show html file</button> -->
- 
-           <form action="/settings/export" method="GET">
-             <select class="" name="exportTasks">
-               <option value="" disabled selected>Exporta a formato:</option>
-               <option value="txt">txt</option>
-               <option value="html">html</option>
-               <option value="json">json</option>
-               <option value="csv">csv</option>
-               <option value="xls">xls</option>
-             </select>
-             <input type="text" style="visibility: hidden" name="idWorkspace" value="<%=idWorkspace%>">
-             <p><input type="submit"></input>
-             </p>
-             </form>
-         </div>
-         <!-- FIN código html/ejs para exportar notas -->
+
+<head>
+  <title></title>
+  <%- include("./partials/_head") %>
+</head>
+
+<body>
+  <header>
+
+  </header>
+  <div class="container">
+    <div class="form-check form-switch">
+      <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
+      <% if(settings.hideCompletedTask){ %>
+        <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
+        <% }else{ %>
+          <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
+          <% } %>
+            <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>
     </div>
-    <script src="/js/settings.js"></script>
+    <!--  Código html/ejs para exportar notas -->
+    <div>
+      <!--  <button onclick="downloadText('txt')">download plain text file</button><br>
+           <button onclick="show('html')">show html file</button> -->
+
+      <form action="/settings/export" method="GET">
+        <select class="" name="exportTasks" onchange="onFormatSelect()">
+          <option value="" disabled selected>Exporta a formato:</option>
+          <option value="txt">txt</option>
+          <option value="html">html</option>
+          <option value="json">json</option>
+          <option value="csv">csv</option>
+          <option value="xls">xls</option>
+        </select>
+        <input type="text" style="visibility: hidden" name="idWorkspace" value="<%=idWorkspace%>">
+
+         <!-- NO aparecerá hasta que se haya seleccionado un formato -->
+        <div id="exportarTareas" style="visibility:hidden">
+          <label for="fileName">Nombre del fichero a exportar:</label>
+          <input type="text" name="fileName" style="border: 1px solid black;">
+          <input type="submit" value="Exportar"></input>         
+        </div>
+       
+      </form>
+    </div>
+    <!-- FIN código html/ejs para exportar notas -->
+  </div>
+
+  <script src="/js/settings.js"></script>
 </body>
+
 </html>
