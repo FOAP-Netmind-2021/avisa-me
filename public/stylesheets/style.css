@@ -64,19 +64,33 @@
 
   .reminderTagText{
     background-color:rgba(0, 0, 0, 0.13);
-    color: rgb(46, 45, 45);
+    color: rgba(46, 45, 45);
     font-size: 0.85em;
-    /* font-style: italic; */
     padding: 0.2em;
     padding-left: 0.5em;
     padding-right: 0.5em;
     border-radius: 20px;
   }
 
+  .reminderTagThrough{
+    background-color:rgba(0, 0, 0, 0.13);
+    color: rgba(46, 45, 45, 0.4);
+    font-size: 0.85em;
+    padding: 0.2em;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    border-radius: 20px;
+    text-decoration: line-through; 
+  }
+  
   .reminderTagText span{
     color: rgb(46, 45, 45);
   }
   
+  .reminderTagThrough span{
+    color: rgb(46, 45, 45);
+  }
+
   .textMenu {
     color :#ADAAB0;
     font-family: 'Roboto', sans-serif;
