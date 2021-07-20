@@ -32,7 +32,7 @@
               </div>
 
               <!-- Selector ocultar notas -->
-              <div class="d-flex justify-content-center align-items-center form-check form-switch p-1 m-3 gap-3">
+              <div class="d-flex justify-content-center align-items-center form-check form-switch p-3 m-3 gap-3">
                 <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
                 <% if(settings.hideCompletedTask){ %>
                   <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
@@ -44,7 +44,7 @@
 
               <!--  Formulario de exportación -->
               <div class="d-flex flex-column justify-content-center align-items-center">
-                <form action="/settings/<%= idWorkspace %>" method="GET" class="d-flex flex-column justify-content-center align-items-center">
+                <form action="/settings/export" method="GET" class="d-flex flex-column justify-content-center align-items-center">
                   <select class="" name="exportTasks" onchange="onFormatSelect()">
                     <option value="" disabled selected>Exporta a formato:</option>
                     <option value="txt">txt</option>

@@ -44,6 +44,7 @@ exports.updateSettings = async (req,res) =>{
 
 
   exports.exportTasks = async (req, res) =>{
+    console.log("en exportaTasks*****************************************************")
     const idWorkspace = req.query.idWorkspace; // id del workSapace
     const exportType = req.query.exportTasks;  //Recuperamos del req mediante query, tipo de FORMATO SOLICITADO.
     const fileName = req.query.fileName; //Recuperamos el nombre del archivo seleccionado por el usuario
@@ -59,7 +60,7 @@ exports.updateSettings = async (req,res) =>{
     if (exportType == 'csv' || 'xls' ){
       let dataString = JSON.stringify(allTasks);
       //let newDataString = dataString.replace("/\r?\n|\r/g", "*"); 
-      /* var str = "bar\r\nbaz\n\n\n\n\nfoo";
+      /* var str = "bar\r\nbaz\n\n\n\n\n   \n foo";
       const str1 = str.replace(/[\r\n]/g, '');
       console.log("str1--------------->", str1); */
       //const regex = /[\n]?ew/ig;

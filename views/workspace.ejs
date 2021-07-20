@@ -29,7 +29,7 @@
                 <form action="/addTask" method="POST">
                     <input type="hidden" name="idWorkspace" id="idWorkspace" value="<%= idWorkspace %>">
                     <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title" maxlength="140"><br>
-                    <textarea name="text" oninput="validarInput()" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
+                    <textarea name="text" cols="30" rows="5" oninput="validarInput()" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
                     <button type="submit" id="createTask" style="visibility: hidden" class="btn">
                       <i class="bi bi-pencil-square"></i>
                     </button>

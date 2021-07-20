@@ -14,8 +14,8 @@ exports.updateTask = async (req, res) => {
   const { idTask, titleModified, textModified } = req.body;
 
   const task = await taskModel.findById(idTask)
-  task.title = titleModified;
-  task.text = textModified;
+  task.title = titleModified.replace(/\n*/g, '').trim();
+  task.text = textModified.replace(/\n*/g, '').trim(); //  (/[\r\n]/g, '')
   await task.save();
 
   res.send({
