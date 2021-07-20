@@ -7,7 +7,8 @@ const subscriptionModel = require("../models/subscriptionModel");
 
 exports.renderHome = (req, res) => {
   res.render("index", {
-    idWorkspace: 1 // Just to make the test pass
+    idWorkspace: 1, // Just to make the test pass
+    title: "Home" 
   });
 }
 
@@ -67,6 +68,7 @@ exports.renderWorkspace = async (req, res) => {
           tasksDetail,
           allTasks : sortedTasks,
           registerLink,
+          title: "Workspace"
       });
 
     }

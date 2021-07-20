@@ -36,8 +36,8 @@
                         Introduzca la nueva contraseña   
                       </div>
                       <div class="card-body">  
-                        <form action="/user/recovery/reset/<%= token %>" method="POST">
-            
+                        <form action="/user/edit/<%= idUser %>" method="POST">
+                            <input type="text" name="idUser" value="<%= idUser %>" hidden> 
                             <div class="form-group mt-1">
                               <input type="password" class="form-control" name="password" placeholder="Password" required>
                             </div>
@@ -77,8 +77,6 @@
   <!-- Scripts globales -->   
   <%- include("../partials/_scripts")  %> 
   
-  <!-- Scripts específicos -->
-  <script type="text/javascript" src="/js/taskUpdate.js"></script>
 
   </body>
   

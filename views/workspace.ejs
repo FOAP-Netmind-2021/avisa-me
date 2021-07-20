@@ -17,6 +17,59 @@
           <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
           <div  class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
             <%- include("./partials/navBar")%>
+
+            <!-- MENU LATERAL DESPLEGABLE -->
+            <div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1"
+            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav">
+                <li class="li">
+                  <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Notes">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-book fs-3"></i>
+                    </div>
+                  </a>
+                </li>
+                    
+                <li class="li">
+                  <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Reminder">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-bell fs-3"></i>
+                    </div>
+                  </a>
+                </li>
+                
+                <li class="li">
+                  <a href="/settings/<%= workspace._id  %>" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Settings">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-sliders fs-3"></i>
+                    </div>
+                  </a>
+                </li>
+
+                
+                <li class="li">
+                  <a href="#" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-original-title="Trash">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-trash fs-3 "></i>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            </div>
+          <!-- FIN MENU LATERAL DESPLEGABLE -->
+
+
+
+
           </div>
 
           <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
@@ -31,7 +84,7 @@
                 </a>
               </p>
               <div class="collapse" id="collapseExample">
-                <div class="_cardMain _cardInput text-break col-sm-4">
+                <div class="_cardMain _cardInput text-break col-sm-12 col-md-4 mb-4">
                   <div class="row">
                     <div class="col-sm">
                       <ul><b>Título: </b>
@@ -92,8 +145,6 @@
   </div>
   <!-- Fin contenedor -->
 
-
-
   <!-- Scripts globales -->   
   <%- include("./partials/_scripts")  %> 
   
@@ -102,33 +153,7 @@
 
   <script>localStorage.setItem('miGato', 'Juan');</script>
 
-<script>
 
-var toastElList = [].slice.call(document.querySelectorAll('.toast'))
-var toastList = toastElList.map(function (toastEl) {
-  return new bootstrap.Toast(toastEl, option)
-})
-/* console.log(document.cookie);
-  var cookieArr = document.cookie.split(";");
-  console.log(cookieArr);
-  const match = cookieArr.find(value => /^currentWorkspace=[\w]+/.test(value));
-  const result = decodeURIComponent(match)
-  const test = result.match(/"([^"]*)"/)
-  console.log(match)
-  console.log(result);
-  console.log(test[1]);
-
-
-  window.getCookie = function(name) {
-  var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
-  console.log(match);
-  if (match) return match[2];
-}
-
-function getCookie(k){var v=document.cookie.match('(^|;) ?'+k+'=([^;]*)(;|$)');return v?v[2]:null}
-
-console.log(getCookie("currentWorkspace")) */
-</script>
   </body>
   
 </html>

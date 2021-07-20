@@ -24,6 +24,10 @@ router.get('/recovery/reset/:token', userControllers.renderResetPassword);
 // Usa el token. Cambia la contraseña en la base de datos. Envía mail de confirmación
 router.post('/recovery/reset/:token', userControllers.resetPassword);
 
+// Renderiza la página de modificación datos del usuario
+router.get('/edit/:idUser', userControllers.renderEditUser);
+// Modifica los datos del usuario
+router.post('/edit/:idUser', userControllers.editUser);
 
 // Si se registran desde el workspace en la cookie, con el quédatelo!
 router.get('/signup/:idWorkspace', userControllers.renderSignup);

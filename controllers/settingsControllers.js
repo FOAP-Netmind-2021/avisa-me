@@ -14,7 +14,8 @@ exports.renderSettings = async (req,res) =>{
   
     res.render("settings", {
       idWorkspace,
-      settings
+      settings,
+      title: "Settings"
     });
   }
   

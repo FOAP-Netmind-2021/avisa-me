@@ -26,7 +26,7 @@
             <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
           
 
-              <div class="main-body p-5">
+              <div class="main-body mt-5">
     
                 <!-- Breadcrumb -->
                 <nav aria-label="breadcrumb" class="main-breadcrumb">
@@ -39,7 +39,7 @@
           
                 <div class="row gutters-sm">
                   <h3>Detalle cuenta</h3>
-                  <div class="col-md-3 mb-3">
+                  <div class="col-xl-3 col-md-12 mb-3">
                     <div class="card">
                       <div class="card-body">
                         <div class="d-flex flex-column align-items-center text-center">
@@ -48,7 +48,7 @@
                             <p class="text-secondary mb-1"><%= subscription.user.email %></p>
                             <% const subscriptionCreatedAt = new Date(subscription.createdAt)%>
                             <p class="text-secondary mb-1">Desde el <%= subscriptionCreatedAt.getDate()+ "/" + subscriptionCreatedAt.getMonth() + "/" + subscriptionCreatedAt.getFullYear()%></p>
-                            <button class="btn btn-outline-primary mb-1">Cambiar contraseña</button>
+                            <button class="btn btn-outline-primary mb-1" onclick="javascript:location.href='/user/edit/<%= subscription.user._id %>'">Cambiar contraseña</button>
                             <button class="btn btn-primary mb-1" onclick="location.href='/user/logout'">Cerrar sesión</button>
                           </div>
                         </div>
@@ -71,7 +71,7 @@
                       </ul>
                     </div>
                   </div>
-                  <div class="col-md-9">
+                  <div class="col-md-12 col-xl-9">
                     <h3>Workspaces</h3>
                     <div class="card mb-3">
                       <div class="card-body">
@@ -81,7 +81,7 @@
                             <% workspaces.forEach(workspace => { %> 
                               <div class="row mx-0">
                                 <!-- Columna título, fecha creación y modificación -->
-                                <div class="col-sm-4">  
+                                <div class="col-sm-12 col-md-4">  
                                   <h6 class="mb-0"><a href="/<%= workspace._id %>"><%= workspace.name %></a></h6> 
                                   <% const createdAt = new Date(workspace.createdAt)%>
                                   <span style="font-size: 0.87em;">Creado: <%= createdAt.getDate()+ "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()%></span>
@@ -90,7 +90,7 @@
                                   <span style="font-size: 0.87em;">Modificado: <%= updatedAt.getDate()+ "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()%></span>
                                 </div>
                                 <!-- Contadores varios -->
-                                <div class="col-sm-4 text-align-start">
+                                <div class="col-sm-12 col-md-3 text-align-start">
                                   <% const completedTasks = workspace.tasks.filter( task => task.finishedDate !== undefined) %> 
                                   <% const activeTasks = workspace.tasks.filter( task => task.finishedDate == undefined) %> 
                                   <span style="font-size: 0.87em;">Notas completadas: <%= completedTasks.length %></span> <br>
@@ -98,11 +98,11 @@
                                   <span style="font-size: 0.87em;">Notas total: <%= workspace.tasks.length  %></span> 
                                 </div>
                                 <!-- Iconos -->
-                                <div class="col-sm-4 d-flex align-items-center gap-4">
-                                  <div>
+                                <div class="col-sm-12 col-md-5 d-flex align-items-center gap-4">
+                                  <div> <!-- Editar -->
                                     <form id="formEdit<%= workspace._id %>" action="/edit/<%= workspace._id %>" method="POST">
                                     <input type="text" name="idWorkspace" value="<%= workspace._id %>" hidden>
-                                    <i class="bi bi-pencil-square fs-4"></i><a data-bs-target="#edit<%= workspace._id %>" data-bs-toggle="modal"> Editar </a>
+                                    <i class="bi bi-pencil-square fs-4"></i><a class="icons_profile" data-bs-target="#edit<%= workspace._id %>" data-bs-toggle="modal"> Editar </a>
 
                                     <!-- Modal editar workspace -->
                                     <div class="modal" id="edit<%= workspace._id %>" tabindex="-1">
@@ -124,14 +124,17 @@
                                       </div>
                                     </div>
                                     <!-- Fin Modal editar workspace -->
-                                  </form>                                  
+                                    </form>                                  
+                                  </div>
+                                  <div>
+                                    <i class="bi bi-gear fs-4"></i><a class="icons_profile" onclick="javascript:location.href='/settings/<%= workspace._id  %>'"> Ajustes</a>
                                   </div>
                                   
 
-                                  <div>
+                                  <div> <!-- Eliminar -->
                                     <form id="formDelete<%= workspace._id %>" action="/delete/<%= workspace._id %>" method="POST">
                                       <input type="text" name="idWorkspace" value="<%= workspace._id %>" hidden>
-                                      <i class="bi-trash fs-4" style="color: rgb(195, 35, 35);"></i><a data-bs-target="#alert<%= workspace._id %>" data-bs-toggle="modal"> Eliminar </a>
+                                      <i class="bi-trash fs-4" style="color: rgb(195, 35, 35);"></i><a class="icons_profile" data-bs-target="#alert<%= workspace._id %>" data-bs-toggle="modal"> Eliminar </a>
 
                                       <!-- Modal eliminar workspace -->
                                       <div class="modal" id="alert<%= workspace._id %>" tabindex="-1">

@@ -157,3 +157,13 @@
   background-color: #034574;
   transition: 0.5s;
 }
+
+/* ----- PROFILE ------ */
+
+.icons_profile {
+  text-decoration: none;
+}
+
+.icons_profile:hover {
+  cursor:pointer;
+}

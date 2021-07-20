@@ -45,7 +45,6 @@ subscriptionSchema.methods.addWorkspace = function(idWorkspace) {
 }
 
 subscriptionSchema.methods.deleteWorkspace = function(idWorkspace) {
-    
     for(let i in this.workspaces){
         if(this.workspaces[i] == idWorkspace){
             this.workspaces.splice(i,1);

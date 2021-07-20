@@ -2,7 +2,7 @@ const passport = require("passport");
 const userModel = require("../models/userModel");
 const workspaceModel = require("../models/workspaceModel");
 const subscriptionModel = require("../models/subscriptionModel");
-var crypto = require('crypto');
+const crypto = require('crypto');
 const {sendEmail} = require("../utils/nodemailer");
 const {mailTemplate} = require("../utils/mailTemplate");
 
@@ -96,13 +96,18 @@ exports.renderUserProfile = async  (req, res) => {
 
     res.render("user/profile",{
         subscription: userSubscription,
-        workspaces
+        workspaces,
+        title: "Perfil de usuario"
     })
 }
 
 // Renderiza la página de recuperación de contraseña. GET
 exports.renderResetPassword = async (req, res) => {
 
+
+    if(req.user){
+
+    }
     const token = req.params.token;
     // Buscamos el usuario con el token recibido dentro del tiempo permitido
     const user = await userModel.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } });
@@ -115,8 +120,55 @@ exports.renderResetPassword = async (req, res) => {
 
     // Si todo ha salido correcto, permitimos el formulario para el reset con el token que hará un POST
     res.render('user/reset', {
-        token
+        token,
+        title: "Reset password page"
     });
+}
+
+// Renderiza la página de modificación datos del usuario. GET
+exports.renderEditUser = async (req, res) => {
+    const {idUser} = req.params;
+    // Si el id del usuario logueado es igual al id del usuario que obtenemos por la query...
+    if(req.user._id == idUser ){
+        return res.render("user/edit", {
+            idUser,
+            title: "Edit User Page"
+        })
+    }
+
+    req.flash('error_msg', 'Ha surgido un problema interno. Disculpen las molestias');
+    return res.redirect('/');
+
+}
+
+// Edita datos del usuario. POST
+exports.editUser = async (req, res) => {
+
+
+    
+    const {password, confirm_password, idUser } = req.body;
+
+    // Si el password no es idéntico al campo confirmar password, informamos.
+    if(password !== confirm_password) {
+        req.flash("error_msg", "Contraseñas no iguales.")
+        return res.redirect(`/user/profile`)
+    };
+
+    const user = await userModel.findById(idUser);
+
+    if (!user) {
+        req.flash('error_msg', 'Ha surgido un problema interno. Disculpen las molestias');
+        return res.redirect('/user/profile');
+    }
+
+    // Si todo ha salido correcto, guardaremos el nuevo password ENCRIPTADO en la base de datos. Enviaremos email e informaremos.
+
+    user.password = await user.encryptPassword(password);
+
+    await user.save();
+
+    req.flash("success_msg", `Se ha cambiado la contraseña!`);
+    res.redirect("/user/profile");
 }
 
 
