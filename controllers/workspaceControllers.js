@@ -24,6 +24,7 @@ exports.renderWorkspace = async (req, res) => {
       if(hideCompletedTask){
         sortedTasks = sortedTasks.filter(task => task.finishedDate == undefined); 
      }
+
       return res.render('workspace',{
         allTasks : sortedTasks,
         idWorkspace
