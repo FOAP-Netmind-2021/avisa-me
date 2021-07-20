@@ -1,12 +1,44 @@
-<% allTasks.forEach(task =>{ %>
-    <% if(task.finishedDate) { %> 
-        <div class="col-12 col-sm-4 col-lg-1 _cardDisabled" data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
-            <div class="_card__title text-break">
-                <p id="task-title-<%=task._id%>"><%= task.title %></p>
+<!-- Card Disabled -->
+<% allTasks.forEach(task => { %>
+
+  <% if(task.finishedDate) { %>           
+
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2">
+      
+       <!-- Task -->
+      <div id="task-title-<%=task._id%>" class="card _cardDisabled _cardInput color-terciary">
+        
+        <div class="textMenu d-flex flex-row justify-content-between text-break">
+          <!-- Task title -->
+          <div class="d-flex card-title text-break justify-content-between">
+            <p><%= task.title %></p>
+          </div>
+          <!-- Delete Action -->
+          <div contenteditable="false">
+            <a href="#" class="d-flex" >
+              <!-- <i class="bi bi-x-square"></i> -->
+            </a>
+          </div>
+        </div>
+        
+        <!-- Task Text  -->
+        <div id="task-text-<%=task._id%>" class="card__title text-break" > 
+          
+          <div class="card-text">
+            <%= task.text %>
+          </div> 
+          
+          <!-- Icon -->
+          <div>
+            <div class="d-flex justify-content-between">
             </div>
-            <div class="text-break">
-                <p id="task-text-<%=task._id%>"><%= task.text %> </p>
-            </div>
-        </div> 
-    <% } %> 
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+    
+  <% } %> 
 <% }) %> 
+  

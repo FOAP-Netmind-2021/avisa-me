@@ -44,6 +44,16 @@ subscriptionSchema.methods.addWorkspace = function(idWorkspace) {
     return true;
 }
 
+subscriptionSchema.methods.deleteWorkspace = function(idWorkspace) {
+    
+    for(let i in this.workspaces){
+        if(this.workspaces[i] == idWorkspace){
+            this.workspaces.splice(i,1);
+            break;
+        } 
+    }
+}
+
 // Cambia el tipo de cuenta del usuario
 subscriptionSchema.methods.updateAccount = function(type) {
     this.account === type;

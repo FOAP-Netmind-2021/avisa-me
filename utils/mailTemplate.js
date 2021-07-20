@@ -47,7 +47,7 @@ const mailTemplate = (title, content)=>{
           <tr>
             <td align="center" class="vervelogoplaceholder" height="143" style="background-color: #1A829C;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;height:143px;vertical-align:middle;" 
             valign="middle">
-            <span class="sg-image"><a href="#" target="_blank"><img alt="Avisame" height="200" src="/images/logo_avisame.svg" width="200"></a></span></td>
+            <span class="sg-image"><a href="#" target="_blank"><img alt="Avisame" height="200" src="https://github.com/FOAP-Netmind-2021/avisa-me/blob/signup-login-17/public/images/logo_avisame.svg" width="200"></a></span></td>
           </tr>
           <!-- Start of Email Body-->
           <tr>
@@ -71,9 +71,6 @@ const mailTemplate = (title, content)=>{
                          ${content}
                         </span>
                         </p>
-                        <!--[if (gte mso 9)|(IE)]><br>&nbsp;<![endif]--><span class="sg-image" ><a href="#" target="_blank">
-                        <img alt="Reset your Passwaaord" height="54" src="https://marketing-image-production.s3.amazonaws.com/uploads/c1e9ad698cfb27be42ce2421c7d56cb405ef63eaa78c1db77cd79e02742dd1f35a277fc3e0dcad676976e72f02942b7c1709d933a77eacb048c92be49b0ec6f3.png" style="border-width: 0px; margin-top: 30px; margin-bottom: 50px; width: 260px; height: 54px;" width="260"></a></span>
-                        <!--[if (gte mso 9)|(IE)]><br>&nbsp;<![endif]--></center>
                     </td>
                   </tr>
                 </tbody>

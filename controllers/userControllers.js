@@ -12,10 +12,30 @@ exports.renderLogin = async (req, res) => {
     // Si el usuario está autenticado, no puede volver a loguearse. A su perfil de usuario.
     if(req.isAuthenticated()) return res.redirect("/user/profile");
 
-    return res.render("user/auth", {
-        endpoint: "login",
-        title: "Iniciar sesión"
-    });
+    // Recuperamos el id del workspace, en caso de haber accedido a través del enlace del quédatelo!
+    const {idWorkspace} = req.params;
+
+    try{ // Si alguien introduce un string, no puede castearlo como ID
+
+        // Buscamos el workspace
+        const workspace = await workspaceModel.findById(idWorkspace);
+        // Si existe el workspace y no tiene suscripción
+        let workspaceToAdd;
+
+        if(workspace && !workspace.subscription){
+            workspaceToAdd = idWorkspace;
+        }
+
+        return res.render("user/auth", {
+            endpoint: "login",
+            title: "Iniciar sesión",
+            workspaceToAdd
+        });
+    }
+    catch(err){
+        req.flash("error_msg", `No existe el workspace '${idWorkspace}'`) 
+        return res.redirect("/");
+    }
 }
 
 // Renderiza la página de autenticación. Registro. GET
@@ -23,30 +43,60 @@ exports.renderSignup = async (req, res) => {
     // Si el usuario está autenticado, no puede volver a registrarse. A su perfil de usuario.
     if(req.isAuthenticated()) return res.redirect("/user/profile");
 
-    return res.render("user/auth", {
-        endpoint: "signup",
-        title: "Registro"
-    });
+    // Recuperamos el id del workspace, en caso de haber accedido a través del enlace del quédatelo!
+    const {idWorkspace} = req.params;
+
+    try{ // Si alguien introduce un string, no puede castearlo como ID
+
+        // Buscamos el workspace
+        const workspace = await workspaceModel.findById(idWorkspace);
+
+        let workspaceToAdd;
+
+        // Si existe el workspace y no tiene suscripción
+        if(workspace && !workspace.subscription){
+            workspaceToAdd = idWorkspace;
+        }
+
+        return res.render("user/auth", {
+            endpoint: "signup",
+            title: "Registro",
+            workspaceToAdd
+        });
+    }
+    catch(err){
+        req.flash("error_msg", `No existe el workspace '${idWorkspace}'`) 
+        return res.redirect("/");
+    }
 }
 
 // Renderiza la página de recuperación de contraseña. Recuperar. GET
 exports.renderRecovery = async (req, res) => {
-    // Si el usuario está autenticado, no puede volver a registrarse. A su perfil de usuario.
+    // Si el usuario está autenticado, no puede volver a recuperar contraseña. A su perfil de usuario.
     if(req.isAuthenticated()) return res.redirect("/user/profile");
+
+    let workspaceToAdd;
 
     return res.render("user/auth", {
         endpoint: "recovery",
-        title: "Recuperar"
+        title: "Recuperar",
+        workspaceToAdd
     });
 }
 
 // Renderiza el perfil del usuario. GET
 exports.renderUserProfile = async  (req, res) => {
 
-    const userSubscription = await subscriptionModel.findOne({user: req.user._id})
+    const userSubscription = await subscriptionModel.findOne({user: req.user._id}).populate("user").populate("workspaces").populate("tasks")
+
+    const workspaces = await workspaceModel
+        .find({subscription : req.user.subscription})
+        .populate({ path: "tasks"});
+
 
     res.render("user/profile",{
-        workspaces: userSubscription.workspaces
+        subscription: userSubscription,
+        workspaces
     })
 }
 
@@ -93,6 +143,7 @@ exports.login = passport.authenticate("local-login",
 // Destruye la sesión del usuario. GET
 exports.logout = (req, res) => {
     req.logout();
+    req.flash("success_msg", `Se ha cerrado la sesión correctamente`);
     res.redirect("/user/login")
 }
 
@@ -174,32 +225,9 @@ exports.resetPassword = async (req, res) => {
         <img src="https://img.icons8.com/color/452/keys-holder.png" alt="lost keys" width="300" height="300">
     `;
 
-    await sendEmail(mailContent, "Confirmación cambio de contraseña", user.email); // Función propia. "Utils/nodemailer"
+    await sendEmail(mailTemplate("Se ha cambiado tu contraseña!", mailContent), "Confirmación cambio de contraseña", user.email); // Función propia. "Utils/nodemailer"
     // Fin del mail
 
     req.flash("success_msg", `Se ha cambiado la contraseña!`);
     res.redirect('/user/login');
-}
-
-
-exports.addWorkspace = async (req, res) => {
-    const {idWorkspace} = req.body;
-    const {user} = req;
-
-    console.log(idWorkspace);
-
-    const workspace = await workspaceModel.findById(idWorkspace);
-    if (!workspace) return req.flash("error_msg", `No existe el workspace o ha sido eliminado.`);
-
-    console.log(workspace);
-    res.redirect("/user/profile");
-
-    /* const workspaceAdded = user.addWorkspace(workspace._id)
-
-    if (!workspaceAdded) return req.flash("error_msg", `En la versión gratuita solo puede disponer de 3 espacios de trabajo.`);
-    req.flash("success_msg", `Ha añadido un nuevo espacio de trabajo a su colección!`);
-
-    res.redirect("/user/profile") */
-
-
 }

@@ -25,7 +25,10 @@ router.get('/recovery/reset/:token', userControllers.renderResetPassword);
 router.post('/recovery/reset/:token', userControllers.resetPassword);
 
 
-router.post('/addworkspace/:idWorkspace', userControllers.addWorkspace);
+// Si se registran desde el workspace en la cookie, con el quédatelo!
+router.get('/signup/:idWorkspace', userControllers.renderSignup);
+// Si se loguean desde el workspace en la cookie, con el quédatelo!
+router.get('/login/:idWorkspace', userControllers.renderLogin);
 
 
 // Cierra la sesión del usuario logueado
