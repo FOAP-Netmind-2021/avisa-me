@@ -2,53 +2,89 @@
 <html>
 
 <head>
-  <title></title>
+  <title>Avisa.me</title>
   <%- include("./partials/_head") %>
 </head>
 
 <body>
-  <header>
 
-  </header>
-  <div class="container">
-    <div class="form-check form-switch">
-      <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
-      <% if(settings.hideCompletedTask){ %>
-        <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
-        <% }else{ %>
-          <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
-          <% } %>
-            <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>
-    </div>
-    <!--  Código html/ejs para exportar notas -->
-    <div>
-      <!--  <button onclick="downloadText('txt')">download plain text file</button><br>
-           <button onclick="show('html')">show html file</button> -->
+  <!-- Inicio contenedor -->
+  <div class="container-fluid">
 
-      <form action="/settings/export" method="GET">
-        <select class="" name="exportTasks" onchange="onFormatSelect()">
-          <option value="" disabled selected>Exporta a formato:</option>
-          <option value="txt">txt</option>
-          <option value="html">html</option>
-          <option value="json">json</option>
-          <option value="csv">csv</option>
-          <option value="xls">xls</option>
-        </select>
-        <input type="text" style="visibility: hidden" name="idWorkspace" value="<%=idWorkspace%>">
+    <!-- Única fila | Todo el cuerpo -->
+    <div class="row">
 
-         <!-- NO aparecerá hasta que se haya seleccionado un formato -->
-        <div id="exportarTareas" style="visibility:hidden">
-          <label for="fileName">Nombre del fichero a exportar:</label>
-          <input type="text" name="fileName" style="border: 1px solid black;">
-          <input type="submit" value="Exportar"></input>         
+      <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
+      <div class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
+        <%- include("./partials/navBar") %>
+      </div>
+      
+      <!-- Controles de Settings -->
+      <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+        
+        <div class="d-flex justify-content-center gap-3 p-1">
+          
+          <!-- col-md-4 mx-auto -->
+          <div class="_cardMain _cardInput text-break justify-content-center align-items-center p-4 gap-3">
+            
+              <div class="btn d-flex align-items-center justify-content-center m-0 color-settings w-100">
+                Ajustes
+              </div>
+
+              <!-- Selector ocultar notas -->
+              <div class="d-flex justify-content-center align-items-center form-check form-switch p-1 m-3 gap-3">
+                <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
+                <% if(settings.hideCompletedTask){ %>
+                  <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
+                  <% }else{ %>
+                    <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
+                    <% } %>
+                      <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>
+              </div>
+
+              <!--  Formulario de exportación -->
+              <div class="d-flex flex-column justify-content-center align-items-center">
+                <form action="/settings/<%= idWorkspace %>" method="GET" class="d-flex flex-column justify-content-center align-items-center">
+                  <select class="" name="exportTasks" onchange="onFormatSelect()">
+                    <option value="" disabled selected>Exporta a formato:</option>
+                    <option value="txt">txt</option>
+                    <option value="html">html</option>
+                    <option value="json">json</option>
+                    <option value="csv">csv</option>
+                    <option value="xls">xls</option>
+                  </select>
+                  <input type="text" style="visibility: hidden" name="idWorkspace" value="<%=idWorkspace%>"><!-- Siempre oculto -->
+
+                  <!-- NO aparecerá hasta que se haya seleccionado un formato -->
+                  <div id="exportarTareas" style="visibility:hidden" class="d-flex flex-column gap-3">
+                    
+                    <!-- Nombre fichero a exportar -->
+                    <label for="fileName">Nombre del fichero a exportar:</label>
+                    <input type="text" name="fileName" style="border: 1px solid black;">
+                    <!-- Export button -->
+                    <input type="submit" value="Exportar" class="btn color-settings w-50 align-self-end"></input>         
+                  </div> 
+                </form>
+              </div>
+              <!-- FIN código html/ejs para exportar notas -->
+
+          </div>
+
         </div>
-       
-      </form>
-    </div>
-    <!-- FIN código html/ejs para exportar notas -->
-  </div>
 
+        <!-- Segunda fila del cuerpo. -->
+        <div class="d-flex flex-row flex-wrap pt-4 gap-2">
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Fin única fila | Todo el cuerpo -->
+  </div>
+  <!-- Fin contenedor -->
+
+  <!-- Scripts globales -->
+  <%- include("./partials/_scripts") %>
   <script src="/js/settings.js"></script>
 </body>
-
 </html>

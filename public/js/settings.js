@@ -19,10 +19,8 @@ cboxHideCompletedTasks.addEventListener("change", (event)=>{
 })
 
 
-//Ocultará botón 'Exportar' e input para ingresar un nombre al fichero, mientras no se haya seleccionado un formato.
+/* Mostrará el botón 'Exportar' y el input 'nombre fichero', una vez se haya seleccionado un formato. */
 function onFormatSelect(){
-  console.log("Entramos a la funcion onformatselect");
   let format = document.querySelector("#exportarTareas");
-  console.log("format recuperado:",format)
   format.style.visibility="visible";
 }

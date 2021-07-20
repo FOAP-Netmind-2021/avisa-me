@@ -42,7 +42,7 @@ exports.updateSettings = async (req,res) =>{
     console.log("actualizado", workspace); 
   }
 
-  
+
   exports.exportTasks = async (req, res) =>{
     const idWorkspace = req.query.idWorkspace; // id del workSapace
     const exportType = req.query.exportTasks;  //Recuperamos del req mediante query, tipo de FORMATO SOLICITADO.
@@ -53,34 +53,21 @@ exports.updateSettings = async (req,res) =>{
     const allTasks = await taskModel.find({workspace:`${idWorkspace}`},{title:1, text:1, createdAt:1});
     console.log("todas las tareas;(workSpace):---------->", allTasks);
     
+    
     //Si exportType es 'json', los datos pueden ser cualquier JSON parseable. Si exportType es 'csv' o 'xls', los datos solo pueden ser una matriz de JSON parseable. Si exportType es 'txt', 'css', 'html', los datos deben ser un tipo de cadena.
     let data; //Declaramos 'data' para condicionarla SEGUN FORMATO DESEADO...
     if (exportType == 'csv' || 'xls' ){
-    let  dataXLS =
-     `<html>
-      <head>
-        <meta charset="UTF-8">
-      </head >
-      <body>
-        
-        <table>
-          <thead>
-            <tr><th><b>Titulo</b></th><th><b>Texto</b></th><th><b>Fecha</b></th></tr>
-          </thead>`;
-      allTasks.forEach(task => {
-        dataXLS += `
-            <tbody>
-              <tr><td>${task.title}</td></tr>
-              <tr><td>${task.text}</td></tr>
-              <tr><td>${task.createdAt}</td></tr>
-            </tbody>`
-          });
-        dataXLS += ` </table>
-        </body>
-      </html >`;
-     // console.log("Valor de dataXLS------------->", dataXLS)
       let dataString = JSON.stringify(allTasks);
-      data = JSON.parse(dataString);
+      //let newDataString = dataString.replace("/\r?\n|\r/g", "*"); 
+      /* var str = "bar\r\nbaz\n\n\n\n\nfoo";
+      const str1 = str.replace(/[\r\n]/g, '');
+      console.log("str1--------------->", str1); */
+      //const regex = /[\n]?ew/ig;
+      const regex = /\n/ig;
+      let newDataString = dataString.replaceAll(regex, '*').trim();//El método trim( ) elimina los espacios en blanco en ambos extremos del string. Los espacios en blanco en este contexto, son todos los caracteres sin contenido (espacio, tabulación, etc.) y todos los caracteres de nuevas lineas (LF,CR,etc.).
+      //let newDataString = newDataString1.replaceAll(/[\r\n]/g, '');
+      console.log("newDataString:-----> ", newDataString);
+      data = JSON.parse(newDataString);
       
     }else if(exportType == 'json'){
       data = JSON.stringify(allTasks);
