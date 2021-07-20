@@ -7,7 +7,7 @@
       
       <!-- Task -->
       <div id="task-title-<%=task._id%>" class="d-flex flex-column card _cardMain _cardInput" 
-        data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)">
+        data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)" style="background-color: <%=task.color%>" >
        
         <div class="textMenu d-flex flex-row justify-content-between text-break" >
 
@@ -31,109 +31,95 @@
           <p id="task-text-<%=task._id%>" contenteditable="true" class="card-text" placeholder="Añadir una nota">
             <%= task.text %>
           </p>
+          </div>
           
           <!-- Action Icons -->
-          <div>
+          
             <div class="d-flex justify-content-between">
               <a data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex p-2" ><i class="bi bi-check-lg"></i></a>
               <!-- <a href="#" class="d-flex p-2" ><i class="bi-bell"></i></a> -->
               <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
-              <div class="dropdown" >       
+                <div class="dropup" >       
                 <button class="iconify"   data-icon="noto:artist-palette" data-inline="false"></button>
-                <div class="dropdown-content" data-id-colores="<%=task._id%>" onclick="myFunction(event)"  > 
+                <div class="dropup-content" data-id-colores="<%=task._id%>" onclick="updateTask(event)" > 
                   <div>
-                    <button  class="skin"  type="button"  style="background-color:#fadda4; border-radius: 50px; height: 25px; width: 25px; border: 0.5px rgba(160, 72, 72, 0.300) solid;" ></button>
-                    <button  class="yellow" type="button"  style="background-color:#fcf7a4; border-radius: 50px; height: 25px; width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
-                    <button  class="green" type="button"  style="background-color:#d7fda1; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
-                    <button  class="orange" type="button"  style="background-color: #facc81; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Skin"  style="background-color:#fadda4; border-radius: 50px; height: 25px; width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Yellow"   style="background-color:#fcf7a4; border-radius: 50px; height: 25px; width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="White"   style="background-color:#ffffff; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <bStton  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Orange"   style="background-color: #facc81; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
                   </div>
                   <div>
-                    <button  class="dark green" type="button"  style="background-color:#a5f59e; border-radius:50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
-                    <button  class="ferozi" type="button"  style="background-color: #99f5d6; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
-                    <button  class="blue" type="button"  style="background-color: #9edbf5 ; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;" ></button>
-                    <button  class="dark purple"  type="button" style="background-color: #949ef7 ; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Green"   style="background-color:#a5f59e; border-radius:50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Cyan"   style="background-color: #99f5d6; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Blue"   style="background-color: #9edbf5 ; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                    <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Dark Blue"   style="background-color: #949ef7 ; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;"></button>
                 </div>
                 <div>
-                  <button  class="dark blue" type="button"  style="background-color:#bf9dfa; border-radius:50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
-                  <button  class="pink" type="button"  style="background-color: #faacf3; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
-                  <button  class="red" type="button"  style="background-color: #8f657457; border-radius: 50px; height: 25px;width: 25px; border: 0.5px rgba(0, 0, 0, 0.300) solid;"></button>
+                  <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Purple"   style="background-color:#bf9dfa; border-radius:50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;"></button>
+                  <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Pink"   style="background-color: #faacf3; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;"></button>
+                  <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Gray"   style="background-color: #8f657457; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;"></button>
               </div>
                 </div>
               </div>
 
             </div>
+        
           </div>
 </div>       
   <% } %>
 <% }) %> 
 
-<script>
-
-  function myFunction(event) {
-    let taskID = event.currentTarget.dataset['idColores'];
-    console.log(event.currentTarget.dataset);
-    let SelectedbackgroundColor = event.target.style.backgroundColor;
-    let tarea = document.querySelector(`#task-title-${taskID}`);
-    tarea.style.backgroundColor = SelectedbackgroundColor; 
-    console.log("este es el id de la tarea", taskID);
-    console.log("este es el background color del color clickado ", SelectedbackgroundColor);
-  }
-
-</script>
-
-
 
 <style>
+  .dropbtn {
+    background-color: #3498DB;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
 
-  /* Dropdown Button */
-.dropbtn {
-background-color: #04AA6D;
-color: white;
-padding: 16px;
-font-size: 16px;
-border: none;
+  }
 
-}
+  button[title]{
+    border-radius: 50px;
+  }
+  
+  .dropup {
+    position: absolute;
+    margin-left: 30px;
+    margin-top: 0.4rem;
+    display: inline-block;
+  }
+  
+  .dropup-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 8rem;
+    bottom: 20px;
+    z-index: 1;
+    border-radius: 8px;
+    border: 0.5px rgba(0, 0, 0, 0.320) solid;
+    padding-left: 4px;
+    padding-top: 3px;
+    margin-left: 8px;
 
-/* The container <div> - needed to position the dropdown content */
-.dropdown {
-position: absolute;
-margin-left: 30px;
-margin-top: 0.4rem;
-display: inline-block;
-}
-
-/* Dropdown Content (Hidden by Default) */
-.dropdown-content {
-display: none;
-position: relative;
-background-color: rgb(212, 197, 182);
-height: auto;
-width: 8rem;
-margin-left: 10px;
-box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-z-index: 1;
-border-radius: 8px;
-border: 0.5px rgba(0, 0, 0, 0.320) solid;
-padding-left: 4px;
-padding-top: 3px;
-}
-
-/* Links inside the dropdown */
-.dropdown-content a {
-color: black;
-padding: 12px 16px;
-text-decoration: none;
-display: block;
-}
-
-/* Change color of dropdown links on hover */
-.dropdown-content a:hover {background-color: rgb(0, 0, 0);}
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {display: block; }
-
-/* Change the background color of the dropdown button when the dropdown content is shown */
-.dropdown:hover .dropbtn {background-color: #3e8e41;}
-</style>
-
+  }
+  
+  .dropup-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropup-content a:hover {background-color: #ccc}
+  
+  .dropup:hover .dropup-content {
+    display: block; 
+  }
+  
+  .dropup:hover .dropbtn {
+    background-color: #2980B9;
+  }
+  </style>

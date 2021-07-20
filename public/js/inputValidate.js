@@ -9,6 +9,7 @@
     let createTask = document.querySelector("#createTask");
     let titulo = document.querySelector("#title");
     let texto = document.querySelector("#text");
+    // let color = document.querySelector('#')
     if (titulo.value.length > 0 || texto.value.length > 0) {
       createTask.style.visibility = "visible";
     } else {

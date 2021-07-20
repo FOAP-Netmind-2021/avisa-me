@@ -11,7 +11,7 @@ exports.completedTask = async (req, res) => {
 }
 
 exports.updateTask = async (req, res) => {
-  const { idTask, titleModified, textModified } = req.body;
+  const { idTask, titleModified, textModified} = req.body;
 
   const task = await taskModel.findById(idTask)
   task.title = titleModified;
@@ -23,3 +23,18 @@ exports.updateTask = async (req, res) => {
   })
 
 };
+
+exports.updateTaskColores = async (req, res) => {
+  const { idTask, SelectedbackgroundColor } = req.body;
+
+  const task = await taskModel.findById(idTask)
+  task.color = SelectedbackgroundColor;
+  await task.save();
+
+  res.send({
+    success : true,
+  })
+
+};
+
+
