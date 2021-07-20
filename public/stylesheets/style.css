@@ -73,6 +73,10 @@
     border-radius: 20px;
   }
 
+  .reminderTagText span{
+    color: rgb(46, 45, 45);
+  }
+  
   .textMenu {
     color :#ADAAB0;
     font-family: 'Roboto', sans-serif;

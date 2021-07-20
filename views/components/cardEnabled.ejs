@@ -1,4 +1,3 @@
-<!-- Card Enabled -->
 <% allTasks.forEach(task => { %>
   
   <% if(!task.finishedDate) { %> 
@@ -36,13 +35,13 @@
         <% if(task.reminderDate){ %> 
         <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3"> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
           <span id="reminderTagText-<%=task._id%>" class="reminderTagText">
-            <%= task.reminderDate %> 
+            <span><%=task.reminderDate.getDate()%></span> <span id="reminderMonth"><%=task.reminderDate.getMonth()%></span> <span><%=task.reminderDate.getFullYear()%></span>, <span><%=task.reminderDate.getHours()%></span>:<span><%= task.reminderDate.getMinutes()<10?"0"+task.reminderDate.getMinutes():task.reminderDate.getMinutes() %></span>
           </span>
         </div>
         <% }else{ %>
           <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3" hidden> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
             <span id="reminderTagText-<%=task._id%>" class="reminderTagText">
-              a
+              
             </span>
           </div>
         <% } %>  

@@ -1,9 +1,9 @@
-let allTasks = document.querySelectorAll(".reminderTagText");
-allTasks.forEach( task => {
-  console.log(task.innerText);
-  const prueba = dayjs(task.innerText)
-  task.innerText = prueba; //HAY QUE IMPLEMENTAR EL CALENDAR
+let months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"]
+let reminderMonths = document.querySelectorAll("#reminderMonth");
+reminderMonths.forEach( reminderMonth => {
+  reminderMonth.innerText = months[parseInt(reminderMonth.innerText)];
 })
+
 
 function onFocusUpdate(event){
   let idTask = event.currentTarget.dataset.id;
@@ -20,8 +20,13 @@ function onFocusUpdate(event){
   if(reminderDate && reminderHour){
     setTimeout(() => {
       let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
+      let setDateDay = setDate.getDate();
+      let setDateMonth = months[parseInt(setDate.getMonth())];
+      let setDateYear = setDate.getFullYear();
+      let setDateHour = setDate.getHours();
+      let setDateMinutes = setDate.getMinutes()<10?"0"+setDate.getMinutes():setDate.getMinutes();
       reminderTag.removeAttribute("hidden");
-      reminderTagText.innerText = dayjs(setDate);
+      reminderTagText.innerText = `${setDateDay} ${setDateMonth} ${setDateYear}, ${setDateHour}:${setDateMinutes}`;
     }, 300);
   }
   
