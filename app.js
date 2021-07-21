@@ -9,6 +9,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var taskRouter = require('./routes/taskRoutes');
 var settingsRouter = require('./routes/settingsRoutes')
+var notificationRouter = require("./routes/notificationRoutes");
 
 var app = express();
 
@@ -22,9 +23,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/favicon.ico', (req, res) => res.status(204).send());
+app.use("/enviar-notificaciones", notificationRouter);
 app.use('/', indexRouter);
 app.use('/tasks', taskRouter);
-app.use("/settings", settingsRouter)
+app.use("/settings", settingsRouter);
+
 
 
 

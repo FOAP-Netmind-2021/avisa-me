@@ -19,6 +19,7 @@ exports.updateTask = async (req, res) => {
   if (reminderDate && reminderHour) {
     let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
     task.reminderDate = setDate;
+    task.reminderNotification = null;
   }
   
   // console.log('***********************************', prueba);

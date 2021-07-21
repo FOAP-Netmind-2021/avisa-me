@@ -19,6 +19,7 @@ const taskSchema = new Schema({
     finishedDate: {type: Date},
     workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' },
     reminderDate: { type: Date},
+    reminderNotification: {type: Date, default:null}
     
 },
 {
