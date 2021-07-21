@@ -73,12 +73,6 @@
     min-width: 90%;
   }
 
-  /* ._cardInput input {
-  border: 0;
-  font-weight: bold;
-  height: 2em;
-  } */
-
 /* ------ CARD ENABLED --------- */
 
   ._cardEnabled {
@@ -112,11 +106,6 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
   }
-
-/* ------ SETTINGS ----------- */
-/* ._settings__header {
-  background-color:#32d1f9;
-} */
 
 /* ---------  ☰  ---------- */
 
