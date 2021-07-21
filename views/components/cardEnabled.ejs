@@ -36,6 +36,8 @@
         <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3"> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
           <span id="reminderTagText-<%=task._id%>" data-reminderdate="<%=task.reminderDate%>" class="reminderTagText">
             <span id="reminderDay-<%=task._id%>"><%=task.reminderDate.getDate()%></span> <span id="reminderMonth-<%=task._id%>" class="reminderMonth"><%=task.reminderDate.getMonth()%></span> <span id="reminderYear-<%=task._id%>"><%=task.reminderDate.getFullYear()%></span>, <span id="reminderHour-<%=task._id%>"><%=task.reminderDate.getHours()%></span>:<span id="reminderMinutes-<%=task._id%>"><%= task.reminderDate.getMinutes()<10?"0"+task.reminderDate.getMinutes():task.reminderDate.getMinutes() %></span>
+            <!-- Opción para refactorizar el código en un futuro -->
+            <!-- <span>task.reminderDate.toLocaleDateString("es-Es", {year:"numeric", month:"long",day:"numeric"})</span> -->
           </span>
         </div>
         <% }else{ %>
