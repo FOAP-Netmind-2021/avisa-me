@@ -133,4 +133,4 @@ const notificationTemplate = (title, text, date)=>{
     )
 }
 
-module.exports = {mailTemplate};
+module.exports = {notificationTemplate};
