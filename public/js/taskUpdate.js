@@ -11,7 +11,7 @@ console.log(allReminderDates);
 
 
 let months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"]
-let reminderMonths = document.querySelectorAll("#reminderMonth");
+let reminderMonths = document.querySelectorAll(".reminderMonth");
 reminderMonths.forEach( reminderMonth => {
   reminderMonth.innerText = months[parseInt(reminderMonth.innerText)];
 })
@@ -30,11 +30,11 @@ function onFocusUpdate(event){
   let reminderTag = event.currentTarget.querySelector(`#reminderTag-${idTask}`);
   let reminderTagText = event.currentTarget.querySelector(`#reminderTagText-${idTask}`)
   let reminderTagTextSpan = event.currentTarget.querySelector(`#reminderTagTextSpan-${idTask}`)
-  let reminderTagTextDay; //Solventar bug y añadir aqui por querySelector cada uno de los spans para añadirle en la linea 49 cada cosa correspondiente
-  let reminderTagTextMonth;
-  let reminderTagTextYear;
-  let reminderTagTextHour;
-  let reminderTagTextMinutes;
+  let reminderTagTextDay = event.currentTarget.querySelector(`#reminderDay-${idTask}`); 
+  let reminderTagTextMonth= event.currentTarget.querySelector(`#reminderMonth-${idTask}`); 
+  let reminderTagTextYear= event.currentTarget.querySelector(`#reminderYear-${idTask}`); 
+  let reminderTagTextHour= event.currentTarget.querySelector(`#reminderHour-${idTask}`); 
+  let reminderTagTextMinutes= event.currentTarget.querySelector(`#reminderMinutes-${idTask}`); 
   console.log(reminderTagTextSpan)
   if(reminderDate && reminderHour){
     setTimeout(() => {
@@ -46,7 +46,12 @@ function onFocusUpdate(event){
       let setDateMinutes = setDate.getMinutes()<10?"0"+setDate.getMinutes():setDate.getMinutes();
       reminderTag.removeAttribute("hidden");
       //SOLVENTAR ESTE BUG relacionado con la linea 33
-      reminderTagTextSpan.innerText = `<span>${setDateDay}</span> <span id="reminderMonth">${setDateMonth}</span> <span>${setDateYear}</span>, <span>${setDateHour}</span>:<span>${setDateMinutes}</span>`;
+      reminderTagTextDay.innerText = setDateDay;
+      reminderTagTextMonth.innerText = setDateMonth;
+      reminderTagTextYear.innerText = setDateYear;
+      reminderTagTextHour.innerText = setDateHour;
+      reminderTagTextMinutes.innerText = setDateMinutes;
+    
       if(setDate<new Date()){
         reminderTagText.classList.remove("reminderTagText");
         reminderTagText.classList.add("reminderTagThrough");
