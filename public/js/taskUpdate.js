@@ -42,7 +42,7 @@ function onFocusUpdate(event){
       let setDateDay = setDate.getDate();
       let setDateMonth = months[parseInt(setDate.getMonth())];
       let setDateYear = setDate.getFullYear();
-      let setDateHour = setDate.getHours();
+      let setDateHour = setDate.getHours()<10?"0"+setDate.getHours():setDate.getHours();
       let setDateMinutes = setDate.getMinutes()<10?"0"+setDate.getMinutes():setDate.getMinutes();
       reminderTag.removeAttribute("hidden");
       //SOLVENTAR ESTE BUG relacionado con la linea 33
