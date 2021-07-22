@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+    <%- include("../partials/_head")  %>     
+  </head>
+  
+  <body>
+
+    <!-- Inicio contenedor -->
+    <div class="container-fluid">
+
+      <!-- Única fila | Todo el cuerpo -->
+      <div class="row">
+
+          <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
+          <div  class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
+            <%- include("../partials/navBar")%>
+          </div>
+
+          <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
+          <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+            <%- include("../components/messages")  %> 
+
+            <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
+            <div class="d-flex justify-content-center ">
+
+              <div class="cointainer p-5">
+
+                    <div class="card">
+                      <div class="card-header">
+                        <%= title %>   
+                      </div>
+                      <div class="card-body">
+                        <form action="/user/<%= endpoint %>" method="POST">
+                          <% if (workspaceToAdd) { %> 
+                            <div class="form-group"> 
+                              <input type="text" class="form-control" name="idWorkspace" value="<%= workspaceToAdd %>" hidden>
+                            </div>
+                          <% } %> 
+                          <div class="form-group">
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                          </div>
+                          <% if(endpoint !== "recovery") { %> 
+                            <div class="form-group mt-1">
+                              <input type="password" class="form-control" name="password" placeholder="Password" required>
+                            </div>
+                          <% } %> 
+                          <% if(endpoint === "signup") { %> 
+                            <div class="form-group mt-1">
+                              <input type="password" class="form-control" name="confirm_password" placeholder="Confirm Password" required>
+                            </div>
+                          <% } %> 
+                          <button class="btn btn-primary btn-block my-2">
+                            <%= title %>  
+                          </button>
+                          <% if(endpoint === "login") { %>
+                            <p class="m-0">Todavía sin cuenta?</p>                
+                            <p class="m-0"><a href="/user/signup">Créala en 1 minuto!</a></p>               
+                            <p class="mt-2 mb-0"><a href="/user/recovery">Recuperar contraseña</a></p>
+                          <% } else if(endpoint === "signup") { %>
+                            <p class="m-0">Ya tiene cuenta?</p>
+                            <p class="m-0"><a href="/user/login">Accede desde aquí!</a></p>
+                          <% } else if(endpoint === "recovery") { %>
+                            <p class="m-0">Recibirá un correo con la contraseña</p>
+                            <p class=mt-2 mb-0"><a href="/user/login">Iniciar sesión</a></p>
+                          <% } %> 
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+
+
+
+          </div>
+          
+      </div>
+      <!-- Fin única fila | Todo el cuerpo -->
+  </div>
+  <!-- Fin contenedor -->
+
+  <!-- Scripts globales -->   
+  <%- include("../partials/_scripts")  %> 
+  
+  <!-- Scripts específicos -->
+  <script type="text/javascript" src="/js/taskUpdate.js"></script>
+
+  </body>
+  
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

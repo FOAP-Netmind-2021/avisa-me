@@ -13,4 +13,13 @@ router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
 router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
+router.post('/delete/:idWorkspace', workspaceControllers.deleteWorkspace);
+
+router.post('/edit/:idWorkspace', workspaceControllers.editWorkspace);
+
+
+
+
+
+
 module.exports = router;
