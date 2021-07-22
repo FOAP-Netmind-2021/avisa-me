@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title></title>
+    <%- include("../partials/_head")  %>     
+  </head>
+  
+  <body>
+
+    <!-- Inicio contenedor -->
+    <div class="container-fluid">
+
+      <!-- Única fila | Todo el cuerpo -->
+      <div class="row">
+
+          <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
+          <div  class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
+            <%- include("../partials/navBar")%>
+          </div>
+
+          <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
+          <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+            <%- include("../components/messages")  %> 
+
+            <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
+          
+
+              <div class="main-body mt-5">
+    
+                <!-- Breadcrumb -->
+                <nav aria-label="breadcrumb" class="main-breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Perfil usuario</li>
+                  </ol>
+                </nav>
+                <!-- /Breadcrumb -->
+          
+                <div class="row gutters-sm">
+                  <h3>Detalle cuenta</h3>
+                  <div class="col-xl-3 col-md-12 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+                        <div class="d-flex flex-column align-items-center text-center">
+                          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/2048px-User-avatar.svg.png" alt="user" class="rounded-circle" width="150">
+                          <div class="mt-3">
+                            <p class="text-secondary mb-1"><%= subscription.user.email %></p>
+                            <% const subscriptionCreatedAt = new Date(subscription.createdAt)%>
+                            <p class="text-secondary mb-1">Desde el <%= subscriptionCreatedAt.getDate()+ "/" + subscriptionCreatedAt.getMonth() + "/" + subscriptionCreatedAt.getFullYear()%></p>
+                            <button class="btn btn-outline-primary mb-1" onclick="javascript:location.href='/user/edit/<%= subscription.user._id %>'">Cambiar contraseña</button>
+                            <button class="btn btn-primary mb-1" onclick="location.href='/user/logout'">Cerrar sesión</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mt-3">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                          <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> Tipo de cuenta</h6>
+                          <span class="text-secondary"><%= subscription.account %></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                          <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg> Límite workspaces</h6>
+                          <span class="text-secondary"><%= subscription.limitWorkspace %></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                          <h6 class="mb-0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 21H4a2 2 0 0 1-2-2V5c0-1.1.9-2 2-2h5l2 3h9a2 2 0 0 1 2 2v2M19 15v6M16 18h6"/></svg> Workspaces</h6>
+                          <span class="text-secondary"><%= subscription.workspaces.length %>/<%= subscription.limitWorkspace %></span>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-md-12 col-xl-9">
+                    <h3>Workspaces</h3>
+                    <div class="card mb-3">
+                      <div class="card-body">
+                        <% if (workspaces.length > 0) {  %> 
+                          
+                          <hr>
+                            <% workspaces.forEach(workspace => { %> 
+                              <div class="row mx-0">
+                                <!-- Columna título, fecha creación y modificación -->
+                                <div class="col-sm-12 col-md-4">  
+                                  <h6 class="mb-0"><a href="/<%= workspace._id %>"><%= workspace.name %></a></h6> 
+                                  <% const createdAt = new Date(workspace.createdAt)%>
+                                  <span style="font-size: 0.87em;">Creado: <%= createdAt.getDate()+ "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()%></span>
+                                  <br>
+                                  <% const updatedAt = new Date(workspace.updatedAt)%>
+                                  <span style="font-size: 0.87em;">Modificado: <%= updatedAt.getDate()+ "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()%></span>
+                                </div>
+                                <!-- Contadores varios -->
+                                <div class="col-sm-12 col-md-3 text-align-start">
+                                  <% const completedTasks = workspace.tasks.filter( task => task.finishedDate !== undefined) %> 
+                                  <% const activeTasks = workspace.tasks.filter( task => task.finishedDate == undefined) %> 
+                                  <span style="font-size: 0.87em;">Notas completadas: <%= completedTasks.length %></span> <br>
+                                  <span style="font-size: 0.87em;">Notas activas: <%= activeTasks.length  %></span> <br>
+                                  <span style="font-size: 0.87em;">Notas total: <%= workspace.tasks.length  %></span> 
+                                </div>
+                                <!-- Iconos -->
+                                <div class="col-sm-12 col-md-5 d-flex align-items-center gap-4">
+                                  <div> <!-- Editar -->
+                                    <form id="formEdit<%= workspace._id %>" action="/edit/<%= workspace._id %>" method="POST">
+                                    <input type="text" name="idWorkspace" value="<%= workspace._id %>" hidden>
+                                    <i class="bi bi-pencil-square fs-4"></i><a class="icons_profile" data-bs-target="#edit<%= workspace._id %>" data-bs-toggle="modal"> Editar </a>
+
+                                    <!-- Modal editar workspace -->
+                                    <div class="modal" id="edit<%= workspace._id %>" tabindex="-1">
+                                      <div class="modal-dialog">
+                                        <div class="modal-content">
+                                          <div class="modal-header">
+                                            <h5 class="modal-title">Editar</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                          </div>
+                                          <div class="modal-body">
+                                            <label for="editname">Cambiar nombre al workspace</label><br>
+                                            <input id="editname" type="text" name="name" placeholder="<%= workspace.name %>">
+                                          </div>
+                                          <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                            <button onclick="document.querySelector('#formEdit<%= workspace._id %>').submit()" type="button" class="btn btn-primary">Aceptar</button>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <!-- Fin Modal editar workspace -->
+                                    </form>                                  
+                                  </div>
+                                  <div>
+                                    <i class="bi bi-gear fs-4"></i><a class="icons_profile" onclick="javascript:location.href='/settings/<%= workspace._id  %>'"> Ajustes</a>
+                                  </div>
+                                  
+
+                                  <div> <!-- Eliminar -->
+                                    <form id="formDelete<%= workspace._id %>" action="/delete/<%= workspace._id %>" method="POST">
+                                      <input type="text" name="idWorkspace" value="<%= workspace._id %>" hidden>
+                                      <i class="bi-trash fs-4" style="color: rgb(195, 35, 35);"></i><a class="icons_profile" data-bs-target="#alert<%= workspace._id %>" data-bs-toggle="modal"> Eliminar </a>
+
+                                      <!-- Modal eliminar workspace -->
+                                      <div class="modal" id="alert<%= workspace._id %>" tabindex="-1">
+                                        <div class="modal-dialog">
+                                          <div class="modal-content">
+                                            <div class="modal-header">
+                                              <h5 class="modal-title">Eliminar workspace</h5>
+                                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                              <p>Está seguro que quiere eliminar el workspace <%= workspace.name %>?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                              <button onclick="document.querySelector('#formDelete<%= workspace._id %>').submit()" type="button" class="btn btn-primary">Aceptar</button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                      <!-- Fin Modal eliminar workspace -->
+                                    </form>
+                                  </div>   
+                                </div>
+                              </div>
+                              <hr>
+                            <% }) %> 
+                            <% if(subscription.workspaces.length < subscription.limitWorkspace ){ %> <span style="font-size: 0.87em;">Aún puedes crear más workspaces! <a href="/">Crea uno!</a></span> <% } else { %> <span style="color: rgb(195, 35, 35); font-size: 0.87em;">Has alcanzado el máximo de workspaces! Elimine alguno o hágase premium para poder añadir más!</span> <% } %>  
+                        <% } else{ %>
+                          No hay workspaces todavía. <a href="/">Crea uno!</a> 
+                        <% } %>  
+                       
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+      
+              </div>
+         
+
+
+
+
+
+
+            </div>       
+
+
+
+          </div>
+          
+      </div>
+      <!-- Fin única fila | Todo el cuerpo -->
+  </div>
+  <!-- Fin contenedor -->
+
+
+
+
+
+
+
+  <!-- Scripts globales -->   
+  <%- include("../partials/_scripts")  %> 
+  
+  <!-- Scripts específicos -->
+  <script type="text/javascript" src="/js/taskUpdate.js"></script>
+
+  </body>
+  
+</html>

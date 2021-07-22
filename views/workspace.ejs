@@ -8,7 +8,7 @@
   
   <body>
 
-    <!-- Inicio contenedor -->
+        <!-- Inicio contenedor -->
     <div class="container-fluid">
 
       <!-- Única fila | Todo el cuerpo -->
@@ -17,17 +17,105 @@
           <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
           <div  class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
             <%- include("./partials/navBar")%>
+
+            <!-- MENU LATERAL DESPLEGABLE -->
+            <div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1"
+            id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav">
+                <li class="li">
+                  <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Notes">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-book fs-3"></i>
+                    </div>
+                  </a>
+                </li>
+                    
+                <li class="li">
+                  <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Reminder">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-bell fs-3"></i>
+                    </div>
+                  </a>
+                </li>
+                
+                <li class="li">
+                  <a href="/settings/<%= workspace._id  %>" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Settings">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-sliders fs-3"></i>
+                    </div>
+                  </a>
+                </li>
+
+                
+                <li class="li">
+                  <a href="#" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                    data-bs-original-title="Trash">
+                    <div class="d-flex justify-content-center">
+                      <i class="bi-trash fs-3 "></i>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            </div>
+          <!-- FIN MENU LATERAL DESPLEGABLE -->
+
+
+
+
           </div>
 
           <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
           <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+            <%- include("./components/messages")  %> 
+            <% if(registerLink){ %> <a href="/user/signup/<%= workspace._id %>">Regístrese</a> o <a href="/user/login/<%= workspace._id %>">Inicie sesión</a> para añadir este workspace a su colección!<% } %> 
 
+
+              <p>
+                <a  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  <i class="bi bi-arrow-bar-down fs-2"></i>
+                </a>
+              </p>
+              <div class="collapse" id="collapseExample">
+                <div class="_cardMain _cardInput text-break col-sm-12 col-md-4 mb-4">
+                  <div class="row">
+                    <div class="col-sm">
+                      <ul><b>Título: </b>
+                        <% const updatedAt = new Date(workspace.updatedAt)%>
+                        <% const createdAt = new Date(workspace.createdAt)%>
+                        <li><%= workspace.name %></li>
+                        <li>Mod.: <%= updatedAt.getDate()+ "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()%></li>
+                        <li>Cre.: <%= createdAt.getDate()+ "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()%></li>
+                      </ul>
+                    </div>
+                    <div class="col-sm ">
+                      <ul><b>Notas:</b>
+                        <li><%= tasksDetail.all.length %> total</li>
+                        <li><%= tasksDetail.active.length %> activas</li>
+                        <li><%= tasksDetail.completed.length %> completadas</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+             
+
+              
             <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
-            <div class="d-flex justify-content-center ">
+            <div class="d-flex justify-content-center">
 
               <div class="_cardMain _cardInput text-break" >
                 <form action="/addTask" method="POST">
-                    <input type="hidden" name="idWorkspace" id="idWorkspace" value="<%= idWorkspace %>">
+                    <input type="hidden" name="idWorkspace" id="idWorkspace" value="<%= workspace._id %>">
                     <input type="text" name="title" oninput="validarInput()" placeholder="Título" id="title" maxlength="140"><br>
                     <textarea name="text" oninput="validarInput()" placeholder="Añade una nota" id="text" maxlength="5000"></textarea>
                     <button type="submit" id="createTask" style="visibility: hidden" class="btn">
@@ -62,6 +150,9 @@
   
   <!-- Scripts específicos -->
   <script type="text/javascript" src="/js/taskUpdate.js"></script>
+
+  <script>localStorage.setItem('miGato', 'Juan');</script>
+
 
   </body>
   
