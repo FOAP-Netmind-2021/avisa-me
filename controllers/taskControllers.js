@@ -11,12 +11,23 @@ exports.completedTask = async (req, res) => {
 }
 
 exports.updateTask = async (req, res) => {
-  const { idTask, titleModified, textModified } = req.body;
+  const { idTask, titleModified, textModified, reminderDate, reminderHour } = req.body;
 
-  const task = await taskModel.findById(idTask)
+  const task = await taskModel.findById(idTask);
   task.title = titleModified;
   task.text = textModified;
-  await task.save();
+  if (reminderDate && reminderHour) {
+    let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
+    task.reminderDate = setDate;
+    task.reminderNotification = null;
+  }
+  
+  // console.log('***********************************', prueba);
+  // console.log('******************************', reminderDate);
+  // console.log('*********************************', reminderHour);
+  
+  let valor = await task.save();
+  console.log(valor);
 
   res.send({
     success : true,
