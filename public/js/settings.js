@@ -17,3 +17,9 @@ cboxHideCompletedTasks.addEventListener("change", (event)=>{
    .catch(error => console.error('Error:', error))
    .then(response => console.log('Success:', response));
 })
+
+/* Mostrará el botón 'Exportar' y el input 'nombre fichero', una vez se haya seleccionado un formato. */
+function onFormatSelect(){
+   let format = document.querySelector("#exportarTareas");
+   format.style.visibility="visible";
+ }

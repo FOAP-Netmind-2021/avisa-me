@@ -27,6 +27,10 @@
     border: 1px solid #EDEEED;
   }
 
+  .color-settings {
+    background-color: #32D1F9;
+  }
+
   h1 {
     color :rgba(0, 0, 0, 0.5);
     font-family: 'Roboto', sans-serif;

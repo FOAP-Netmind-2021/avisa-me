@@ -1,24 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title></title>
-    <%- include("./partials/_head")  %> 
-  </head>
-  <body>
-    <header>
-      
-    </header>
-    <div class="container">
-        <div class="form-check form-switch">
-            <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
-            <% if(settings.hideCompletedTask){ %> 
-            <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks" id="hideCompletedTasksId">
-            <% }else{ %> 
-              <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
+
+<head>
+  <title>Avisa.me</title>
+  <%- include("./partials/_head") %>
+</head>
+
+<body>
+
+  <!-- Inicio contenedor -->
+  <div class="container-fluid">
+
+    <!-- Única fila | Todo el cuerpo -->
+    <div class="row">
+
+      <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
+      <div class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
+        <%- include("./partials/navBar") %>
+      </div>
+
+      <!-- Controles de Settings -->
+      <div class="d-flex col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100 align-items-start justify-content-center">
+
+        <div class="d-flex flex-column align-items-center justify-content-center _cardMain _cardInput p-0">
+
+          <!-- Título de Settings -->
+          <div class="btn d-flex  align-items-center justify-content-center color-settings w-100">
+            Ajustes
+          </div>
+
+          <!-- Cuerpo de Settings -->
+          <div>
+            <!-- Selector Ocultar notas -->
+            <div class="d-flex form-check form-switch mx-3 my-3 gap-3 justify-content-center align-items-start">
+              <!-- idWorkspace Oculto -->
+              <input type="hidden" id="hiddenId" name="id" value="<%=idWorkspace%>">
+              <% if(settings.hideCompletedTask){ %>
+                <input class="form-check-input" type="checkbox" checked name="hideCompletedTasks"
+                  id="hideCompletedTasksId">
+              <% } else { %>
+                  <input class="form-check-input" type="checkbox" name="hideCompletedTasks" id="hideCompletedTasksId">
               <% } %>
-            <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>  
+              <label class="form-check-label" for="hideCompletedTasksId">Ocultar tareas completadas</label>
+            </div>
+
+            <!--  Formulario de exportación -->
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              
+              <form action="/settings/export" method="GET" id="exportForm"
+                class="d-flex flex-column justify-content-center align-items-center w-100 p-3"
+                aria-label="Seleccione un formato para exportar todas sus notas">
+                
+                <select class="w-100 form-select" name="exportTasks" id="exportAllTasksId" onchange="onFormatSelect()">
+                  <option selected>Seleccione un formato de exportación</option>
+                  <option value="txt">txt</option>
+                  <!-- <option value="html">html</option> Por implementar estructura -->
+                  <option value="json">json</option>
+                  <option value="csv">csv</option>
+                  <option value="xls">xls</option>
+                </select>
+                 
+                <!-- idWorkspace. Siempre oculto -->
+                <input type="text" style="visibility: hidden" name="idWorkspace" value="<%=idWorkspace%>">
+
+                <!-- Contenedor de Opciones de Exportacion. No aparecerá hasta que se haya seleccionado un formato -->
+                <div id="exportarTareas" style="visibility:hidden" class="d-flex flex-column gap-3 w-100">
+
+                  <!-- Input "Nombre de fichero a exportar"-->
+                  <label for="fileName">Nombre del fichero a exportar:</label>
+                  <input type="text" name="fileName" class="form-control" required>
+                  
+                  <!-- Button Exportar -->
+                  <input type="submit" value="Exportar" class="btn color-settings w-50 align-self-end "></input>
+                </div>
+              </form>
+            </div>
+
+            <!-- FIN código html/ejs para exportar notas -->
+
+          </div>
+
         </div>
+
+        <!-- Segunda fila del cuerpo. -->
+        <div class="d-flex flex-row flex-wrap pt-4 gap-2">
+        </div>
+
+      </div>
+
     </div>
+    <!-- Fin única fila | Todo el cuerpo -->
+  </div>
+  <!-- Fin contenedor -->
+
+  <!-- Scripts globales -->
+  <%- include("./partials/_scripts") %>
     <script src="/js/settings.js"></script>
 </body>
+
 </html>

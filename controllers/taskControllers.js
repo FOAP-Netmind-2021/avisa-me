@@ -14,8 +14,8 @@ exports.updateTask = async (req, res) => {
   const { idTask, titleModified, textModified, reminderDate, reminderHour } = req.body;
 
   const task = await taskModel.findById(idTask);
-  task.title = titleModified;
-  task.text = textModified;
+  task.title = titleModified.replace(/\n*/g, '').trim();
+  task.text = textModified.replace(/\n*/g, '').trim();
   if (reminderDate && reminderHour) {
     let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
     task.reminderDate = setDate;
@@ -23,8 +23,8 @@ exports.updateTask = async (req, res) => {
   }
   
   
-  let valor = await task.save();
-  console.log(valor);
+  await task.save();
+ 
 
   res.send({
     success : true,
