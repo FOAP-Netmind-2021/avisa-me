@@ -17,7 +17,9 @@ const taskSchema = new Schema(
                 return this.title.length == 0;
             }},
         finishedDate: {type: Date},
-        workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' }
+        workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' },
+        reminderDate: { type: Date},
+        reminderNotification: {type: Date, default:null}
     },
     {
         timestamps: true,
