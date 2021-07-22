@@ -16,6 +16,9 @@ const taskSchema = new Schema(
             required:function(){
                 return this.title.length == 0;
             }},
+        color: {
+            type: String    
+        },
         finishedDate: {type: Date},
         workspace: { type: Schema.Types.ObjectId, ref: 'Workspace' },
         reminderDate: { type: Date},

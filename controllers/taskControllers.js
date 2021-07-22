@@ -22,12 +22,23 @@ exports.updateTask = async (req, res) => {
     task.reminderNotification = null;
   }
   
-  // console.log('***********************************', prueba);
-  // console.log('******************************', reminderDate);
-  // console.log('*********************************', reminderHour);
   
   let valor = await task.save();
   console.log(valor);
+
+  res.send({
+    success : true,
+  })
+
+};
+
+
+exports.updateTaskColores = async (req, res) => {
+  const { idTask, SelectedbackgroundColor } = req.body;
+
+  const task = await taskModel.findById(idTask)
+  task.color = SelectedbackgroundColor;
+  await task.save();
 
   res.send({
     success : true,

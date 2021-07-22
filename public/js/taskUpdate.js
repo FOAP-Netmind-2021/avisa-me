@@ -79,3 +79,29 @@ function onFocusUpdate(event){
     console.log("data:", data);
   })
 }
+
+function updateTask(event){
+  
+  let idTask = event.currentTarget.dataset['idColores'];
+  let SelectedbackgroundColor = event.target.style.backgroundColor;
+
+  let tarea = document.querySelector(`#task-title-${idTask}`);
+  tarea.style.backgroundColor = SelectedbackgroundColor; 
+
+  console.log("el color de fondo es" , SelectedbackgroundColor);
+
+let data = {idTask, SelectedbackgroundColor};
+
+console.log("this is data value", data);
+
+let response = fetch("/tasks/updateTaskColores", {
+method: "POST",
+body: JSON.stringify(data),
+headers:{ //es necesario
+  'Content-Type': 'application/json'
+}
+}).then(()=>{
+  console.log("response:", response);
+  console.log("data:", data);
+})
+}

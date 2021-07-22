@@ -8,6 +8,6 @@ router.get('/:idTask/completed', taskControllers.completedTask);
 // Modificar una tarea
 
 router.post('/updateTask', taskControllers.updateTask);
-
+router.post('/updateTaskColores', taskControllers.updateTaskColores);
 
 module.exports = router;
