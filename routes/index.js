@@ -4,7 +4,7 @@ const workspaceControllers = require('../controllers/workspaceControllers');
 
 const taskValidator = require("../utils/taskValidator");
 
-/* GET home page. */
+/* GET home page.*/
 router.get('/', workspaceControllers.renderHome);
 
 router.post('/', taskValidator.createTask , taskValidator.emptyTask, workspaceControllers.createWorkspace);
