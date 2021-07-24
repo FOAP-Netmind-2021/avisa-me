@@ -106,46 +106,14 @@
     min-width: 90%;
   }
 
-  /* ._cardInput input {
-  border: 0;
-  font-weight: bold;
-  height: 2em;
-  } */
-
-/* ------ CARD ENABLED --------- */
-
-  ._cardEnabled {
-    min-height: 16vh;
-    box-sizing: border-box;
-    /* outline: none; */
-    padding: 0.5em;
-    /* border: 1px solid #929090; */
-    border: 1px solid #EDEEED;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-  }
-
-  ._card__title {
-    min-width: 100%;
-    font-family: Roboto;
-    font-size: 1em;
-    color: rgba(0, 0, 0, 0.5);
-  }
 
 /* ------ CARD DISABLED ----------- */
 
   ._cardDisabled {
-    /* min-width: 200px; */
-    min-height: 16vh;
-    box-sizing: border-box;
-    padding: 0.5em;
     background-color:  #EDEEED;
-    border: 1px solid #ACA9AE;
-    /* box-sizing: border-box; */
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
   }
 
+  
 /* ---------  ☰  ---------- */
 
 .hamburguerBotton {

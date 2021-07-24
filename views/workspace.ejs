@@ -27,7 +27,7 @@
             <div class="offcanvas-body">
               <ul class="navbar-nav">
                 <li class="li">
-                  <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  <a href="/<%= workspace._id %>" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
                   data-bs-original-title="Notes">
                     <div class="d-flex justify-content-center">
                       <i class="bi-book fs-3"></i>
@@ -55,7 +55,7 @@
 
                 
                 <li class="li">
-                  <a href="#" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  <a href="/trashspace/<%= workspace._id %>" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
                     data-bs-original-title="Trash">
                     <div class="d-flex justify-content-center">
                       <i class="bi-trash fs-3 "></i>
@@ -66,10 +66,6 @@
             </div>
             </div>
           <!-- FIN MENU LATERAL DESPLEGABLE -->
-
-
-
-
           </div>
 
           <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
@@ -77,14 +73,18 @@
             <%- include("./components/messages")  %> 
             <% if(registerLink){ %> <a href="/user/signup/<%= workspace._id %>">Regístrese</a> o <a href="/user/login/<%= workspace._id %>">Inicie sesión</a> para añadir este workspace a su colección!<% } %> 
 
-
               <p>
                 <a  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                   <i class="bi bi-arrow-bar-down fs-2"></i>
-                </a>
+                </a> Detalles
+                <a type="button" id="copyUrlBtn">
+                  <i class="bi bi-clipboard fs-3"></i>
+                </a> Copiar URL
+                <div id="copyUrlBox" style="display: none;"> <span>Copiada!</span> <input id="copyURL" width="150px" class="col-sm-12 col-md-4 mb-4" type="text" readonly/></div>
+
               </p>
               <div class="collapse" id="collapseExample">
-                <div class="_cardMain _cardInput text-break col-sm-12 col-md-4 mb-4">
+                <div class="_cardMain _cardInput text-break col-sm-12 col-md-6 col-xl-4 mb-4">
                   <div class="row">
                     <div class="col-sm">
                       <ul><b>Título: </b>
@@ -150,8 +150,7 @@
   
   <!-- Scripts específicos -->
   <script type="text/javascript" src="/js/taskUpdate.js"></script>
-
-  <script>localStorage.setItem('miGato', 'Juan');</script>
+  <script type="text/javascript" src="/js/workspace.js"></script>
 
 
   </body>

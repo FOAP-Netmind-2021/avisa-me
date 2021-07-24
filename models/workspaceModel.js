@@ -43,6 +43,15 @@ workspaceSchema.methods.addTask = function(idTask) {
     return;
 }
 
+workspaceSchema.methods.deleteTask = function(idTask) {
+    for(let i in this.tasks){
+        if(this.tasks[i] == idTask){
+            this.tasks.splice(i,1);
+            break;
+        } 
+    }
+}
+
 workspaceSchema.statics.getAllTasks = async function (id){
     return await taskModel.find({workspace: id });
 }
@@ -53,6 +62,14 @@ workspaceSchema.statics.getCompletedTasks = async function (id){
 
 workspaceSchema.statics.getActiveTasks = async function (id){
     return await taskModel.find({workspace: id, finishedDate : { $exists: false } });
+}
+
+workspaceSchema.statics.getTrashedTasks = async function (id){
+    return await taskModel.find({workspace: id, trashed : true });
+}
+
+workspaceSchema.statics.getUntrashedTasks = async function (id){
+    return await taskModel.find({workspace: id, trashed : false });
 }
 
 workspaceSchema.statics.getDetails = async function (id){

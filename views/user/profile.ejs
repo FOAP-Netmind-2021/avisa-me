@@ -70,6 +70,15 @@
                         </li>
                       </ul>
                     </div>
+                    <!-- Mensajes hacía el usuario -->
+                    <div class="mt-2">
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            Importante: Implementada la papelera y el poder eliminar nota.
+                            Para mayor compatibilidad se recomienda eliminar cualquier workspace y empezar de nuevo.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                    <!-- Mensajes hacía el usuario -->
                   </div>
                   <div class="col-md-12 col-xl-9">
                     <h3>Workspaces</h3>
@@ -106,7 +115,7 @@
 
                                     <!-- Modal editar workspace -->
                                     <div class="modal" id="edit<%= workspace._id %>" tabindex="-1">
-                                      <div class="modal-dialog">
+                                      <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                           <div class="modal-header">
                                             <h5 class="modal-title">Editar</h5>
@@ -138,14 +147,14 @@
 
                                       <!-- Modal eliminar workspace -->
                                       <div class="modal" id="alert<%= workspace._id %>" tabindex="-1">
-                                        <div class="modal-dialog">
+                                        <div class="modal-dialog modal-dialog-centered">
                                           <div class="modal-content">
                                             <div class="modal-header">
                                               <h5 class="modal-title">Eliminar workspace</h5>
                                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                              <p>Está seguro que quiere eliminar el workspace <%= workspace.name %>?</p>
+                                              <p>Está seguro/a que quiere eliminar el workspace <%= workspace.name %>?</p>
                                             </div>
                                             <div class="modal-footer">
                                               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

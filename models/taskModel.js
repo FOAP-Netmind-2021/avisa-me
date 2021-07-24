@@ -16,6 +16,10 @@ const taskSchema = new Schema(
             required:function(){
                 return this.title.length == 0;
             }},
+        trashed: {
+            type: Boolean,
+            default: false
+        },
         color: {
             type: String    
         },

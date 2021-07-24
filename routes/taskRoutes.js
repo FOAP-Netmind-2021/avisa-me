@@ -1,13 +1,22 @@
-var express = require('express');
-var taskControllers = require('../controllers/taskControllers');
-var router = express.Router();
+const express = require('express');
+const taskControllers = require('../controllers/taskControllers');
+const router = express.Router();
 
-// Marcar tarea tarea como completada
+// Marcar nota como completada
 router.get('/:idTask/completed', taskControllers.completedTask);
-
-// Modificar una tarea
-
+// Desmarcar nota completada
+router.get('/:idTask/uncompleted', taskControllers.uncompletedTask);
+// Actualizar nota
 router.post('/updateTask', taskControllers.updateTask);
+// Actualizar color nota
 router.post('/updateTaskColores', taskControllers.updateTaskColores);
+// Enviar la nota a la papelera
+router.post('/trashedTask', taskControllers.trashedTask);
+// Restaurar la nota de la papelera
+router.post('/restoreTask', taskControllers.restoreTask);
+// Eliminar definitivamente una nota
+router.post('/deleteTask', taskControllers.deleteTask);
+// Eliminar definitivamente todas las notas de la papelera
+router.post('/deleteTrashedTasks', taskControllers.deleteTrashedTasks);
 
 module.exports = router;

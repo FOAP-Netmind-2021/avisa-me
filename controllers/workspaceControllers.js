@@ -51,7 +51,7 @@ exports.renderWorkspace = async (req, res) => {
         registerLink = true;
       }
 
-      const allTasks = await workspaceModel.getAllTasks(idWorkspace);
+      const allTasks = await workspaceModel.getUntrashedTasks(idWorkspace);
       let sortedTasks = allTasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
 
       hideCompletedTask = workspace.settings.hideCompletedTask;
@@ -80,6 +80,29 @@ exports.renderWorkspace = async (req, res) => {
     return res.redirect("/");
   }
 };
+
+
+exports.renderTrashspace = async (req, res) => { 
+
+  const { idWorkspace } = req.params;
+
+
+    // Buscamos el workspace
+    const workspace = await workspaceModel.findById(idWorkspace);
+    // Recuperamos todas las tares del workspace anterior cuya propiedad de papelera está en true. Método propio en el modelo.
+    const trashedtasks = await workspaceModel.getTrashedTasks(idWorkspace);
+
+    const sortedTrashedTasks = trashedtasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
+
+
+
+    return res.render('trashspace',{
+      allTasks: sortedTrashedTasks,
+      title: "Papelera",
+      workspace
+    });
+
+}
 
 exports.createWorkspace = async (req, res) => {
 

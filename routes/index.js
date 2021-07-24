@@ -13,6 +13,8 @@ router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
 router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
+router.get('/trashspace/:idWorkspace', workspaceControllers.renderTrashspace);
+
 router.post('/delete/:idWorkspace', workspaceControllers.deleteWorkspace);
 
 router.post('/edit/:idWorkspace', workspaceControllers.editWorkspace);

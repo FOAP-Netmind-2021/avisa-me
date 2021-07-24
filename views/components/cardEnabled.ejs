@@ -14,9 +14,11 @@
           </div>
           <!-- Delete Action -->
           <div>
-            <a href="#" class="d-flex" contenteditable="false" >
-              <!-- <i class="bi bi-x-square"></i> -->
-            </a>
+            <form method="POST" action="/tasks/trashedTask">
+              <input name="idWorkspace" value="<%= workspace._id %>" hidden/>
+              <input name="idTask" value="<%= task._id %>" hidden/>  
+              <a title="Enviar a papelera" class="d-flex" onclick="this.parentNode.submit();"><i class="bi bi-x-square"></i></a>
+            </form>
           </div>
         </div>
         
@@ -47,8 +49,8 @@
         <!-- Action Icons -->
         <div>
           <div class="d-flex">
-            <a data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex pt-2" ><i class="bi bi-check-lg"></i></a>
-            <a id="reminderId" href="#" class="d-flex"> <i class="btn bi-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
+            <a title="Completar tarea" data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex pt-2" ><i class="bi bi-check-lg"></i></a>
+            <a title="Establecer recordatorio" id="reminderId" href="#" class="d-flex"> <i class="btn bi-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <input id="reminder-date-<%=task._id%>" class="dropdown-item" type="date">
                 <input id="reminder-hour-<%=task._id%>" class="dropdown-item" style="width:100%" type="time">
@@ -56,7 +58,7 @@
             </a>
             <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
             <div class="dropup" >       
-              <button class="iconify"   data-icon="noto:artist-palette" data-inline="false"></button>
+              <button title="Color de la nota" class="iconify"   data-icon="noto:artist-palette" data-inline="false"></button>
               <div class="dropup-content" data-id-colores="<%=task._id%>" onclick="updateTask(event)" > 
                 <div>
                   <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Skin"  style="background-color:#fadda4; border-radius: 50px; height: 25px; width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>

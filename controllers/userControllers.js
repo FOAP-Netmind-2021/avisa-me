@@ -143,8 +143,6 @@ exports.renderEditUser = async (req, res) => {
 
 // Edita datos del usuario. POST
 exports.editUser = async (req, res) => {
-
-
     
     const {password, confirm_password, idUser } = req.body;
 

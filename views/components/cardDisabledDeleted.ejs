@@ -1,0 +1,64 @@
+<% allTasks.forEach(task => { %>
+  
+  <% if(task.finishedDate) { %> 
+    <div class="d-flex flex-column gap-3 col-12 col-sm-4 col-md-3 col-lg-2">
+      
+      <!-- Task -->
+      <div id="task-title-<%=task._id%>" class="d-flex flex-column card _cardMain _cardDisabled color-terciary" 
+        data-id="<%=task._id%>" onfocusout="onFocusUpdate(event)" style="background-color:<%=task.color%>">
+       
+        <div class="textMenu d-flex flex-row justify-content-between text-break" >
+          <!-- Task title -->
+          <div id="task-title-<%=task._id%>" class="d-flex card-title text-break task--title">
+            <p contenteditable="true"><%= task.title %></p>
+          </div>
+          <!-- Delete Action -->
+          <div contenteditable="false">
+            <form method="POST" action="/tasks/deleteTask">
+              <input name="idWorkspace" value="<%= workspace._id %>" hidden/>
+              <input name="idTask" value="<%= task._id %>" hidden/>  
+              <a title="Eliminar nota" class="d-flex" onclick="this.parentNode.submit();"><i class="bi bi-x-square"></i></a>
+            </form>
+          </div>
+        </div>
+        
+         <!-- Task text  -->
+        <div id="task-text-<%=task._id%>" class="text-break"> <!-- form-control _card__title -->
+         
+          <p id="task-text-<%=task._id%>" contenteditable="true" class="card-text" placeholder="Añadir una nota">
+            <%= task.text %>
+          </p> 
+          
+        </div>
+        <% if(task.reminderDate){ %> 
+        <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3"> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
+          <span id="reminderTagText-<%=task._id%>" data-reminderdate="<%=task.reminderDate%>" class="reminderTagText">
+            <span id="reminderDay-<%=task._id%>"><%=task.reminderDate.getDate()%></span> <span id="reminderMonth-<%=task._id%>" class="reminderMonth"><%=task.reminderDate.getMonth()%></span> <span id="reminderYear-<%=task._id%>"><%=task.reminderDate.getFullYear()%></span>, <span id="reminderHour-<%=task._id%>"><%=task.reminderDate.getHours()<10?"0"+task.reminderDate.getHours():task.reminderDate.getHours() %></span>:<span id="reminderMinutes-<%=task._id%>"><%= task.reminderDate.getMinutes()<10?"0"+task.reminderDate.getMinutes():task.reminderDate.getMinutes() %></span>
+            <!-- Opción para refactorizar el código en un futuro -->
+            <!-- <span>task.reminderDate.toLocaleDateString("es-Es", {year:"numeric", month:"long",day:"numeric"})</span> -->
+          </span>
+        </div>
+        <% }else{ %>
+          <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3" hidden> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
+            <span id="reminderTagText-<%=task._id%>">
+              <span id="reminderTagTextSpan-<%=task._id%>">
+                  <span id="reminderDay-<%=task._id%>"></span> <span id="reminderMonth-<%=task._id%>" class="reminderMonth"></span> <span id="reminderYear-<%=task._id%>"></span>, <span id="reminderHour-<%=task._id%>"></span>:<span id="reminderMinutes-<%=task._id%>"></span>
+                </span>            
+            </span>
+          </div>
+        <% } %>  
+        <!-- Action Icons -->
+        <div>
+          <div class="d-flex">
+            <form method="POST" action="/tasks/restoreTask">
+              <input name="idWorkspace" value="<%= workspace._id %>" hidden/>
+              <input name="idTask" value="<%= task._id %>" hidden/>  
+              <a title="Restaurar nota" class="d-flex" onclick="this.parentNode.submit();"><i class="bi bi-arrow-counterclockwise"></i></a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+     
+  <% } %>
+<% }) %> 

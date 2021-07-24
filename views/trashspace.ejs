@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <%- include("./partials/_head")  %>
+</head>
+
+<body>
+
+  <!-- Inicio contenedor -->
+  <div class="container-fluid">
+
+    <!-- Única fila | Todo el cuerpo -->
+    <div class="row">
+
+      <!-- Columna menu izquierda workspace. Ocupa una sección del grid - 1/12 -->
+      <div class="col-sm-2 col-md-2 col-lg-1 sticky-top color-primary">
+        <%- include("./partials/navBar")%>
+
+        <!-- MENU LATERAL DESPLEGABLE -->
+        <div class="offcanvas offcanvas-start" style="width:25%;" data-bs-scroll="true" tabindex="-1"
+          id="offcanvasWithBothOptions" aria-labelledby="offcanvasWithBothOptionsLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasWithBothOptionsLabel"></h5>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav">
+              <li class="li">
+                <a href="/<%= workspace._id %>" class="nav-link py-3 px-2 dropdown-item" title=""
+                  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Notes">
+                  <div class="d-flex justify-content-center">
+                    <i class="bi-book fs-3"></i>
+                  </div>
+                </a>
+              </li>
+
+              <li class="li">
+                <a href="#" class="nav-link py-3 px-2 dropdown-item" title="" data-bs-toggle="tooltip"
+                  data-bs-placement="right" data-bs-original-title="Reminder">
+                  <div class="d-flex justify-content-center">
+                    <i class="bi-bell fs-3"></i>
+                  </div>
+                </a>
+              </li>
+
+              <li class="li">
+                <a href="/settings/<%= workspace._id  %>" class="nav-link py-3 px-2 dropdown-item" title=""
+                  data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Settings">
+                  <div class="d-flex justify-content-center">
+                    <i class="bi-sliders fs-3"></i>
+                  </div>
+                </a>
+              </li>
+
+
+              <li class="li">
+                <a href="#" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
+                  data-bs-original-title="Trash">
+                  <div class="d-flex justify-content-center">
+                    <i class="bi-trash fs-3 "></i>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- FIN MENU LATERAL DESPLEGABLE -->
+
+      </div>
+
+      <!-- Columna cuerpo workspace. Ocupa 11 secciones del grid - 11/12 -->
+      <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+        <%- include("./components/messages")  %>
+
+
+        <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->
+        <div class="d-flex justify-content-center">
+          <% if(allTasks.length > 0) { %>
+          <form id="deleteTrashedTasksForm" action="/tasks/deleteTrashedTasks" method="POST">
+            <input type="text" name="idWorkspace" value="<%= workspace._id %>" hidden>
+            <a data-bs-target="#deleteTrashedTasksModal" data-bs-toggle="modal" title="Vaciar papelera" class="d-flex" ><i class="bi bi-trash h1"></i></a>
+          
+
+            <!-- Modal eliminar todas las tareas -->
+            <div id="deleteTrashedTasksModal" class="modal" tabindex="-1">
+              <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Eliminar tareas</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Está seguro/a que quiere eliminar estas tareas? <%= workspace.name %>?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button onclick="document.querySelector('#deleteTrashedTasksForm').submit()" type="button"
+                      class="btn btn-primary">Aceptar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin Modal eliminar todas las tareas -->
+        </form>
+
+
+
+
+
+
+
+          <% } else { %>
+          <p class="h2 text-center">No hay nada en la papelera!</p>
+          <% } %>
+        </div>
+        <!-- Segunda fila del cuerpo. Todas las notas. Izquierda a derecha -->
+        <div class="d-flex flex-row flex-wrap pt-4 gap-2 ">
+
+          <%- include("./components/cardEnabledDeleted")  %>
+
+        </div>
+
+        <div class="d-flex flex-row flex-wrap pt-2 gap-2 ">
+
+          <%- include("./components/cardDisabledDeleted")  %>
+
+        </div>
+
+      </div>
+
+    </div>
+    <!-- Fin única fila | Todo el cuerpo -->
+  </div>
+  <!-- Fin contenedor -->
+
+  <!-- Scripts globales -->
+  <%- include("./partials/_scripts")  %>
+
+  <!-- Scripts específicos -->
+  <script type="text/javascript" src="/js/taskUpdate.js"></script>
+
+
+
+</body>
+
+</html>

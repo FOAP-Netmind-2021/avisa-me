@@ -25,7 +25,7 @@ router.get('/recovery/reset/:token', userControllers.renderResetPassword);
 router.post('/recovery/reset/:token', userControllers.resetPassword);
 
 // Renderiza la página de modificación datos del usuario
-router.get('/edit/:idUser', userControllers.renderEditUser);
+router.get('/edit/:idUser', isAuthenticated, userControllers.renderEditUser);
 // Modifica los datos del usuario
 router.post('/edit/:idUser', userControllers.editUser);
 
@@ -36,7 +36,7 @@ router.get('/login/:idWorkspace', userControllers.renderLogin);
 
 
 // Cierra la sesión del usuario logueado
-router.get("/logout", userControllers.logout);
+router.get("/logout", isAuthenticated, userControllers.logout);
 
 
 module.exports = router;
