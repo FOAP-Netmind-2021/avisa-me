@@ -31,7 +31,6 @@ exports.updateTask = async (req, res) => {
   task.text = textModified.replace(/\n*/g, '').trim();
   if (reminderDate && reminderHour) {
     let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
-    setDate.setHours(setDate.getHours()+2)
     task.reminderDate = setDate;
     task.reminderNotification = null;
   }

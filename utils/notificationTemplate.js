@@ -61,10 +61,10 @@ const notificationTemplate = (header, title, text)=>{
                       <p class="h1 center" style="Margin:0;text-align:center;font-family:'flama-condensed','Arial Narrow',Arial;font-weight:100;font-size:30px;Margin-bottom:26px;">
                         ${header}
                       </p>
-                      <p class="h1 center" style="Margin:0;text-align:center;background-color:grey;font-family:'flama-condensed','Arial Narrow',Arial;font-weight:100;font-size:20px;Margin-bottom:26px;">
+                      <p class="h1 center" style="Margin:0;text-align:center;background-color:rgb(209, 209, 209); fontfont-family:'flama-condensed','Arial Narrow',Arial;font-weight:100;font-size:20px;Margin-bottom:5px; width:250px">
                         ${title}
                       </p>
-                      <p class="h1 center" style="Margin:0;text-align:center;background-color:grey; font-family:'flama-condensed','Arial Narrow',Arial;font-weight:100;font-size:15px;Margin-bottom:26px;">
+                      <p class="h1 center" style="Margin:0;text-align:center;background-color:rgb(209, 209, 209); fontfont-family:'flama-condensed','Arial Narrow',Arial;font-weight:100;font-size:15px;Margin-bottom:5px; width:250px">
                         ${text}
                       </p>
                       <!--[if (gte mso 9)|(IE)]><![endif]-->

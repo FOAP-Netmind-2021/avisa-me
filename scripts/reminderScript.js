@@ -20,7 +20,9 @@ exports.reminderNotificate = async () =>{
           }
         }
     })
+    console.log(allTasks);
     allTasks.forEach(async task =>{
+        console.log(task);
         if(task.workspace.subscription){
             const user = task.workspace.subscription.user;
             let reminderDate = task.reminderDate;
