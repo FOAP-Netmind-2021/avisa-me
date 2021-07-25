@@ -9,7 +9,7 @@ const logger = require('morgan');
 const flash = require("connect-flash");
 const session = require("express-session");
 const passport = require("passport");
-
+const nodeCron = require('node-cron');
 
 
 // Importing routes
@@ -17,7 +17,9 @@ const indexRouter = require('./routes/index');
 const taskRouter = require('./routes/taskRoutes');
 const settingsRouter = require('./routes/settingsRoutes');
 const userRouter = require('./routes/userRoutes');
-const notificationRouter = require("./routes/notificationRoutes");
+
+// Importings scripts
+const reminderScript = require('./scripts/reminderScript');
 
 // Initializations
 const app = express();
@@ -55,10 +57,14 @@ app.use((req, res, next) => {
   next(); // Obliga a continuar hacía adelante.
 });
 
+// Auto run script
+nodeCron.schedule('*/1 * * * *', () => {
+  reminderScript.reminderNotificate();
+  console.log("mensaje enviado");
+});
 
 // Routes. Importing from another file
 app.get('/favicon.ico', (req, res) => res.status(204).send());
-app.use("/enviar-notificaciones", notificationRouter);
 app.use('/', indexRouter);
 app.use('/tasks', taskRouter);
 app.use("/settings", settingsRouter);
