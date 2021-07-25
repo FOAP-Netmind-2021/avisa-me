@@ -76,10 +76,12 @@
               <p>
                 <a  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                   <i class="bi bi-arrow-bar-down fs-2"></i>
-                </a> Detalles
+                  Detalles
+                </a> 
                 <a type="button" id="copyUrlBtn">
                   <i class="bi bi-clipboard fs-3"></i>
-                </a> Copiar URL
+                  Copiar URL
+                </a> 
                 <div id="copyUrlBox" style="display: none;"> <span>Copiada!</span> <input id="copyURL" width="150px" class="col-sm-12 col-md-4 mb-4" type="text" readonly/></div>
 
               </p>
@@ -91,8 +93,8 @@
                         <% const updatedAt = new Date(workspace.updatedAt)%>
                         <% const createdAt = new Date(workspace.createdAt)%>
                         <li><%= workspace.name %></li>
-                        <li>Mod.: <%= updatedAt.getDate()+ "/" + updatedAt.getMonth() + "/" + updatedAt.getFullYear()%></li>
-                        <li>Cre.: <%= createdAt.getDate()+ "/" + createdAt.getMonth() + "/" + createdAt.getFullYear()%></li>
+                        <li>Mod.: <%= updatedAt.getDate()+ "/" + (updatedAt.getMonth() + 1 ) + "/" + updatedAt.getFullYear()%></li>
+                        <li>Cre.: <%= createdAt.getDate()+ "/" + (createdAt.getMonth() + 1 ) + "/" + createdAt.getFullYear()%></li>
                       </ul>
                     </div>
                     <div class="col-sm ">

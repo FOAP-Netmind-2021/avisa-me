@@ -19,9 +19,12 @@
         <%- include("./partials/navBar") %>
       </div>
       <!-- Crear Workspace. Centrado -->
-      <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100">
+      <div class="col-sm-10 col-md-10 col-lg-11 p-4 min-vh-100 d-flex flex-column justify-content-between">
+        
         <%- include("./components/messages") %>
-        <div class="d-flex justify-content-center">
+
+
+        <div class="d-flex justify-content-center mb-4">
           <!-- col-md-4 mx-auto -->
           <div class="_cardMain _cardInput text-break">
             <form action="/" method="POST">
@@ -37,11 +40,75 @@
         </div>
 
         <!-- Segunda fila del cuerpo. -->
-        <div class="d-flex flex-row flex-wrap pt-4 gap-2">
+
+      <!-- How to use -->
+      <div class="d-flex flex-wrap justify-content-end mt-4" >
+
+        <!-- Primera fila - Como empiezo? -->
+        <div class="flex-row d-flex m-auto justify-content-center mt-4" style="border-bottom: 1px dashed  grey;">
+          <img src="/images/howtouse.png" width="40%" alt="howtouse">
         </div>
 
-      </div>
+        <!-- Segunda fila - Demostración app -->
+        <div class="row m-0 p-0">
 
+          <!-- Primera columna - Crear nota -->
+          <div class="d-flex flex-column col-12 col-md-4 col-xl-4 justify-content-center mt-5">
+
+            <div class="col-12 col-md-12 col-xl-12 d-flex justify-content-center ">
+              <video width="100%" height="100%" loop autoplay muted>
+                <source src="/videos/firstTaskText.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+      
+            <div class="col-8 col-md-10 col-xl-4 d-flex m-auto">
+              <video width="100%" height="100%" loop autoplay muted>
+                <source src="/videos/firstTask.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+        <!-- Fin Primera columna - Crear nota -->
+        
+        <!-- Segunda columna - Compartir -->
+          <div class="d-flex col-12 col-md-4 col-xl-4 justify-content-center align-items-center mt-5">
+            
+            <div class="col-12 col-md-12 col-xl-12 d-flex">
+              <video width="100%" height="100%" loop autoplay muted>
+                <source src="/videos/shareText.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+
+          </div>
+        <!-- Fin Segunda columna - Compartir -->
+        
+        <!-- Tercera columna - Editar -->
+          <div class="flex-column col-12 col-md-4 col-xl-4 justify-content-center mt-5">
+            <div class="col-8 col-md-10 col-xl-4 d-flex m-auto">
+              <video width="100%" height="100%" loop autoplay muted>
+                <source src="/videos/editTask.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+            <div class="col-12 col-md-12 col-xl-12 d-flex align-items-center">
+              <video width="100%" height="100%" loop autoplay muted>
+                <source src="/videos/editTaskText.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+            </div>
+          </div>
+        <!-- Fin Tercera columna - Editar -->
+        </div>
+        <!-- Fin Segunda fila - Demostración app -->
+      </div>
+      <!-- End How to use -->
+      
+
+
+      </div>
     </div>
     <!-- Fin única fila | Todo el cuerpo -->
   </div>
