@@ -18,8 +18,8 @@ const taskRouter = require('./routes/taskRoutes');
 const settingsRouter = require('./routes/settingsRoutes');
 const userRouter = require('./routes/userRoutes');
 
-// Importings scripts
-const reminderScript = require('./scripts/reminderScript');
+// Importing utils
+const reminderScript = require('./utils/reminderScript');
 
 // Initializations
 const app = express();
