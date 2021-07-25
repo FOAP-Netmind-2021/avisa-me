@@ -42,7 +42,7 @@
         <!-- Segunda fila del cuerpo. -->
 
       <!-- How to use -->
-      <div class="d-flex flex-wrap justify-content-end mt-4" >
+      <div oncontextmenu="contentMenuDisabled(event)" class="d-flex flex-wrap justify-content-end mt-4" >
 
         <!-- Primera fila - Como empiezo? -->
         <div class="flex-row d-flex m-auto justify-content-center mt-4" style="border-bottom: 1px dashed  grey;">
@@ -117,5 +117,14 @@
   <!-- Scripts globales -->
   <%- include("./partials/_scripts") %>
 </body>
+
+
+<script>
+
+function contentMenuDisabled(e) {
+  e.preventDefault();
+}
+  
+</script>
 
 </html>

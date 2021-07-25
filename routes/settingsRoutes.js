@@ -9,4 +9,7 @@ router.get("/:idWorkspace", settingsControllers.renderSettings);
 
 router.post("/updateSettings", settingsControllers.updateSettings);
 
+router.post("/updateVisibility", settingsControllers.updateVisibility);
+
+
 module.exports = router;

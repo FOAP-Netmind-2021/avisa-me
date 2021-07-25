@@ -47,7 +47,7 @@ const mailTemplate = (title, content)=>{
           <tr>
             <td align="center" class="vervelogoplaceholder" height="143" style="background-color: #1A829C;padding-top:0;padding-bottom:0;padding-right:0;padding-left:0;height:143px;vertical-align:middle;" 
             valign="middle">
-            <span class="sg-image"><a href="#" target="_blank"><img alt="Avisame" height="200" src="https://github.com/FOAP-Netmind-2021/avisa-me/blob/signup-login-17/public/images/logo_avisame.svg" width="200"></a></span></td>
+            <span class="sg-image"><a href="#" target="_blank"><img alt="Avisame" height="200" src="https://avisame-app.herokuapp.com/images/logo_avisame.svg" width="200"></a></span></td>
           </tr>
           <!-- Start of Email Body-->
           <tr>

@@ -11,6 +11,8 @@ router.post('/', taskValidator.createTask , taskValidator.emptyTask, workspaceCo
 
 router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
 
+router.get('/team/hello', workspaceControllers.renderTeamPage);
+
 router.post('/addTask',taskValidator.createTask, taskValidator.emptyTask, workspaceControllers.addTask);
 
 router.get('/trashspace/:idWorkspace', workspaceControllers.renderTrashspace);

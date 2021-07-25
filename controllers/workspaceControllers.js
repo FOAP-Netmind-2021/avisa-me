@@ -12,6 +12,12 @@ exports.renderHome = (req, res) => {
   });
 }
 
+exports.renderTeamPage = (req, res) => {
+  res.render("team", {
+    title: "Team Page" 
+  });
+}
+
 
 exports.renderWorkspace = async (req, res) => {
   
@@ -185,7 +191,7 @@ exports.deleteWorkspace = async (req, res) => {
   await usersubscription.save();
 
   // Informamos y redirigimos
-  req.flash("succes_msg", `El workspace '${workspace.name}' ha sido eliminado con éxito`);
+  req.flash("success_msg", `El workspace '${workspace.name}' ha sido eliminado con éxito`);
   res.redirect("/user/profile");
   }
   catch(err){
@@ -209,6 +215,7 @@ exports.editWorkspace = async (req,res) => {
   req.flash("success_msg", `El workspace ha pasado a llamarse '${name}!'`);
   res.redirect("/user/profile");
 }
+
 
 
 

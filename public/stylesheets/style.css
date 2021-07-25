@@ -220,3 +220,22 @@
 .dropup:hover .dropbtn {
   background-color: #2980B9;
 }
+
+
+/* ----- TEAM PAGE ------ */
+
+.icons_team {
+  text-decoration: none;
+}
+
+.icons_team:hover {
+  cursor:pointer;
+}
+
+* > .fa-hover-show,
+*:hover > .fa-hover-hidden {
+  display: none;
+}
+*:hover > .fa-hover-show {
+  display: inline-block;
+}

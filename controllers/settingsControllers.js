@@ -42,6 +42,27 @@ exports.updateSettings = async (req,res) =>{
     console.log("actualizado", workspace); 
   }
 
+  exports.updateVisibility = async (req, res) => {
+
+    let {idWorkspace} = req.body;
+
+    const workspace = await workspaceModel.findById(idWorkspace);
+
+    if (workspace.settings.visibility){
+      workspace.updateVisibility(false);
+      await workspace.save();
+      req.flash("success_msg", `El workspace es privado ahora!`);
+      console.log(workspace.settings);
+      return res.redirect(`/${idWorkspace}`);
+    }
+
+    workspace.updateVisibility(true)
+    req.flash("success_msg", `El workspace es público ahora!`);
+    console.log(workspace.settings);
+    await workspace.save();
+    return res.redirect(`/${idWorkspace}`);
+  }
+
   exports.exportTasks = async (req, res) => {
 
     const idWorkspace = req.query.idWorkspace;
