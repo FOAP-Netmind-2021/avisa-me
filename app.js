@@ -58,7 +58,7 @@ app.use((req, res, next) => {
 });
 
 // Auto run script
-nodeCron.schedule('*/1 * * * *', () => {
+nodeCron.schedule('*/5 * * * *', () => {
   reminderScript.reminderNotificate();
   console.log("mensaje enviado");
 });
