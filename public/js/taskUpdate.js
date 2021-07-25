@@ -6,15 +6,6 @@ allReminderDates.forEach(reminderDate => {
     reminderDate.classList.remove("reminderTagText");
   }
 })
-console.log(allReminderDates);
-
-
-
-let months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"]
-let reminderMonths = document.querySelectorAll(".reminderMonth");
-reminderMonths.forEach( reminderMonth => {
-  reminderMonth.innerText = months[parseInt(reminderMonth.innerText)];
-})
 
 
 function onFocusUpdate(event){
@@ -24,33 +15,17 @@ function onFocusUpdate(event){
   let reminderDate = event.currentTarget.querySelector(`#reminder-date-${idTask}`).value;
   let reminderHour = event.currentTarget.querySelector(`#reminder-hour-${idTask}`).value;
   let data = {idTask, titleModified, textModified, reminderDate, reminderHour};
-  console.log("****", event);
 
   //Añadir la nota al momento en el lado cliente
   let reminderTag = event.currentTarget.querySelector(`#reminderTag-${idTask}`);
   let reminderTagText = event.currentTarget.querySelector(`#reminderTagText-${idTask}`)
   let reminderTagTextSpan = event.currentTarget.querySelector(`#reminderTagTextSpan-${idTask}`)
-  let reminderTagTextDay = event.currentTarget.querySelector(`#reminderDay-${idTask}`); 
-  let reminderTagTextMonth= event.currentTarget.querySelector(`#reminderMonth-${idTask}`); 
-  let reminderTagTextYear= event.currentTarget.querySelector(`#reminderYear-${idTask}`); 
-  let reminderTagTextHour= event.currentTarget.querySelector(`#reminderHour-${idTask}`); 
-  let reminderTagTextMinutes= event.currentTarget.querySelector(`#reminderMinutes-${idTask}`); 
-  console.log(reminderTagTextSpan)
+  
   if(reminderDate && reminderHour){
     setTimeout(() => {
       let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
-      let setDateDay = setDate.getDate();
-      let setDateMonth = months[parseInt(setDate.getMonth())];
-      let setDateYear = setDate.getFullYear();
-      let setDateHour = setDate.getHours()<10?"0"+setDate.getHours():setDate.getHours();
-      let setDateMinutes = setDate.getMinutes()<10?"0"+setDate.getMinutes():setDate.getMinutes();
       reminderTag.removeAttribute("hidden");
-      //SOLVENTAR ESTE BUG relacionado con la linea 33
-      reminderTagTextDay.innerText = setDateDay;
-      reminderTagTextMonth.innerText = setDateMonth;
-      reminderTagTextYear.innerText = setDateYear;
-      reminderTagTextHour.innerText = setDateHour;
-      reminderTagTextMinutes.innerText = setDateMinutes;
+      reminderTagTextSpan.innerText =`${setDate.toLocaleString("es-Es", {year:"numeric", month:"short",day:"numeric"})}, ${setDate.toLocaleString("es-Es", {hour: 'numeric', minute: '2-digit'})}`
     
       if(setDate<new Date()){
         reminderTagText.classList.remove("reminderTagText");

@@ -32,9 +32,8 @@
         <% if(task.reminderDate){ %> 
         <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3"> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
           <span id="reminderTagText-<%=task._id%>" data-reminderdate="<%=task.reminderDate%>" class="reminderTagText">
-            <span id="reminderDay-<%=task._id%>"><%=task.reminderDate.getDate()%></span> <span id="reminderMonth-<%=task._id%>" class="reminderMonth"><%=task.reminderDate.getMonth()%></span> <span id="reminderYear-<%=task._id%>"><%=task.reminderDate.getFullYear()%></span>, <span id="reminderHour-<%=task._id%>"><%=task.reminderDate.getHours()<10?"0"+task.reminderDate.getHours():task.reminderDate.getHours() %></span>:<span id="reminderMinutes-<%=task._id%>"><%= task.reminderDate.getMinutes()<10?"0"+task.reminderDate.getMinutes():task.reminderDate.getMinutes() %></span>
-            <!-- Opción para refactorizar el código en un futuro -->
-            <!-- <span>task.reminderDate.toLocaleDateString("es-Es", {year:"numeric", month:"long",day:"numeric"})</span> -->
+            <span id="reminderTagTextSpan-<%=task._id%>"><%=`${task.reminderDate.toLocaleDateString("es-Es", {year:"numeric", month:"short",day:"numeric"})}, ${task.reminderDate.toLocaleTimeString("es-Es", {hour: 'numeric', minute: '2-digit'})}`%></span>
+          </span>
           </span>
         </div>
         <% }else{ %>
@@ -52,8 +51,13 @@
             <a title="Completar tarea" data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex pt-2" ><i class="bi bi-check-lg"></i></a>
             <a title="Establecer recordatorio" id="reminderId" href="#" class="d-flex"> <i class="btn bi-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <input id="reminder-date-<%=task._id%>" class="dropdown-item" type="date">
-                <input id="reminder-hour-<%=task._id%>" class="dropdown-item" style="width:100%" type="time">
+                <% if(task.reminderDate){ %> 
+                <input  type="date" id="reminder-date-<%=task._id%>" value="<%=task.reminderDate.toLocaleDateString('en-CA')%>" class="dropdown-item">
+                <input  type="time" id="reminder-hour-<%=task._id%>" value="<%=task.reminderDate.toLocaleTimeString('es-Es', {hour: '2-digit', minute: '2-digit'})%>" class="dropdown-item" type="date" class="dropdown-item" style="width:100%">
+                <% }else{ %> 
+                  <input id="reminder-date-<%=task._id%>" value="dd/mm/yyyy" class="dropdown-item" type="date">
+                  <input id="reminder-hour-<%=task._id%>" class="dropdown-item" value="--:--" style="width:100%" type="time">
+                  <% } %> 
               </ul>
             </a>
             <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
