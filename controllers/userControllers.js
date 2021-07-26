@@ -105,9 +105,6 @@ exports.renderUserProfile = async  (req, res) => {
 exports.renderResetPassword = async (req, res) => {
 
 
-    if(req.user){
-
-    }
     const token = req.params.token;
     // Buscamos el usuario con el token recibido dentro del tiempo permitido
     const user = await userModel.findOne({ resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() } });

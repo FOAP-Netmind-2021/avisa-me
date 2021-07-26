@@ -52,6 +52,14 @@
   p {
     min-width: 100%;
   }
+
+  .icons {
+    text-decoration: none;
+  }
+  
+  .icons:hover {
+    cursor:pointer;
+  }
   
 /* ------ MAIN CARD ------------- */
 

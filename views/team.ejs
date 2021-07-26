@@ -77,327 +77,47 @@
    
               <div class="d-flex flex-row flex-wrap gap-3 justify-content-center ">       
 
-                <!-- Ariel -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-        
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                  
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Ariel Fabian</p>
+                <% team.forEach( person => { %> 
+                  <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
+          
+                    <!-- card -->
+                    <div class="d-flex flex-column card _cardMain">
+                    
+                      <div class="textMenu d-flex flex-row justify-content-between text-break" >
+                        <!-- person name -->
+                        <div class="d-flex card-title text-break task--title">
+                          <p><%= person.name %></p>
+                        </div>
+                        <!-- Delete Action -->
+                        <div>
+                            <i class="bi bi-x-square fa-hover-hidden"></i>
+                            <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
+                        </div>
                       </div>
-                      <!-- Delete Action -->
+                      
+                      <!-- person text  -->
+                      <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
+            
+                        <img src="<%= person.image %>" width="50" alt="">
+                        <a class="icons_team" onclick="location.href='<%= person.GitHub %>'"><i class="bi bi-github fs-3"></i> GitHub</a>
+                        <a class="icons_team" onclick="location.href='<%= person.Linkedin %>'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
+
+                      </div>
+                      <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
+                        <p class="m-0"><%= person.quote %></p>
+                    </div>
+                      
+                      <!-- Action Icons -->
                       <div>
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
+                        <div class="d-flex">
+                            <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
+                        </div>
                       </div>
                     </div>
-                    
-                    <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://avatars.githubusercontent.com/u/79173115?v=4" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/ArielFabianN'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='#'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Pon un emoticono en tu vida 😜</p>
                   </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Ariel -->
+                <% }) %> 
 
-                <!-- Arnau -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-        
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                  
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Arnau Mas</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div>
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                    <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://media-exp1.licdn.com/dms/image/C4D03AQEiiSZIJ3tVWg/profile-displayphoto-shrink_800_800/0/1613426784148?e=1632960000&v=beta&t=ENw0-aEy0Y10hkF8bYvRMp6nnSkCMc4nVF8TGHJiIaM" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/Arnau-Mas'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='https://www.linkedin.com/in/arnaum/'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
-
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Tech enthusiast</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Arnau -->
-
-                <!-- Cristian -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-      
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                   
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Cristian Cullell</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div contenteditable="false">
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                     <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://avatars.githubusercontent.com/u/78435266?v=4" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/cristian-cll'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='https://www.linkedin.com/in/ccullell/'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
- 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Codeholic & curious</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Cristian -->
-
-                <!-- Ignacio -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-      
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                   
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Ignacio Spadavecchia</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div contenteditable="false">
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                     <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://media-exp1.licdn.com/dms/image/C4D03AQGgWKqXSMFYSQ/profile-displayphoto-shrink_800_800/0/1617356292376?e=1632960000&v=beta&t=OP_AEhVAHFSfXvAddutosOkP0dDMJfsLJCQ9LwhJqHw" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/ignaciospadavecchia'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='https://www.linkedin.com/in/ignacio-spadavecchia/'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
- 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Cita de Ignacio</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Ignacio -->
-                
-                <!-- Jose -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-      
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                   
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Jose Castillo</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div contenteditable="false">
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                     <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://avatars.githubusercontent.com/u/66061624?v=4" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/josecastp'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='#'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
- 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Cita de Jose</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Jose -->
-
-                <!-- Mohsin -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-      
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                   
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Mohsin Zaman</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div contenteditable="false">
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                     <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://avatars.githubusercontent.com/u/80530839?v=4" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/MohsinZamanShaheen'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='https://www.linkedin.com/in/mohsin-z-166609173/'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
- 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Cita de Mohsin</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Mohsin -->
-
-                <!-- Qamar -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-      
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                   
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Qamar Zaman</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div contenteditable="false">
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                     <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://avatars.githubusercontent.com/u/80703547?v=4" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/Qamar1806'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='https://www.linkedin.com/in/qamar-zaman-87624615a/'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
- 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Cita de Qamar</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Qamar -->
-
-                <!-- Vanessa -->
-                <div class="d-flex flex-column gap-3 col-12 col-sm-8 col-md-6 col-lg-3 col-xl-2">
-      
-                  <!-- Task -->
-                  <div class="d-flex flex-column card _cardMain">
-                   
-                    <div class="textMenu d-flex flex-row justify-content-between text-break" >
-                      <!-- Task title -->
-                      <div class="d-flex card-title text-break task--title">
-                        <p>Vanessa Collazos</p>
-                      </div>
-                      <!-- Delete Action -->
-                      <div contenteditable="false">
-                          <i class="bi bi-x-square fa-hover-hidden"></i>
-                          <i title="No me elimines!" class="bi bi-emoji-laughing fa-hover-show"></i>            
-                      </div>
-                    </div>
-                    
-                     <!-- Task text  -->
-                    <div class=" d-flex justify-content-center align-items-center gap-3 text-break"> <!-- form-control _card__title -->
-          
-                      <img src="https://media-exp1.licdn.com/dms/image/C4E03AQHdb-mhWP0ejA/profile-displayphoto-shrink_800_800/0/1611663951254?e=1632960000&v=beta&t=6YwvFhDtzxpe6-vLmbs_0Oe-Nbdg8WIyMN_YVpgFdv8" width="50" alt="">
-                      <a class="icons_team" onclick="location.href='https://github.com/vcollazos'"><i class="bi bi-github fs-3"></i> GitHub</a>
-                      <a class="icons_team" onclick="location.href='https://www.linkedin.com/in/vanessa-collazos-alvarez-29901282/'"><i class="bi bi-linkedin fs-3"></i> Linkedin</a>
- 
-                    </div>
-                    <div class=" d-flex text-center align-items-center gap-4"> <!-- form-control _card__title -->
-                      <p class="m-0">Cita de Vanessa</p>
-                  </div>
-                    
-                    <!-- Action Icons -->
-                    <div>
-                      <div class="d-flex">
-                          <a onclick="rotate(event)" ><i class="bi bi-arrow-counterclockwise"></i></a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- End Vanessa -->
- 
-  
               </div>
 
           </div>
@@ -413,10 +133,13 @@
   <!-- Scripts específicos -->
   <script>
     function rotate(event){
+      console.log(event);
       event.path[5].style.transition = "1s";
       event.path[5].style.transform = "rotate(360deg)";
+      event.bubbles = false
     }
   </script>
+
 
   </body>
   

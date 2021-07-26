@@ -6,7 +6,6 @@ const exportFromJSON = require('export-from-json'); // Para exportar las tareas
 exports.renderSettings = async (req,res) =>{
 
     const { idWorkspace } = req.params;
-    console.log("console de id render", idWorkspace);
     const workSpace = await workspaceModel.findById(idWorkspace);
     const settings = workSpace.settings;
     const errors = validationResult(req);
@@ -48,20 +47,15 @@ exports.updateSettings = async (req,res) =>{
 
     const workspace = await workspaceModel.findById(idWorkspace);
 
-    if (workspace.settings.visibility){
-      workspace.updateVisibility(false);
-      await workspace.save();
-      req.flash("success_msg", `El workspace es privado ahora!`);
-      console.log(workspace.settings);
-      return res.redirect(`/${idWorkspace}`);
-    }
-
-    workspace.updateVisibility(true)
-    req.flash("success_msg", `El workspace es público ahora!`);
-    console.log(workspace.settings);
+    // Función propia del modelo. Toggle
+    workspace.updateVisibility();
     await workspace.save();
+
+    workspace.settings.visibility ? req.flash("success_msg", `El workspace es público ahora!`) : req.flash("success_msg", `El workspace es privado ahora!`);
+
     return res.redirect(`/${idWorkspace}`);
   }
+
 
   exports.exportTasks = async (req, res) => {
 

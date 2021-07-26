@@ -53,7 +53,6 @@
                   </a>
                 </li>
 
-                
                 <li class="li">
                   <a href="/trashspace/<%= workspace._id %>" class="nav-link dropdown-item" title="" data-bs-toggle="tooltip" data-bs-placement="right"
                     data-bs-original-title="Trash">
@@ -73,28 +72,28 @@
             <%- include("./components/messages")  %> 
             <% if(registerLink){ %> <a href="/user/signup/<%= workspace._id %>">Regístrese</a> o <a href="/user/login/<%= workspace._id %>">Inicie sesión</a> para añadir este workspace a su colección!<% } %> 
 
-            <div class="col-sm-12 col-md-5 d-flex flex-wrap gap-3">
-                <a  title="Detalles del workspace" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                  <i class="bi bi-arrow-bar-down fs-3"></i> Detalles
+            <div class="col-sm-12 col-md-7 col-lg-5 col-xl-4 d-flex flex-wrap gap-3 mb-3 justify-content-center">
+                <a class="icons" title="Detalles del workspace" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" style="text-decoration: none;">
+                  <i class="icons bi bi-arrow-bar-down fs-3"></i> Detalles
                 </a> 
                 <% if(user) { %> <!-- Si el usuario está logueado podrá ocultar el workspace  -->
                   <% if(!workspace.settings.visibility) { %> 
                     <form action="/settings/updateVisibility" method="POST">
                       <input type="hidden" name="idWorkspace" value="<%= workspace._id %>">
-                      <a onclick="this.parentNode.submit()" title="Click para hacer público este workspace">
+                      <a class="icons" onclick="this.parentNode.submit()" title="Click para hacer público este workspace">
                         <i class="bi bi-eye-slash fs-3"></i> Privado
                       </a>
                     </form>
                   <% } else { %>
                     <form action="/settings/updateVisibility" method="POST">
                       <input type="hidden" name="idWorkspace" value="<%= workspace._id %>">
-                      <a type="button" onclick="this.parentNode.submit()" title="Click para hacer privado este workspace">
+                      <a class="icons" onclick="this.parentNode.submit()" title="Click para hacer privado este workspace">
                         <i class="bi bi-eye fs-3"></i> Público
                       </a>
                     </form>
                   <% } %> 
                 <% } %> 
-                <a type="button" title="Copia y comparte tu espacio!" id="copyUrlBtn">
+                <a class="icons" type="button" title="Copia y comparte tu espacio!" id="copyUrlBtn">
                   <i class="bi bi-clipboard fs-3"></i>
                   Copiar URL
                 </a> 
@@ -105,12 +104,12 @@
                 <div class="_cardMain _cardInput text-break col-sm-12 col-md-6 col-xl-4 mb-4">
                   <div class="row">
                     <div class="col-sm">
-                      <ul><b>Título: </b>
+                      <ul><b>Workspace: </b>
                         <% const updatedAt = new Date(workspace.updatedAt)%>
                         <% const createdAt = new Date(workspace.createdAt)%>
                         <li><%= workspace.name %></li>
-                        <li>Mod.: <%= updatedAt.getDate()+ "/" + (updatedAt.getMonth() + 1 ) + "/" + updatedAt.getFullYear()%></li>
-                        <li>Cre.: <%= createdAt.getDate()+ "/" + (createdAt.getMonth() + 1 ) + "/" + createdAt.getFullYear()%></li>
+                        <li>Modificado: <%= updatedAt.getDate() + "/" + (updatedAt.getMonth() + 1 ) + "/" + updatedAt.getFullYear()%></li>
+                        <li>Creado: <%= createdAt.getDate() + "/" + (createdAt.getMonth() + 1 ) + "/" + createdAt.getFullYear()%></li>
                       </ul>
                     </div>
                     <div class="col-sm ">
@@ -123,9 +122,6 @@
                   </div>
                 </div>
               </div>
-
-              
-             
 
               
             <!-- Primera fila del cuerpo. Crear primera nota. Centrado -->

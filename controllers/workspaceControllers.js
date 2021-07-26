@@ -13,8 +13,71 @@ exports.renderHome = (req, res) => {
 }
 
 exports.renderTeamPage = (req, res) => {
+
+  const team = [
+    {
+      name: "Cristian Cullell",
+      GitHub: "https://github.com/cristian-cll",
+      Linkedin: "https://www.linkedin.com/in/ccullell/",
+      image: "https://avatars.githubusercontent.com/u/78435266?v=4",
+      quote: "Codeholic & curious"
+    },
+    {
+      name: "Arnau Mas",
+      GitHub: "https://github.com/Arnau-Mas",
+      Linkedin: "https://www.linkedin.com/in/arnaum/",
+      image: "https://media-exp1.licdn.com/dms/image/C4D03AQEiiSZIJ3tVWg/profile-displayphoto-shrink_800_800/0/1613426784148?e=1632960000&v=beta&t=ENw0-aEy0Y10hkF8bYvRMp6nnSkCMc4nVF8TGHJiIaM",
+      quote: "Tech enthusiast"
+    },
+    {
+      name: "Ignacio Spadavecchia",
+      GitHub: "https://github.com/ignaciospadavecchia",
+      Linkedin: "https://www.linkedin.com/in/ignacio-spadavecchia/",
+      image: "https://media-exp1.licdn.com/dms/image/C4D03AQGgWKqXSMFYSQ/profile-displayphoto-shrink_800_800/0/1617356292376?e=1632960000&v=beta&t=OP_AEhVAHFSfXvAddutosOkP0dDMJfsLJCQ9LwhJqHw",
+      quote: "Cita de Ignacio"
+    },
+    {
+      name: "Jose Castillo",
+      GitHub: "https://github.com/josecastp",
+      Linkedin: "https://www.linkedin.com/in/jose-antonio-castillo-p%C3%A9rez-b52401105/",
+      image: "https://avatars.githubusercontent.com/u/66061624?v=4",
+      quote: "Cita de Jose"
+    },
+    {
+      name: "Vanessa Collazos",
+      GitHub: "https://github.com/vcollazos",
+      Linkedin: "https://www.linkedin.com/in/vanessa-collazos-alvarez-29901282/",
+      image: "https://media-exp1.licdn.com/dms/image/C4E03AQHdb-mhWP0ejA/profile-displayphoto-shrink_800_800/0/1611663951254?e=1632960000&v=beta&t=6YwvFhDtzxpe6-vLmbs_0Oe-Nbdg8WIyMN_YVpgFdv8",
+      quote: "Resolutiva y creativa"
+    },
+    {
+      name: "Mohsin Zaman",
+      GitHub: "https://github.com/MohsinZamanShaheen",
+      Linkedin: "https://www.linkedin.com/in/mohsin-z-166609173/",
+      image: "https://avatars.githubusercontent.com/u/80530839?v=4",
+      quote: "Cita de Mohsin"
+    },
+    {
+      name: "Qamar Zaman",
+      GitHub: "https://github.com/Qamar1806",
+      Linkedin: "https://www.linkedin.com/in/qamar-zaman-87624615a/",
+      image: "https://avatars.githubusercontent.com/u/80703547?v=4",
+      quote: "Cita de Qamar"
+    },
+    {
+      name: "Ariel Fabian",
+      GitHub: "https://github.com/ArielFabianN",
+      Linkedin: "#",
+      image: "https://avatars.githubusercontent.com/u/79173115?v=4",
+      quote: "Unicorn coach"
+    }
+  ];
+
+  team.sort((a,b) => a.name.localeCompare(b.name));
+
   res.render("team", {
-    title: "Team Page" 
+    title: "Team Page",
+    team
   });
 }
 
@@ -100,8 +163,6 @@ exports.renderTrashspace = async (req, res) => {
 
     const sortedTrashedTasks = trashedtasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
 
-
-
     return res.render('trashspace',{
       allTasks: sortedTrashedTasks,
       title: "Papelera",
@@ -118,7 +179,6 @@ exports.createWorkspace = async (req, res) => {
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-
     
   // Creamos un workspace
   const workspace = new workspaceModel();
@@ -150,7 +210,7 @@ exports.createWorkspace = async (req, res) => {
     }
 
     // Privatizamos el workspace
-    workspace.updateVisibility(false);
+    workspace.updateVisibility();
     // Añadimos la suscripción al workspace
     workspace.subscription = userSubscription._id
 
@@ -215,9 +275,6 @@ exports.editWorkspace = async (req,res) => {
   req.flash("success_msg", `El workspace ha pasado a llamarse '${name}!'`);
   res.redirect("/user/profile");
 }
-
-
-
 
 
 exports.addTask = async (req,res) => {

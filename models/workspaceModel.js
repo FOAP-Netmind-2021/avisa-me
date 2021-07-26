@@ -85,8 +85,11 @@ workspaceSchema.methods.changeName = function(name){
     return this.name = name;
 }
 
-workspaceSchema.methods.updateVisibility = function (type){
-    this.settings.visibility = type;
+workspaceSchema.methods.updateVisibility = function (){
+    if(this.settings.visibility){
+        return this.settings.visibility = false;
+    }
+    return this.settings.visibility = true;
 }
 
 
