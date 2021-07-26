@@ -11,7 +11,7 @@
     
     //Comprobamos que el primer caracter no sea un espacio (para evitar crear tareas vacias):
     let soloEspacios = false;
-    let pattern = /\S/; //Encuentra cualqwuier caracter que NO es un espacio en blanco.
+    let pattern = /\S/; //Encuentra cualquier carácter que NO es un espacio en blanco.
     let caracterTitulo = pattern.test(titulo.value);  
     let caracterTexto = pattern.test(texto.value);  
 
