@@ -10,17 +10,12 @@
     let texto = document.querySelector("#text");
     
     //Comprobamos que el primer caracter no sea un espacio (para evitar crear tareas vacias):
-    /* let espacioInicio = false;
-    let pattern = /^[ ]/;
-    let espacioTitulo = pattern.test(titulo.value.charAt(0));  
-    let espacioTexto = pattern.test(texto.value.charAt(0));  
-         */
     let soloEspacios = false;
-    let pattern = /[\x21-\x7E]/;
-    let espacioTitulo = pattern.test(titulo.value);  
-    let espacioTexto = pattern.test(texto.value);  
+    let pattern = /\S/; //Encuentra cualqwuier caracter que NO es un espacio en blanco.
+    let caracterTitulo = pattern.test(titulo.value);  
+    let caracterTexto = pattern.test(texto.value);  
 
-      if(espacioTitulo || espacioTexto){
+      if(caracterTitulo || caracterTexto){
        soloEspacios= false;
       }else{
        soloEspacios = true;
