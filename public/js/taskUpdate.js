@@ -58,13 +58,9 @@ headers:{ //es necesario
 }
 
 function updateReminderDate(event){
-  console.log(event.target.id)
   let idTask = event.currentTarget.dataset.datetime; 
-  console.log(idTask);
   let reminderDate = event.currentTarget.querySelector(`#reminder-date-${idTask}`).value;
-  console.log(reminderDate);
   let reminderHour = event.currentTarget.querySelector(`#reminder-hour-${idTask}`).value;
-  console.log(reminderHour);
   let reminderTag = document.querySelector(`#reminderTag-${idTask}`);
   let reminderTagText = document.querySelector(`#reminderTagText-${idTask}`)
   let reminderTagTextSpan = document.querySelector(`#reminderTagTextSpan-${idTask}`)
@@ -73,7 +69,6 @@ function updateReminderDate(event){
   if(reminderDate && reminderHour){
     setTimeout(() => {
       let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
-      console.log("setDate", setDate);
       reminderTag.removeAttribute("hidden");
       reminderTagTextSpan.innerText =`${setDate.toLocaleString("es-Es", {year:"numeric", month:"short",day:"numeric"})}, ${setDate.toLocaleString("es-Es", {hour: 'numeric', minute: '2-digit'})}`
     
