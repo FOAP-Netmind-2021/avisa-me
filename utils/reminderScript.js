@@ -4,10 +4,10 @@ var {notificationTemplate} = require("../utils/notificationTemplate")
 
 exports.reminderNotificate = async () =>{
     let initDate = new Date(); 
-    initDate.setHours(initDate.getHours()+10)
+    initDate.setHours(initDate.getHours()+8)
     initDate.setMinutes(initDate.getMinutes()-5)
     let limitDate = new Date();
-    limitDate.setHours(limitDate.getHours()+10)
+    limitDate.setHours(limitDate.getHours()+8)
     limitDate.setMinutes(limitDate.getMinutes()+5)
     console.log(initDate);
     console.log(limitDate);

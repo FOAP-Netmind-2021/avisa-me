@@ -30,17 +30,16 @@
           </p> 
         </div>
         <% if(task.reminderDate){ %> 
-        <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3"> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
+        <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3">
           <span id="reminderTagText-<%=task._id%>" data-reminderdate="<%=task.reminderDate%>" class="reminderTagText">
             <span id="reminderTagTextSpan-<%=task._id%>"><%=`${task.reminderDate.toLocaleDateString("es-Es", {year:"numeric", month:"short",day:"numeric"})}, ${task.reminderDate.toLocaleTimeString("es-Es", {hour: 'numeric', minute: '2-digit'})}`%></span>
           </span>
           </span>
         </div>
         <% }else{ %>
-          <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3" hidden> <!-- REVISAR MARGEN ENTRE TEXTO Y HORA/ICONOS PORQUE FALTABA UN </DIV> -->
+          <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3" hidden>
             <span id="reminderTagText-<%=task._id%>">
               <span id="reminderTagTextSpan-<%=task._id%>">
-                  <span id="reminderDay-<%=task._id%>"></span> <span id="reminderMonth-<%=task._id%>" class="reminderMonth"></span> <span id="reminderYear-<%=task._id%>"></span>, <span id="reminderHour-<%=task._id%>"></span>:<span id="reminderMinutes-<%=task._id%>"></span>
                 </span>            
             </span>
           </div>
@@ -50,17 +49,16 @@
           <div class="d-flex">
             <a title="Completar tarea" data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex pt-2" ><i class="bi bi-check-lg"></i></a>
             <a title="Establecer recordatorio" id="reminderId" href="#" class="d-flex"> <i class="btn bi-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
-              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <ul data-datetime="<%=task._id%>" onfocusout="updateReminderDate(event)"  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                 <% if(task.reminderDate){ %> 
                 <input  type="date" id="reminder-date-<%=task._id%>" value="<%=task.reminderDate.toLocaleDateString('en-CA')%>" class="dropdown-item">
                 <input  type="time" id="reminder-hour-<%=task._id%>" value="<%=task.reminderDate.toLocaleTimeString('es-Es', {hour: '2-digit', minute: '2-digit'})%>" class="dropdown-item" type="date" class="dropdown-item" style="width:100%">
                 <% }else{ %> 
-                  <input id="reminder-date-<%=task._id%>" value="dd/mm/yyyy" class="dropdown-item" type="date">
-                  <input id="reminder-hour-<%=task._id%>" class="dropdown-item" value="--:--" style="width:100%" type="time">
+                  <input id="reminder-date-<%=task._id%>" value="<%=new Date().toLocaleDateString('en-CA')%>" class="dropdown-item" type="date">
+                  <input id="reminder-hour-<%=task._id%>" value="00:00"  class="dropdown-item" style="width:100%" type="time">
                   <% } %> 
               </ul>
             </a>
-            <!-- <a href="#" class="d-flex p-2"><i class="bi bi-upload"></i></a> -->
             <div class="dropup" >       
               <button title="Color de la nota" class="iconify"   data-icon="noto:artist-palette" data-inline="false"></button>
               <div class="dropup-content" data-id-colores="<%=task._id%>" onclick="updateTask(event)" > 

@@ -159,3 +159,20 @@ exports.deleteTrashedTasks = async (req, res) => {
   req.flash("success_msg", `Se han eliminado todas las notas!`);
   return res.redirect(`/trashspace/${idWorkspace}`); 
 };
+
+exports.updateReminderDate = async (req,res)=>{
+  const {idTask, reminderDate, reminderHour} = req.body;
+  const task = await taskModel.findById(idTask);
+  if (reminderDate && reminderHour) {
+    let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
+    task.reminderDate = setDate;
+    task.reminderNotification = null;
+  }
+  
+  await task.save();
+
+  res.send({
+    success : true,
+  })
+
+}

@@ -18,5 +18,6 @@ router.post('/restoreTask', taskControllers.restoreTask);
 router.post('/deleteTask', taskControllers.deleteTask);
 // Eliminar definitivamente todas las notas de la papelera
 router.post('/deleteTrashedTasks', taskControllers.deleteTrashedTasks);
-
+// Actualizar la fecha de recordatorio
+router.post('/updateReminderDate', taskControllers.updateReminderDate);
 module.exports = router;
