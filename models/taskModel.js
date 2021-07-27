@@ -5,14 +5,11 @@ const {Schema, model} = require('mongoose');
 function validator (val){
     if(val.length > 0){
         return /\S/.test(val); //Devuelve 'true' si encuentra cualquier caracter que NO es un espacio en blanco.
-    }else{
-        return true;
     }
-    
 }
 
 //Iniciamos la constante 'custon'; contiene la función de validación y un mensaje personalizado:
-const custom = [validator, 'Oh oh, sólo has introducido espacios!!!!!'];
+const custom = [validator, 'Oh oh, sólo has introducido espacios en un campo!!!!!'];
 
 // Cada Nota tiene su propia ID única. 
 const taskSchema = new Schema(
@@ -22,7 +19,7 @@ const taskSchema = new Schema(
             maxlength: 140,
             validate: custom, 
             required:function(){
-           return this.text.length == 0;
+            return this.text.length == 0;
         }},
         text : {
             type: String,
