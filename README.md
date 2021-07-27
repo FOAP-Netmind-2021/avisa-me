@@ -30,6 +30,19 @@ npm start...
 
 ## Demo de la aplicación
 
+
+
+
+
+
+https://user-images.githubusercontent.com/80530839/127242060-3aad3520-f6eb-4056-a1fd-45fab455f593.mp4
+
+
+
+
+
+
+
 Pàgina Web [Avísame](https://avisame-app.herokuapp.com/)
 
 ---
