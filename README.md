@@ -90,5 +90,3 @@ Puedes encontrar información de cómo hemos llevado a cabo este proyecto en [Wi
 
 
 ---
-
-Prueba de Jose
