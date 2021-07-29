@@ -72,6 +72,10 @@ workspaceSchema.statics.getUntrashedTasks = async function (id){
     return await taskModel.find({workspace: id, trashed : false });
 }
 
+workspaceSchema.statics.getReminderTasks = async function (id){
+    return await taskModel.find({workspace: id, trashed : false, reminderDate : { $exists: true } });
+}
+
 workspaceSchema.statics.getDetails = async function (id){
 
     const tasks = {}
@@ -86,10 +90,7 @@ workspaceSchema.methods.changeName = function(name){
 }
 
 workspaceSchema.methods.updateVisibility = function (){
-    if(this.settings.visibility){
-        return this.settings.visibility = false;
-    }
-    return this.settings.visibility = true;
+    return this.settings.visibility = !this.settings.visibility;
 }
 
 

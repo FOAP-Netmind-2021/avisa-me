@@ -34,14 +34,14 @@ exports.renderTeamPage = (req, res) => {
       GitHub: "https://github.com/ignaciospadavecchia",
       Linkedin: "https://www.linkedin.com/in/ignacio-spadavecchia/",
       image: "https://media-exp1.licdn.com/dms/image/C4D03AQGgWKqXSMFYSQ/profile-displayphoto-shrink_800_800/0/1617356292376?e=1632960000&v=beta&t=OP_AEhVAHFSfXvAddutosOkP0dDMJfsLJCQ9LwhJqHw",
-      quote: "Cita de Ignacio"
+      quote: "The code craftman"
     },
     {
       name: "Jose Castillo",
       GitHub: "https://github.com/josecastp",
       Linkedin: "https://www.linkedin.com/in/jose-antonio-castillo-p%C3%A9rez-b52401105/",
       image: "https://avatars.githubusercontent.com/u/66061624?v=4",
-      quote: "Cita de Jose"
+      quote: "Keep Calm"
     },
     {
       name: "Vanessa Collazos",
@@ -55,19 +55,19 @@ exports.renderTeamPage = (req, res) => {
       GitHub: "https://github.com/MohsinZamanShaheen",
       Linkedin: "https://www.linkedin.com/in/mohsin-z-166609173/",
       image: "https://avatars.githubusercontent.com/u/80530839?v=4",
-      quote: "Cita de Mohsin"
+      quote: "Non-stop Hustler"
     },
     {
       name: "Qamar Zaman",
       GitHub: "https://github.com/Qamar1806",
       Linkedin: "https://www.linkedin.com/in/qamar-zaman-87624615a/",
       image: "https://avatars.githubusercontent.com/u/80703547?v=4",
-      quote: "Cita de Qamar"
+      quote: "Consistent adaptable"
     },
     {
-      name: "Ariel Fabian",
+      name: "Ariel Fabián Neme",
       GitHub: "https://github.com/ArielFabianN",
-      Linkedin: "#",
+      Linkedin: "https://www.linkedin.com/in/arielneme/",
       image: "https://avatars.githubusercontent.com/u/79173115?v=4",
       quote: "Unicorn coach"
     }
@@ -83,7 +83,7 @@ exports.renderTeamPage = (req, res) => {
 
 
 exports.renderWorkspace = async (req, res) => {
-  
+
   const { idWorkspace } = req.params;
 
   try{ // Si alguien introduce un string, no puede castearlo como ID
@@ -120,7 +120,14 @@ exports.renderWorkspace = async (req, res) => {
         registerLink = true;
       }
 
-      const allTasks = await workspaceModel.getUntrashedTasks(idWorkspace);
+      let allTasks;
+      
+      // Si acceden a través del parámetro "tasksReminder" ex.  host.com/:idWorkspace/?tasksReminder
+      // Filtraremos las tareas con recordatorio. En caso contrario, se renderizan las que no están en la papelera, incluídas con o sin recordatorio.
+      req.query.tasksReminder ? allTasks = await workspaceModel.getReminderTasks(idWorkspace) : allTasks = await workspaceModel.getUntrashedTasks(idWorkspace);
+
+      console.log(allTasks);
+
       let sortedTasks = allTasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
 
       hideCompletedTask = workspace.settings.hideCompletedTask;
@@ -129,7 +136,6 @@ exports.renderWorkspace = async (req, res) => {
         sortedTasks = sortedTasks.filter(task => task.finishedDate == undefined); 
       }
 
-    
       const tasksDetail = await workspaceModel.getDetails(idWorkspace);
 
       return res.render('workspace',{
@@ -151,23 +157,40 @@ exports.renderWorkspace = async (req, res) => {
 };
 
 
+
+
 exports.renderTrashspace = async (req, res) => { 
 
   const { idWorkspace } = req.params;
 
-
     // Buscamos el workspace
     const workspace = await workspaceModel.findById(idWorkspace);
-    // Recuperamos todas las tares del workspace anterior cuya propiedad de papelera está en true. Método propio en el modelo.
-    const trashedtasks = await workspaceModel.getTrashedTasks(idWorkspace);
 
-    const sortedTrashedTasks = trashedtasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
+    // Si existe usuario logueado
+    let currentUser;
+    let isWorkspaceFromUser;
 
-    return res.render('trashspace',{
-      allTasks: sortedTrashedTasks,
-      title: "Papelera",
-      workspace
-    });
+    if(req.user){
+      currentUser = await userModel.findById(req.user._id).populate("subscription");
+      isWorkspaceFromUser = currentUser.subscription.workspaces.some(workspace => workspace._id == idWorkspace)
+    }
+
+    if(workspace.settings.visibility || isWorkspaceFromUser) {
+
+      // Recuperamos todas las tares del workspace anterior cuya propiedad de papelera está en true. Método propio en el modelo.
+      const trashedtasks = await workspaceModel.getTrashedTasks(idWorkspace);
+
+      const sortedTrashedTasks = trashedtasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
+
+      return res.render('trashspace',{
+        allTasks: sortedTrashedTasks,
+        title: "Papelera",
+        workspace
+      });
+    }
+
+    req.flash("error_msg", `Workspace privado!`) 
+    return res.redirect("/");
 
 }
 

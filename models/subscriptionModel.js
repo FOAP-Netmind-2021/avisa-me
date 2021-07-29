@@ -30,7 +30,6 @@ const subscriptionSchema = new Schema(
 
 // Validación workspaces con el límite de la cuenta. En caso de atentar contra la base de datos
 subscriptionSchema.path('workspaces').validate(function (value) {
-    console.log(value.length)
     if (value.length > this.limitWorkspace) {  
       throw new Error("Has excedido el número de workspaces gratuitos!");
     }

@@ -29,16 +29,10 @@ exports.updateSettings = async (req,res) =>{
     }
 
     let {idWorkspace, hideCompletedTask} = req.body;
-    let body = req.body;
-    console.log("ese es el console de la url dinamica", idWorkspace);
-    console.log("*****BODY****", body);
-    console.log("console de hidecompleted tasks", hideCompletedTask);
 
     const workspace = await workspaceModel.findById(idWorkspace);
-    console.log(workspace);
     workspace.settings.hideCompletedTask = hideCompletedTask;
     await workspace.save();
-    console.log("actualizado", workspace); 
   }
 
   exports.updateVisibility = async (req, res) => {
@@ -65,7 +59,6 @@ exports.updateSettings = async (req,res) =>{
   
     // Buscar todas las tareas pero solo visualizar los campos: id, title, text, createdAt.
     const allTasks = await taskModel.find({ workspace: `${idWorkspace}` }, { title: 1, text: 1, createdAt: 1 });
-    console.log("todas las tareas;(workSpace):---------->", allTasks);
   
     /**
      *  Especificaciones del [módulo exportTasks](https://www.npmjs.com/package/export-from-json)

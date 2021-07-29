@@ -60,7 +60,6 @@ app.use((req, res, next) => {
 // Auto run script
 nodeCron.schedule('*/5 * * * *', () => {
   reminderScript.reminderNotificate();
-  console.log("mensaje enviado");
 });
 
 // Routes. Importing from another file

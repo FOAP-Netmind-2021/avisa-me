@@ -176,3 +176,19 @@ exports.updateReminderDate = async (req,res)=>{
   })
 
 }
+
+exports.deleteReminderDate = async (req,res)=>{
+
+  const {idTask} = req.body;
+
+  let task = await taskModel.findById(idTask);
+
+  task.reminderDate = undefined;
+  task.reminderNotification = null;
+  
+  await task.save();
+
+  res.send({
+    success : true,
+  })
+}

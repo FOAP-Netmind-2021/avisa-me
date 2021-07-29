@@ -9,8 +9,7 @@ exports.reminderNotificate = async () =>{
     let limitDate = new Date();
     limitDate.setHours(limitDate.getHours()+10)
     limitDate.setMinutes(limitDate.getMinutes()+5)
-    console.log(initDate);
-    console.log(limitDate);
+
     const allTasks = await taskModel.find({reminderDate:{$gt:initDate, $lt:limitDate}, reminderNotification:null}).populate({
         path:"workspace",
         populate:{
@@ -20,9 +19,9 @@ exports.reminderNotificate = async () =>{
           }
         }
     })
-    console.log(allTasks);
+
     allTasks.forEach(async task =>{
-        console.log(task);
+
         if(task.workspace.subscription){
             const user = task.workspace.subscription.user;
             let reminderDate = task.reminderDate;

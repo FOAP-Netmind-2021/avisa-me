@@ -20,4 +20,7 @@ router.post('/deleteTask', taskControllers.deleteTask);
 router.post('/deleteTrashedTasks', taskControllers.deleteTrashedTasks);
 // Actualizar la fecha de recordatorio
 router.post('/updateReminderDate', taskControllers.updateReminderDate);
+// Eliminar la fecha de recordatorio
+router.post('/deleteReminderDate', taskControllers.deleteReminderDate);
+
 module.exports = router;

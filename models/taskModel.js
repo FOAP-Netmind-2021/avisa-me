@@ -1,14 +1,8 @@
 /* Requerimos de mongoose solo Shema y el model */
 const {Schema, model} = require('mongoose');
 
-//Si se ha escrito en el input, valida que no nos hayan insertado sólo espacios en blanco:
-function validator (val){
-    if(val.length > 0){
-        return /\S/.test(val); //Devuelve 'true' si encuentra cualquier caracter que NO es un espacio en blanco.
-    }
-}
 
-//Iniciamos la constante 'custon'; contiene la función de validación y un mensaje personalizado:
+//Iniciamos la constante 'custom'; contiene la función de validación y un mensaje personalizado:
 const custom = [validator, 'Oh oh, sólo has introducido espacios en un campo!!!!!'];
 
 // Cada Nota tiene su propia ID única. 
@@ -45,6 +39,12 @@ const taskSchema = new Schema(
         versionKey: false
     }
 );
+
+
+//Si se ha escrito en el input, valida que no nos hayan insertado sólo espacios en blanco:
+function validator (val){
+    if(val.length > 0) return /\S/.test(val); //Devuelve 'true' si encuentra cualquier caracter que NO es un espacio en blanco.
+}
 
 /* Asociamos la Colección con el Schema */
 module.exports = model("Task", taskSchema);

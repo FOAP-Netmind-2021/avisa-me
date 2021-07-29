@@ -12,22 +12,17 @@ function onFocusUpdate(event){
   let titleModified =  event.currentTarget.querySelector(`#task-title-${idTask}`).textContent;
   let textModified = event.currentTarget.querySelector(`#task-text-${idTask}`).textContent;
   let data = {idTask, titleModified, textModified};
-  
-  if(!titleModified && !textModified){
-    console.log("Camoos text y title modified---------->",titleModified, textModified);
-    //alert("Has de rellenar uno de los dos campos")
-    return;
-  }
+
+  // Si el título Y el texto de la nota no cumple con el patrón, retornamos. 
+  // Se hace de esta manera porque el update devuelve espacios en blanco extra.
+  if(!/\S/.test(titleModified) && !/\S/.test(textModified)) return;
           
-  let response = fetch("/tasks/updateTask", {
-  method: "POST",
-  body: JSON.stringify(data),
-  headers:{ //es necesario
-    'Content-Type': 'application/json'
-  }
-  }).then(()=>{
-    console.log("response:", response);
-    console.log("data:", data);
+  fetch("/tasks/updateTask", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers:{ //es necesario
+        'Content-Type': 'application/json'
+      }
   })
 }
 
@@ -39,22 +34,15 @@ function updateTask(event){
   let tarea = document.querySelector(`#task-title-${idTask}`);
   tarea.style.backgroundColor = SelectedbackgroundColor; 
 
-  console.log("el color de fondo es" , SelectedbackgroundColor);
+  let data = {idTask, SelectedbackgroundColor};
 
-let data = {idTask, SelectedbackgroundColor};
-
-console.log("this is data value", data);
-
-let response = fetch("/tasks/updateTaskColores", {
-method: "POST",
-body: JSON.stringify(data),
-headers:{ //es necesario
-  'Content-Type': 'application/json'
-}
-}).then(()=>{
-  console.log("response:", response);
-  console.log("data:", data);
-})
+  fetch("/tasks/updateTaskColores", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers:{ //es necesario
+        'Content-Type': 'application/json'
+      }
+  })
 }
 
 function updateReminderDate(event){
@@ -64,14 +52,17 @@ function updateReminderDate(event){
   let reminderTag = document.querySelector(`#reminderTag-${idTask}`);
   let reminderTagText = document.querySelector(`#reminderTagText-${idTask}`)
   let reminderTagTextSpan = document.querySelector(`#reminderTagTextSpan-${idTask}`)
+  let deleteReminder = document.querySelector(`#deleteReminder-${idTask}`)
 
   let data = {idTask, reminderDate, reminderHour};
   if(reminderDate && reminderHour){
     setTimeout(() => {
       let setDate = new Date(`${reminderDate}T${reminderHour}:00`);
       reminderTag.removeAttribute("hidden");
+
       reminderTagTextSpan.innerText =`${setDate.toLocaleString("es-Es", {year:"numeric", month:"short",day:"numeric"})}, ${setDate.toLocaleString("es-Es", {hour: 'numeric', minute: '2-digit'})}`
-    
+      deleteReminder.removeAttribute("hidden");
+
       if(setDate<new Date()){
         reminderTagText.classList.remove("reminderTagText");
         reminderTagText.classList.add("reminderTagThrough");
@@ -80,16 +71,35 @@ function updateReminderDate(event){
         reminderTagText.classList.add("reminderTagText");
       }
     }, 300);
-    let response = fetch("/tasks/updateReminderDate", {
+
+    fetch("/tasks/updateReminderDate", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers:{ //es necesario
+          'Content-Type': 'application/json'
+        }
+    })
+  }
+
+}
+
+function deleteReminderDate(event){
+
+  let idTask = event.target.parentNode.dataset.id; 
+  let data = {idTask};
+  let reminderTag = document.querySelector(`#reminderTag-${idTask}`);
+
+  fetch("/tasks/deleteReminderDate", {
       method: "POST",
       body: JSON.stringify(data),
       headers:{ //es necesario
         'Content-Type': 'application/json'
       }
-      }).then(()=>{
-        console.log("response:", response);
-        console.log("data:", data);
-      })
-  }
-
+  })
+    .then(()=>{
+        setTimeout(() => {
+          reminderTag.hidden = true;
+          }, 300);
+    })
 }
+

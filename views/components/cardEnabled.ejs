@@ -33,15 +33,14 @@
         <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3">
           <span id="reminderTagText-<%=task._id%>" data-reminderdate="<%=task.reminderDate%>" class="reminderTagText">
             <span id="reminderTagTextSpan-<%=task._id%>"><%=`${task.reminderDate.toLocaleDateString("es-Es", {year:"numeric", month:"short",day:"numeric"})}, ${task.reminderDate.toLocaleTimeString("es-Es", {hour: 'numeric', minute: '2-digit'})}`%></span>
-          </span>
-          </span>
+          </span><a id="deleteReminder-<%=task._id%>" data-id="<%=task._id%>" onclick="deleteReminderDate(event)"><i class="bi bi-bell-slash"></i></a>
         </div>
         <% }else{ %>
           <div id="reminderTag-<%=task._id%>" class="reminderTag mt-3" hidden>
             <span id="reminderTagText-<%=task._id%>">
               <span id="reminderTagTextSpan-<%=task._id%>">
                 </span>            
-            </span>
+            </span><a id="deleteReminder-<%=task._id%>" data-id="<%=task._id%>" onclick="deleteReminderDate(event)" hidden><i class="bi bi-bell-slash"></i></a>
           </div>
         <% } %>  
         <!-- Action Icons -->
@@ -50,7 +49,7 @@
             <a title="Completar tarea" data-id-complete="<%= task._id %>" href="/tasks/<%= task._id %>/completed" class="d-flex pt-2" ><i class="bi bi-check-lg"></i></a>
             <a title="Establecer recordatorio" id="reminderId" href="#" class="d-flex"> <i class="btn bi-bell" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false"></i>
               <ul data-datetime="<%=task._id%>" onfocusout="updateReminderDate(event)"  class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <% if(task.reminderDate){ %> 
+                <% if(task.reminderDate){ %>
                 <input  type="date" id="reminder-date-<%=task._id%>" value="<%=task.reminderDate.toLocaleDateString('en-CA')%>" class="dropdown-item">
                 <input  type="time" id="reminder-hour-<%=task._id%>" value="<%=task.reminderDate.toLocaleTimeString('es-Es', {hour: '2-digit', minute: '2-digit'})%>" class="dropdown-item" type="date" class="dropdown-item" style="width:100%">
                 <% }else{ %> 
@@ -66,7 +65,7 @@
                   <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Skin"  style="background-color:#fadda4; border-radius: 50px; height: 25px; width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
                   <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Yellow"   style="background-color:#fcf7a4; border-radius: 50px; height: 25px; width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
                   <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="White"   style="background-color:#ffffff; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
-                  <bStton  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Orange"   style="background-color: #facc81; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
+                  <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Orange"   style="background-color: #facc81; border-radius: 50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>
                 </div>
                 <div>
                   <button  class="dropup-toggle" type="button"  data-toggle="dropup" aria-haspopup="true" aria-expanded="false" data-toggle-second="tooltip" data-placement="right" title="Green"   style="background-color:#a5f59e; border-radius:50px; height: 25px;width: 25px; border: 1px rgba(0, 0, 0, 0.300) solid;" ></button>

@@ -1,4 +1,3 @@
-
 /*      
 Tenemos deshabilitado boton createTak.
 Comprobar que campo title o campo text contienen al menos un caracter, si es así, habilitar createTask,
@@ -15,9 +14,6 @@ function validarInput() {
   let caracterTexto = pattern.test(texto.value);
 
   //Si el titulo o el texto tienen caracteres y no son sólo espacios(ha pasado el test), aparece el botón para crear tarea:
-  if (caracterTitulo || caracterTexto) {
-    createTask.style.visibility = "visible";
-  } else {
-    createTask.style.visibility = "hidden";
-  }
+  caracterTitulo || caracterTexto ? createTask.style.visibility = "visible" : createTask.style.visibility = "hidden";
+
 }

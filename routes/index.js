@@ -10,6 +10,10 @@ router.get('/', workspaceControllers.renderHome);
 router.post('/', taskValidator.createTask , taskValidator.emptyTask, workspaceControllers.createWorkspace);
 // Renderiza el workspace
 router.get('/:idWorkspace', workspaceControllers.renderWorkspace);
+
+// Renderiza el workspace
+router.get('/:idWorkspace/?tasksReminder', workspaceControllers.renderWorkspace);
+
 // Renderiza la página del equipo
 router.get('/team/hello', workspaceControllers.renderTeamPage);
 // Crea una nota
