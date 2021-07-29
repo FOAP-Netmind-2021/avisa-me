@@ -126,8 +126,6 @@ exports.renderWorkspace = async (req, res) => {
       // Filtraremos las tareas con recordatorio. En caso contrario, se renderizan las que no están en la papelera, incluídas con o sin recordatorio.
       req.query.tasksReminder ? allTasks = await workspaceModel.getReminderTasks(idWorkspace) : allTasks = await workspaceModel.getUntrashedTasks(idWorkspace);
 
-      console.log(allTasks);
-
       let sortedTasks = allTasks.sort((a,b) => { return new Date(a.createdAt) - new Date(b.createdAt)});
 
       hideCompletedTask = workspace.settings.hideCompletedTask;
